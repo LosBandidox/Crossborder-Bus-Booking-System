@@ -34,7 +34,7 @@ The **Cross-Border Bus Booking System** is a web-based application that automate
 
 1. **Clone the repository:**  
    ```bash
-   git clone https://github.com/LosBandidox/Crossborder-BusBooking-System.git
+   git clone https://github.com/LosBandidox/Crossborder-Bus-Booking-System.git
    
 2. **Move files into your web server root**  
    - For XAMPP: place files in the `htdocs` folder.  
@@ -55,7 +55,7 @@ The **Cross-Border Bus Booking System** is a web-based application that automate
    - Start the server
    - Open a browser and go to:  
      ```
-     http://localhost/Crossborder-BusBooking-System
+     http://localhost/Crossborder-Bus-Booking-System
 
 ---
 
