@@ -1,0 +1,164 @@
+/* InputStyles.css: This file defines the visual styling for all form elements in the International Bus Booking System */
+/* It ensures a professional, consistent, and user-friendly appearance for the page, form, inputs, buttons, and links, aligning with the system's design aesthetic */
+
+/* Body styling: Controls the overall appearance and layout of the entire webpage */
+body {
+    font-family: Arial, sans-serif; /* Specifies Arial as the primary font for text, with sans-serif as a fallback if Arial is unavailable, ensuring a clean and professional typography */
+    background: linear-gradient(to bottom right, #a1c4fd, #c2a1fd); /* Applies a gradient background transitioning smoothly from light blue (#a1c4fd) to light purple (#c2a1fd) from the top-left to bottom-right, creating a visually appealing and modern look */
+    height: 100vh; /* Sets the body height to 100% of the viewport height (vh = viewport height), ensuring the gradient background covers the entire visible browser area, even if content is minimal */
+    margin: 0; /* Removes default browser margins (external spacing around the body) to ensure the gradient background extends to the edges of the viewport without gaps */
+    display: flex; /* Uses flexbox, a layout model that allows flexible alignment of child elements (like the form), enabling precise control over positioning */
+    justify-content: center; /* Horizontally centers the form within the body by distributing available space equally on both sides, ensuring a balanced layout */
+    align-items: center; /* Vertically centers the form within the body by aligning it along the cross-axis, creating a clean and centered presentation */
+}
+
+/* Form styling: Defines the appearance and layout of all <form> elements */
+form {
+    max-width: 350px; /* Limits the form's width to 350 pixels, creating a compact and focused design that matches the sample's aesthetic while ensuring it’s not too wide on larger screens */
+    background: #ffffff; /* Sets the form background to pure white (#ffffff), providing a clean and professional contrast against the gradient body background */
+    padding: 30px; /* Adds 30 pixels of internal spacing (padding) on all sides of the form, creating a comfortable buffer between the form’s content and its edges for better readability and aesthetics */
+    border-radius: 15px; /* Rounds all corners of the form by 15 pixels, giving it a softer, more modern appearance compared to sharp corners, enhancing user experience */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow (0px horizontal offset, 4px vertical offset, 10px blur, 10% opacity black) to create a floating effect, adding depth and making the form stand out from the background */
+}
+
+/* Form heading styling: Applies to <h2> elements inside the form, typically used for titles like "Sign In" */
+form h2 {
+    text-align: center; /* Centers the heading text horizontally within the form, ensuring a symmetrical and professional appearance */
+    margin-bottom: 30px; /* Adds 30 pixels of space below the heading, creating a clear separation between the title and the form fields for better visual hierarchy */
+    color: #4b3a6f; /* Sets the heading text color to a dark purple (#4b3a6f), providing a visually appealing contrast against the white form background and aligning with the system’s color scheme */
+    font-size: 24px; /* Sets the heading font size to 24 pixels, making it prominent but not overwhelming, emphasizing its importance as the form’s title */
+}
+
+/* Label styling: Applies to all <label> elements, which describe input fields */
+label {
+    display: block; /* Makes each label a block-level element, forcing it to occupy its own line, ensuring each label appears above its corresponding input for clarity */
+    margin-top: 15px; /* Adds 15 pixels of space above each label, creating consistent vertical spacing between form fields to prevent a cramped appearance */
+    color: #666; /* Sets the label text color to a medium gray (#666), providing a subtle contrast against the white form background for readability without being too bold */
+    font-size: 14px; /* Sets the label font size to 14 pixels, making it slightly smaller than input text to maintain a clean and hierarchical design */
+}
+
+/* Text input styling: Applies to <input> elements with type="text" or type="password" */
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* Makes the input field span the full width of its container (the form), ensuring it uses all available space for a consistent and professional look */
+    padding: 12px; /* Adds 12 pixels of internal spacing on all sides of the input field, making it easier to read and interact with by providing space around the text */
+    margin-top: 5px; /* Adds 5 pixels of space above the input field, creating a small gap between the label and input for better visual separation */
+    border: 1px solid #e0e0e0; /* Adds a 1-pixel-wide, solid, very light gray (#e0e0e0) border around the input field, providing a subtle outline to define its boundaries */
+    border-radius: 10px; /* Rounds the corners of the input field by 10 pixels, giving it a modern and friendly appearance that aligns with the form’s rounded design */
+    box-sizing: border-box; /* Ensures that padding and borders are included in the input’s total width, preventing the input from exceeding the form’s width and maintaining layout consistency */
+    font-size: 14px; /* Sets the font size of text entered in the input to 14 pixels, matching the label size for a cohesive and readable design */
+}
+
+/* Placeholder text styling: Applies to placeholder text inside text and password inputs */
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #aaa; /* Sets the placeholder text color to a light gray (#aaa), making it subtle and distinguishable from actual input text while maintaining readability */
+}
+
+/* Submit button container: A wrapper div to control the positioning of the submit button */
+.submit-container {
+    margin-top: 20px; /* Adds 20 pixels of space above the container, ensuring the submit button is separated from the input fields above for a clear visual flow */
+    text-align: center; /* Centers the submit button horizontally within the container, aligning it with the form’s centered design */
+}
+
+/* Submit button styling: Applies to <input> elements with type="submit" */
+input[type="submit"] {
+    width: 100%; /* Makes the submit button span the full width of its container (the form), creating a prominent and easy-to-click target */
+    padding: 12px; /* Adds 12 pixels of internal spacing on all sides, making the button larger and more comfortable to interact with */
+    background-color: #8a4af3; /* Sets the button’s background to a vibrant purple (#8a4af3), aligning with the system’s color scheme and drawing attention to the primary action */
+    color: white; /* Sets the button text color to white, ensuring high contrast against the purple background for readability */
+    border: none; /* Removes the default browser border, allowing the button’s rounded design and background color to define its appearance */
+    border-radius: 25px; /* Rounds the corners of the button by 25 pixels, creating a pill-like shape that’s visually distinct and modern */
+    cursor: pointer; /* Changes the mouse cursor to a pointer (hand icon) when hovering over the button, indicating it’s clickable */
+    font-size: 16px; /* Sets the button text font size to 16 pixels, slightly larger than input text to emphasize its importance */
+    display: inline-block; /* Ensures the button respects the text-align: center property of its container, allowing it to be centered horizontally */
+}
+
+/* Submit button hover effect: Applies when the user hovers over the submit button */
+input[type="submit"]:hover {
+    background-color: #7a3de0; /* Changes the button’s background to a slightly darker purple (#7a3de0) when hovered, providing visual feedback to indicate interactivity */
+}
+
+/* Paragraph styling: Applies to <p> elements inside the form, typically for text like "Or login with" */
+form p {
+    text-align: center; /* Centers the paragraph text horizontally within the form, maintaining a consistent and balanced layout */
+    margin-top: 20px; /* Adds 20 pixels of space above the paragraph, separating it from the submit button for better visual flow */
+    color: #666; /* Sets the paragraph text color to a medium gray (#666), keeping it subtle to avoid drawing attention away from primary actions */
+    font-size: 14px; /* Sets the font size to 14 pixels, matching the label size for a cohesive design */
+}
+
+/* Link styling: Applies to <a> elements inside the form, such as the "Sign Up" link */
+form a {
+    color: #8a4af3; /* Sets the link text color to the same purple (#8a4af3) as the submit button, ensuring a consistent color scheme */
+    text-decoration: none; /* Removes the default browser underline from the link, creating a cleaner and more modern appearance */
+    font-weight: bold; /* Makes the link text bold, emphasizing it as a clickable action without being too prominent */
+}
+
+/* Link hover effect: Applies when the user hovers over the link */
+form a:hover {
+    text-decoration: underline; /* Adds an underline to the link when hovered, providing clear visual feedback that it’s interactive */
+}
+
+/* CAPTCHA section styling: Applies to the div containing the CAPTCHA question and input */
+#captchaSection {
+    margin: 15px 0; /* Adds 15 pixels of margin above and below the CAPTCHA section, ensuring it’s properly spaced within the form’s layout */
+}
+
+/* CAPTCHA question styling: Applies to the label displaying the CAPTCHA question */
+#captchaQuestion {
+    display: block; /* Makes the CAPTCHA question a block-level element, placing it on its own line for clarity */
+    margin-bottom: 5px; /* Adds 5 pixels of space below the question, separating it from the input field for better readability */
+    font-weight: bold; /* Makes the question text bold, emphasizing its importance as part of the form’s security feature */
+}
+
+/* CAPTCHA answer input styling: Applies to the input field where the user enters the CAPTCHA answer */
+#captchaAnswer {
+    width: 100%; /* Makes the input field span the full width of its container, ensuring consistency with other form inputs */
+    padding: 8px; /* Adds 8 pixels of internal spacing on all sides, slightly less than other inputs to keep the CAPTCHA field compact */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the input, creating a small gap before the next form element */
+}
+/* Back Button Styling: Styles the back button for navigation */
+.back-btn {
+    display: inline-block; /* Makes the button sit inline but respect width and padding */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    font-weight: 500; /* Uses a medium-bold font weight for a strong but not heavy look */
+    color: #ffffff; /* Sets text to white for contrast */
+    background: linear-gradient(90deg, #2c3e50, #3498db); /* Creates a gradient background from dark blue (#2c3e50) to lighter blue (#3498db) for visual appeal */
+    border: none; /* Removes any default border for a smooth appearance */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a modern look */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon when hovering, showing it’s clickable */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a small shadow (2px down, 5px blur, 20% dark) to make the button look raised */
+    transition: background 0.3s ease, transform 0.2s ease; /* Makes background and movement changes happen smoothly over 0.3 and 0.2 seconds */
+    margin: 5px 0; /* Adds 10 pixels of space above and below the button for separation */
+}
+
+/* Back Button Hover: Changes the button appearance when hovered */
+.back-btn:hover {
+    background: linear-gradient(90deg, #3498db, #2c3e50); /* Reverses the gradient direction on hover for a dynamic effect */
+    transform: translateY(-2px); /* Moves the button up 2 pixels when hovered to create a lifted effect */
+}
+
+/* Back Button Active: Changes the button appearance when clicked */
+.back-btn:active {
+    transform: translateY(0); /* Returns the button to its original position when clicked */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Reduces the shadow (1px down, 3px blur) to show the button is pressed */
+}
+
+/* Light Theme Adjustments: Ensures back button visibility on light backgrounds */
+@media (prefers-color-scheme: light) {
+    .back-btn {
+        color: #ffffff; /* Keeps text white for contrast */
+        background: linear-gradient(90deg, #34495e, #2980b9); /* Uses a slightly darker gradient for better visibility on light backgrounds */
+    }
+}
+
+/* Dark Theme Adjustments: Ensures back button visibility on dark backgrounds */
+@media (prefers-color-scheme: dark) {
+    .back-btn {
+        color: #ffffff; /* Keeps text white for contrast */
+        background: linear-gradient(90deg, #2c3e50, #3498db); /* Maintains the original gradient for dark backgrounds */
+    }
+}
+
+.form-buttons { display: flex; gap: 10px; }

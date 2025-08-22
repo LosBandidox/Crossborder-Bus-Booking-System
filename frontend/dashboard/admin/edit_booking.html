@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Booking</title>
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css">
+    <script src="../../../assets/js/formValidation.js"></script>
+    <script src="/assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Edit Booking</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="admin_bookings.html">Bookings</a></li>
+                <li><a href="../../../php/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <form id="editBookingForm" onsubmit="return validateAndSubmitBookingForm(event)">
+            <h2>Edit Booking</h2>
+            <input type="hidden" id="editBookingId" name="bookingId">
+            <div class="form-row">
+                <div class="form-field">
+            <label for="editCustomerID">Customer ID:</label>
+            <input type="text" id="editCustomerID" name="customerID" required><br><br>
+                </div>
+                <div class="form-field">
+            <label for="editScheduleID">Schedule ID:</label>
+            <input type="text" id="editScheduleID" name="scheduleID" required><br><br>
+                </div>
+            </div>
+                <div class="form-field">
+            <label for="editSeatNumber">Seat Number:</label>
+            <input type="text" id="editSeatNumber" name="seatNumber" required><br><br>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+            <label for="editBookingDate">Booking Date:</label>
+            <input type="text" id="editBookingDate" name="bookingDate" placeholder="DD-MM-YYYY" required><br><br>
+                    </div>
+                    <div class="form-field">
+            <label for="editTravelDate">Travel Date:</label>
+            <input type="text" id="editTravelDate" name="travelDate" placeholder="DD-MM-YYYY" required><br><br>
+                    </div>
+                </div>
+            <label for="editStatus">Status:</label>
+            <select id="editStatus" name="status" required>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Canceled">Canceled</option>
+            </select><br><br>
+            <button type="submit">Update Booking</button>
+            <button type="button" onclick="window.location.href='admin_bookings.html'">Cancel</button>
+        </form>
+    </main>
+
+    <script src="../../../assets/js/edit_booking.js"></script>
+</body>
+</html>

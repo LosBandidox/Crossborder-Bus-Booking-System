@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - International Bus Booking System</title>
+    <link rel="stylesheet" href="../../assets/css/InputStyles.css">
+    <script src="../../assets/js/formValidation.js" defer></script>
+    <script src="../../assets/js/signup.js" defer></script>
+</head>
+<body>
+    <form id="signupForm">
+        <h2>Sign Up</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Hidden Role field, set to Customer -->
+        <input type="hidden" id="role" name="role" value="Customer">
+
+        <!-- Submit button wrapped in a div for styling -->
+        <div class="submit-container">
+            <input type="submit" value="Sign Up">
+        </div>
+        <p>Already have an account? <a href="../Login.html">Login</a></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Data Entry Form</title>
+    <link rel="stylesheet" href="InputStyles.css">
+    <script src="formValidation.js"></script>
+</head>
+<body>
+    <h1>Activity Data Entry Form</h1>
+    <form action="#" method="POST" onsubmit="return validateActivityForm()">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br><br>
+
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" placeholder="YYYY-MM-DD"><br><br>
+
+        <label for="time">Time:</label>
+        <input type="text" id="time" name="time" placeholder="HH:MM:SS"><br><br>
+
+        <label for="whoDidIt">Who Did It:</label>
+        <input type="text" id="whoDidIt" name="whoDidIt"><br><br>
+
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

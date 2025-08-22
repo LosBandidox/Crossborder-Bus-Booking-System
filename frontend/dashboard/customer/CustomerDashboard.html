@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="/assets/css/Styles.css">
+    <script src="/assets/js/formValidation.js"></script>
+    <script src="/assets/js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+        </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="/frontend/dashboard/customer/CustomerDashboard.html">Home</a></li>
+                <li><a href="/frontend/dashboard/customer/BookingHistory.html">Booking History</a></li>
+                <li><a href="/frontend/dashboard/customer/PaymentHistory.html">Payment History</a></li>
+                <li><a href="/frontend/dashboard/customer/Ticket.html">Tickets</a></li>
+                <li><a href="/frontend/dashboard/customer/ProfileManagement.html">Profile</a></li>
+            </ul>
+            <a href="/php/Logout.php" class="try-free-btn">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            <h1>Welcome to The Customer Dashboard</h1>
+
+            <section id="statsCards">
+                <h2>Your Stats</h2>
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <h3>Total Bookings</h3>
+                        <img src="/assets/Images/ticket-alt_9239352.svg" alt="Ticket Icon" class="custom-icon">
+                        <p class="stats-value" id="totalBookings">0</p>
+                        <p>Number of trips you’ve booked.</p>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Total Spent</h3>
+                        <img src="/assets/Images/money_3914922.svg" alt="Money Bill Icon" class="custom-icon">
+                        <p class="stats-value" id="totalSpent">$0.00</p>
+                        <p>Total payments for your bookings.</p>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Upcoming Trips</h3>
+                        <img src="/assets/Images/calendar-check_7546722.svg" alt="Calendar Icon" class="custom-icon">
+                        <p class="stats-value" id="upcomingTrips">0</p>
+                        <p>Trips scheduled for the future.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quickActions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <div class="action-card" onclick="scrollToSchedule()">
+                        <img src="/assets/Images/bus-alt_6955518.svg" alt="Bus Icon" class="custom-icon">
+                        <h3>Book a Bus</h3>
+                        <p>View the next week’s bus schedules.</p>
+                    </div>
+                    <a href="/frontend/dashboard/customer/Ticket.html" class="action-card">
+                        <img src="/assets/Images/ticket-alt_9239352.svg" alt="Ticket Icon" class="custom-icon">
+                        <h3>View Tickets</h3>
+                        <p>Check your active tickets.</p>
+                    </a>
+                    <a href="/frontend/dashboard/customer/BookingHistory.html" class="action-card">
+                        <img src="/assets/Images/time-past_3917309.svg" alt="History Icon" class="custom-icon">
+                        <h3>Booking History</h3>
+                        <p>Review past bookings.</p>
+                    </a>
+                    <a href="/frontend/dashboard/customer/ProfileManagement.html" class="action-card">
+                        <img src="/assets/Images/user_3917711.svg" alt="User Icon" class="custom-icon">
+                        <h3>Update Profile</h3>
+                        <p>Manage your personal details.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section id="busSchedule">
+                <h2>This Week's Schedule</h2>
+                <p>Showing buses for the next 7 days. Use the search form below for other dates or routes.</p>
+                <!-- Search input added to filter schedules table -->
+                <input type="text" id="scheduleSearch" class="search-input" placeholder="Search schedules...">
+                <!-- Placeholder added to show if no schedules match the search -->
+                <p id="noSchedules" class="no-results" style="display: none;">No schedules found.</p>
+                <div id="schedulesContainer"></div>
+            </section>
+
+            <section id="searchFormSection">
+                <form id="searchForm" action="/php/SearchBuses.php" method="POST" onsubmit="return validateSearchForm()">
+                    <h2>Search for Buses</h2>
+                    <label for="from">From:</label>
+                    <select id="from" name="from" class="select-input" required>
+                        <option value="" disabled selected>Select starting location</option>
+                        <option value="Nairobi">Nairobi</option>
+                        <option value="Kigali">Kigali</option>
+                        <option value="Kampala">Kampala</option>
+                        <option value="Dar es Salaam">Dar es Salaam</option>
+                        <option value="Mombasa">Mombasa</option>
+                        <option value="Kisumu">Kisumu</option>
+                        <option value="Juba">Juba</option>
+                        <option value="Arusha">Arusha</option>
+                        <option value="Kitale">Kitale</option>
+                        <option value="Eldoret">Eldoret</option>
+                        <option value="Dodoma">Dodoma</option>
+                        <option value="Nakuru">Nakuru</option>
+                    </select>
+                    <label for="to">To:</label>
+                    <select id="to" name="to" class="select-input" required>
+                        <option value="" disabled selected>Select destination</option>
+                        <option value="Nairobi">Nairobi</option>
+                        <option value="Kigali">Kigali</option>
+                        <option value="Kampala">Kampala</option>
+                        <option value="Dar es Salaam">Dar es Salaam</option>
+                        <option value="Mombasa">Mombasa</option>
+                        <option value="Kisumu">Kisumu</option>
+                        <option value="Juba">Juba</option>
+                        <option value="Arusha">Arusha</option>
+                        <option value="Kitale">Kitale</option>
+                        <option value="Eldoret">Eldoret</option>
+                        <option value="Dodoma">Dodoma</option>
+                        <option value="Nakuru">Nakuru</option>
+                    </select>
+                    <label for="date">Date:</label>
+                    <input type="text" id="date" name="date" class="date-input" placeholder="DD-MM-YYYY" required>
+                    <button type="submit">Search Buses</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 International Bus Booking System. All rights reserved.</p>
+    </footer>
+
+    <script>
+// Sets up the page when it loads
+// - Adds an event listener using document.addEventListener(), a built-in method, for the “DOMContentLoaded” event.
+// - Runs an anonymous arrow function when the page’s HTML is fully loaded.
+// - Loads dashboard data, sets up form validation, and enables schedule table search for customers.
+document.addEventListener('DOMContentLoaded', () => {
+    // Gets dashboard data
+    // - Sends a web request using fetch(), a built-in method, to '/php/DashboardData.php'.
+    // - Retrieves customer statistics and bus schedules for the dashboard.
+    // - Updates the page with stats and a schedule table.
+    fetch('/php/DashboardData.php')
+        // Handles the server response
+        // - Uses then(), a built-in promise method, with a parameter: response (the server’s reply).
+        // - Checks if the response is successful and converts it to JSON.
+        // - Prepares the data for updating the page.
+        .then(response => {
+            // Checks if the response is successful
+            // - A conditional statement using response.ok, a built-in property.
+            // - Throws an error if the response fails (e.g., 404 or 500).
+            // - Ensures only valid responses are processed.
+            if (!response.ok) throw new Error('Network response was not ok');
+
+            // Converts the response to JSON
+            // - Calls response.json(), a built-in method, to parse the response.
+            // - Returns a promise with the parsed data.
+            // - Gets the stats and schedules for display.
+            return response.json();
+        })
+        // Uses the data to update the page
+        // - Uses then() with a parameter: data (the parsed JSON object).
+        // - Updates stats cards and builds the schedule table.
+        // - Shows customer information like bookings and trips.
+        .then(data => {
+            // Checks for errors in the data
+            // - A conditional statement checking if data.status equals 'error'.
+            // - Shows an error message and stops if the server reports an issue.
+            // - Prevents invalid data from being displayed.
+            if (data.status === 'error') {
+                // Shows an error message
+                // - Calls alert(), a built-in method, with data.message.
+                // - Displays a pop-up to tell the customer about the issue.
+                // - Stops further processing on error.
+                alert(data.message);
+                return;
+            }
+
+            // Updates the total bookings count
+            // - Sets textContent, a built-in property, of the element with ID 'totalBookings' using document.getElementById().
+            // - Shows the customer’s total number of bookings from data.stats.totalBookings.
+            // - Displays booking stats on the dashboard.
+            document.getElementById('totalBookings').textContent = data.stats.totalBookings;
+
+            // Updates the total spent amount
+            // - Sets textContent of the element with ID 'totalSpent'.
+            // - Formats data.stats.totalSpent as a dollar amount using parseFloat() and toFixed(2), built-in methods.
+            // - Shows the customer’s total spending on the dashboard.
+            document.getElementById('totalSpent').textContent = '$' + parseFloat(data.stats.totalSpent).toFixed(2);
+
+            // Updates the upcoming trips count
+            // - Sets textContent of the element with ID 'upcomingTrips'.
+            // - Shows the customer’s number of upcoming trips from data.stats.upcomingTrips.
+            // - Displays trip stats on the dashboard.
+            document.getElementById('upcomingTrips').textContent = data.stats.upcomingTrips;
+
+            // Finds the schedules container
+            // - A user-defined constant named container, holding the result of document.getElementById() for the element with ID 'schedulesContainer'.
+            // - Targets the area where the bus schedule table will be displayed.
+            // - Prepares to show schedules or a message.
+            const container = document.getElementById('schedulesContainer');
+
+            // Checks if schedules exist
+            // - A conditional statement checking if data.schedules.length is zero.
+            // - Shows a message if no schedules are available, or builds a table if they exist.
+            // - Decides how to display schedule information.
+            if (data.schedules.length === 0) {
+                // Shows a no-schedules message
+                // - Sets container.innerHTML, a built-in property, to a <p> tag with a message.
+                // - Tells the customer no buses are available for the next 7 days.
+                // - Updates the container with the message.
+                container.innerHTML = '<p>No buses available for the next 7 days.</p>';
+            } else {
+                // Starts building the table
+                // - A user-defined let variable named table, holding a template literal with HTML for a table.
+                // - Begins with <table> and <thead> tags, defining columns like Bus Number and Departure.
+                // - Prepares the table structure for schedule data.
+                let table = `
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Bus Number</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Departure</th>
+                                <th>Arrival</th>
+                                <th>Cost</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+                // Goes through each schedule
+                // - Uses forEach(), a built-in method, to loop over data.schedules with a parameter: schedule (a schedule object).
+                // - Adds a table row for each schedule with details like BusNumber and Cost.
+                // - Builds the table dynamically with schedule data.
+                data.schedules.forEach(schedule => {
+                    // Adds a table row
+                    // - Concatenates a template literal to table, using schedule properties.
+                    // - Formats dates with new Date() and toLocaleString()/toLocaleTimeString(), built-in methods, and cost with toFixed(2).
+                    // - Includes a “Book Now” link or “Full” text based on schedule.status.
+                    table += `
+                        <tr>
+                            <td>${schedule.BusNumber}</td>
+                            <td>${schedule.StartLocation}</td>
+                            <td>${schedule.Destination}</td>
+                            <td>${new Date(schedule.DepartureTime).toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
+                            <td>${new Date(schedule.ArrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
+                            <td>$${parseFloat(schedule.Cost).toFixed(2)}</td>
+                            <td>${schedule.status}</td>
+                            <td>${schedule.status === 'Full' ? '<span class="disabled-btn">Full</span>' : `<a href="/frontend/dashboard/customer/SeatSelection.html?scheduleID=${schedule.ScheduleID}" class="book-btn">Book Now</a>`}</td>
+                        </tr>`;
+                });
+
+                // Finishes the table
+                // - Concatenates closing </tbody> and </table> tags to table.
+                // - Completes the HTML structure for the schedule table.
+                // - Prepares the table for display.
+                table += `</tbody></table>`;
+
+                // Shows the table
+                // - Sets container.innerHTML to the table string.
+                // - Displays the schedule table in the schedules container.
+                // - Updates the dashboard with available schedules.
+                container.innerHTML = table;
+
+                // Sets up the search field
+                // - Adds an event listener using document.getElementById('scheduleSearch').addEventListener(), a built-in method, for the 'input' event.
+                // - Runs an anonymous arrow function when the customer types in the search field.
+                // - Filters the schedule table based on user input.
+                document.getElementById('scheduleSearch').addEventListener('input', () => {
+                    // Filters the table
+                    // - Calls the user-defined filterTable() function (from script.js) with arguments 'schedule-table', 'scheduleSearch', 'noSchedules', and [0, 1, 2].
+                    // - Searches Bus Number (column 0), From (column 1), and To (column 2).
+                    // - Updates the table to show only matching rows.
+                    filterTable('schedule-table', 'scheduleSearch', 'noSchedules', [0, 1, 2]);
+                });
+            }
+        })
+        // Handles errors
+        // - Uses catch(), a built-in promise method, with a parameter: error (the error object).
+        // - Logs “Error fetching dashboard data:” and the error using console.error(), a built-in method.
+        // - Helps developers debug issues like network or server problems.
+        .catch(error => console.error('Error fetching dashboard data:', error));
+
+    // Finds the 'from' dropdown
+    // - A user-defined constant named fromSelect, holding the result of document.getElementById() for the element with ID 'from'.
+    // - Targets the dropdown for selecting the starting location.
+    // - Prepares to handle location selection.
+    const fromSelect = document.getElementById('from');
+
+    // Finds the 'to' dropdown
+    // - A user-defined constant named toSelect, holding the result of document.getElementById() for the element with ID 'to'.
+    // - Targets the dropdown for selecting the destination.
+    // - Prepares to handle destination selection.
+    const toSelect = document.getElementById('to');
+
+    // Sets up the 'from' dropdown
+    // - Adds an event listener using fromSelect.addEventListener() for the 'change' event.
+    // - Runs an anonymous arrow function when the customer selects a starting location.
+    // - Prevents the same location from being selected in the 'to' dropdown.
+    fromSelect.addEventListener('change', () => {
+        // Checks for same selection
+        // - A conditional statement comparing fromSelect.value and toSelect.value.
+        // - Resets toSelect if both are the same and 'to' is not empty.
+        // - Ensures different locations are selected.
+        if (fromSelect.value === toSelect.value && toSelect.value !== '') {
+            // Clears the 'to' dropdown
+            // - Sets toSelect.value, a built-in property, to an empty string.
+            // - Resets the destination selection.
+            // - Prevents duplicate location choices.
+            toSelect.value = '';
+        }
+    });
+
+    // Sets up the 'to' dropdown
+    // - Adds an event listener using toSelect.addEventListener() for the 'change' event.
+    // - Runs an anonymous arrow function when the customer selects a destination.
+    // - Prevents the same location from being selected in the 'from' dropdown.
+    toSelect.addEventListener('change', () => {
+        // Checks for same selection
+        // - A conditional statement comparing toSelect.value and fromSelect.value.
+        // - Resets fromSelect if both are the same and 'from' is not empty.
+        // - Ensures different locations are selected.
+        if (toSelect.value === fromSelect.value && fromSelect.value !== '') {
+            // Clears the 'from' dropdown
+            // - Sets fromSelect.value to an empty string.
+            // - Resets the starting location selection.
+            // - Prevents duplicate location choices.
+            fromSelect.value = '';
+        }
+    });
+
+    // Sets up the search form
+    // - Adds an event listener using document.getElementById('searchForm').addEventListener() for the 'submit' event.
+    // - Runs an anonymous arrow function when the customer submits the search form.
+    // - Validates that 'from' and 'to' selections are different.
+    document.getElementById('searchForm').addEventListener('submit', (event) => {
+        // Checks for same selection
+        // - A conditional statement comparing fromSelect.value and toSelect.value.
+        // - Stops submission if both are the same.
+        // - Ensures valid search criteria.
+        if (fromSelect.value === toSelect.value) {
+            // Stops form submission
+            // - Calls preventDefault(), a built-in method, to prevent the form from submitting.
+            // - Keeps the form from sending invalid data.
+            // - Allows the customer to correct the selection.
+            event.preventDefault();
+
+            // Shows an error message
+            // - Calls alert() with “Starting location and destination cannot be the same.”.
+            // - Tells the customer the selections are invalid.
+            // - Prompts them to choose different locations.
+            alert('Starting location and destination cannot be the same.');
+        }
+    });
+});
+
+// Function to scroll to the schedule section
+// - A user-defined JavaScript function named scrollToSchedule, with no inputs.
+// - Smoothly moves the page to the bus schedule section.
+// - Helps customers view available schedules easily.
+function scrollToSchedule() {
+    // Finds the schedule section
+    // - A user-defined constant named scheduleSection, holding the result of document.getElementById() for the element with ID 'busSchedule'.
+    // - Targets the section containing the schedule table.
+    // - Prepares to scroll to this section.
+    const scheduleSection = document.getElementById('busSchedule');
+
+    // Scrolls to the section
+    // - Calls scrollIntoView(), a built-in method, on scheduleSection with { behavior: 'smooth' }.
+    // - Moves the viewport to show the schedule section smoothly.
+    // - Improves the customer experience when navigating.
+    scheduleSection.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags: Define character encoding and responsive viewport -->
+    <!-- Purpose: Ensures proper text encoding and mobile responsiveness -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Data Entry Form</title>
+    <link rel="stylesheet" href="../../assets/css/Styles.css">
+    <script src="../../assets/js/formValidation.js"></script>
+</head>
+<body>
+
+    <form action="../../php/MaintenanceInputForm.php" method="POST" onsubmit="return validateMaintenanceForm()">
+        <h2>Maintenance Input</h2>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="busID">Bus ID:</label>
+                <input type="text" id="busID" name="busID">
+            </div>
+
+            <div class="form-field">
+                <label for="technicianID">Technician ID:</label>
+                <input type="text" id="technicianID" name="technicianID">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <label for="serviceDone">Service Done:</label>
+                <input type="text" id="serviceDone" name="serviceDone">
+            </div>
+            <div class="form-field">
+                <label for="serviceDate">Service Date:</label>
+                <input type="text" id="serviceDate" name="serviceDate" class="date-input" placeholder="DD-MM-YYYY">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <label for="cost">Cost:</label>
+                <input type="text" id="cost" name="cost">
+            </div>
+            <div class="form-field">
+                <label for="materialUsed">Material Used:</label>
+                <input type="text" id="materialUsed" name="materialUsed">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <label for="lsd">Last Service Date (LSD):</label>
+                <input type="text" id="lsd" name="lsd" class="date-input" placeholder="DD-MM-YYYY">
+            </div>
+            <div class="form-field">
+                <label for="nsd">Next Service Date (NSD):</label>
+                <input type="text" id="nsd" name="nsd" class="date-input" placeholder="DD-MM-YYYY">
+            </div>
+        </div>
+        <div class="form-buttons">
+            <button type="button" class="back-btn" onclick="history.back()">Back</button>
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

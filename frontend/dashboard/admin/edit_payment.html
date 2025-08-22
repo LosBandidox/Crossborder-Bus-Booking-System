@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Payment</title>
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css">
+    <script src="../../../assets/js/formValidation.js"></script> <!-- Assuming this exists -->
+    <script src="/assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Edit Payment</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="admin_bookings.html">Bookings</a></li>
+                <li><a href="admin_payments.html">Payments</a></li>
+                <li><a href="../../../php/Logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <form id="editPaymentForm" onsubmit="return validateAndSubmitPaymentForm(event)">
+            <h2>Edit Payment</h2>
+            <input type="hidden" id="editPaymentId" name="paymentId">
+            <div class="form-row">
+                <div class="form-field">
+            <label for="editBookingID">Booking ID:</label>
+            <input type="text" id="editBookingID" name="bookingID" required><br><br>
+                </div>
+                <div class="form-field">
+            <label for="editAmountPaid">Amount Paid:</label>
+            <input type="number" id="editAmountPaid" name="amountPaid" step="0.01" required><br><br>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+            <label for="editPaymentMode">Payment Mode:</label>
+            <select id="editPaymentMode" name="paymentMode" required>
+                <option value="Mobile Money">Mobile Money</option>
+                <option value="Card">Card</option>
+            </select><br><br>
+                </div>
+                <div class="form-field">
+            <label for="editPaymentDate">Payment Date:</label>
+            <input type="text" id="editPaymentDate" name="paymentDate" placeholder="DD-MM-YYYY HH:MM:SS" required><br><br>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+            <label for="editReceiptNumber">Receipt Number:</label>
+            <input type="text" id="editReceiptNumber" name="receiptNumber" required><br><br>
+                </div>
+                <div class="form-field">
+            <label for="editTransactionID">Transaction ID:</label>
+            <input type="text" id="editTransactionID" name="transactionID" required><br><br>
+                </div>
+            </div>
+            <label for="editStatus">Status:</label>
+            <select id="editStatus" name="status" required>
+                <option value="Completed">Completed</option>
+                <option value="Pending">Pending</option>
+                <option value="Refund Pending">Refund Pending</option>
+            </select><br><br>
+            <button type="submit">Update Payment</button>
+            <button type="button" onclick="window.location.href='admin_payments.html'">Cancel</button>
+        </form>
+    </main>
+
+    <script src="../../../assets/js/edit_payment.js"></script>
+</body>
+</html>

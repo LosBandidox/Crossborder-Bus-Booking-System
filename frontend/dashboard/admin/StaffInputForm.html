@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Staff</title>
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css">
+    <script src="../../../assets/js/formValidation.js"></script>
+    <script src="/assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Add New Staff</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="../dashboard/admin/Admin.html">Dashboard</a></li>
+                <li><a href="../dashboard/admin/admin_users.html">Users</a></li>
+                <li><a href="../dashboard/admin/admin_buses.html">Buses</a></li>
+                <li><a href="../dashboard/admin/admin_routes.html">Routes</a></li>
+                <li><a href="#">Others</a>
+                    <ul class="dropdown">
+                        <li><a href="../dashboard/admin/admin_schedules.html">Schedules</a></li>
+                        <li><a href="admin_bookings.html">Bookings</a></li>
+                        <li><a href="admin_payments.html">Payments</a></li>
+                        <li><a href="admin_customers.html">Customer</a></li>
+                        <li><a href="admin_staff.html">Staff</a></li>
+                        <li><a href="admin_reports.html">Reports</a></li>
+                        <li><a href="admin_activity.html">View Logs</a></li>
+                        <li><a href="../../../php/logout.php">Logout</a></li>
+                    </ul></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <form id="addStaffForm" onsubmit="return validateAndSubmitStaffForm(event)">
+            <h2>Add Staff</h2>
+            <div class="form-row">
+                <div class="form-field">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+                </div>
+                <div class="form-field">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required><br><br>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+                </div>
+                <div class="form-field">
+            <label for="staffNumber">Staff Number:</label>
+            <input type="text" id="staffNumber" name="staffNumber" required><br><br>
+                </div>
+            </div>
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="">Select Role</option>
+                <option value="Driver">Driver</option>
+                <option value="Co-Driver">Co-Driver</option>
+                <option value="Technician">Technician</option>
+                <option value="Cashier">Cashier</option>
+                <option value="Staff">Staff</option>
+                <option value="Admin">Admin</option>
+            </select><br><br>
+            <button type="submit">Add Staff</button>
+            <button type="button" onclick="window.location.href='admin_staff.html'">Cancel</button>
+        </form>
+    </main>
+
+    <script>
+// Function to check and submit the staff form
+// - A user-defined JavaScript function named validateAndSubmitStaffForm, with one input: event (form submission event).
+// - Validates the form and triggers submission if valid.
+// - Processes the admin’s request to add a new staff member to the system.
+function validateAndSubmitStaffForm(event) {
+    // Stops the page from refreshing
+    // - Calls preventDefault(), a built-in JavaScript method of the event object, to stop the form from reloading the page.
+    // - Keeps the admin on the add staff page after submitting.
+    // - Makes the submission process smooth without reloads.
+    event.preventDefault();
+
+    // Checks if the form is valid
+    // - A conditional statement calling validateStaffForm(), a user-defined function (assumed in formValidation.js).
+    // - Proceeds with submission if validation passes, or stops if it fails.
+    // - Ensures only valid staff data is sent to the server.
+    if (validateStaffForm()) {
+        // Sends the form data
+        // - Calls the user-defined submitStaffForm() function.
+        // - Starts the process to send staff data to the server.
+        // - Returns true to indicate successful validation.
+        submitStaffForm();
+        return true;
+    }
+
+    // Stops submission on failure
+    // - Returns false if validation fails.
+    // - Prevents invalid data from being sent.
+    // - Keeps the form ready for corrections.
+    return false;
+}
+
+// Function to send staff data
+// - A user-defined async JavaScript function named submitStaffForm, with no inputs.
+// - Sends form data to the server and handles the response.
+// - Adds a new staff member to the system for admin use.
+async function submitStaffForm() {
+    // Finds the form
+    // - A user-defined constant named form, holding the result of document.getElementById(), a built-in JavaScript method, targeting the element with ID 'addStaffForm'.
+    // - Targets the form containing staff input fields.
+    // - Prepares to collect form data.
+    const form = document.getElementById('addStaffForm');
+
+    // Collects form data
+    // - A user-defined constant named formData, holding a built-in FormData object created from form.
+    // - Gathers input values like name, email, and other staff details.
+    // - Prepares the data for server submission.
+    const formData = new FormData(form);
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures during submission.
+    // - Attempts to send staff data and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/staff/addStaff.php'.
+        // - Sends formData using a POST request.
+        // - Waits for the server’s reply on adding the staff member.
+        const response = await fetch('../../../php/admin/staff/addStaff.php', {
+            // Sets the request type
+            // - A method property set to 'POST', a built-in fetch option.
+            // - Tells the server to expect new data.
+            method: 'POST',
+
+            // Sends the form data
+            // - A body property with the formData object.
+            // - Includes all staff details in FormData format.
+            // - Matches the server’s expected format.
+            body: formData
+        });
+
+        // Gets the server response
+        // - A user-defined constant named result, holding the JSON object from response.json().
+        // - Turns the server’s reply into an object with status and message.
+        // - Prepares to check if the staff member was added successfully.
+        const result = await response.json();
+
+        // Checks for success
+        // - A conditional statement checking if result.status equals 'success'.
+        // - Shows a success message and redirects, or displays an error.
+        // - Handles the server’s response to the add request.
+        if (result.status === 'success') {
+            // Shows a success message
+            // - Calls alert(), a built-in JavaScript method, with “Staff added successfully”.
+            // - Tells the admin the staff member was added to the system.
+            // - Confirms the submission worked.
+            alert('Staff added successfully');
+
+            // Redirects to the staff page
+            // - Sets window.location.href, a built-in property, to 'admin_staff.html'.
+            // - Sends the admin to the staff list page.
+            // - Completes the add process.
+            window.location.href = 'admin_staff.html';
+        } else {
+            // Shows an error message
+            // - Calls alert() with “Failed to add staff:” plus result.message.
+            // - Tells the admin why the addition failed, like “Email already exists”.
+            // - Provides specific error details from the server.
+            alert('Failed to add staff: ' + result.message);
+        }
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error(), a built-in method, to write “Error adding staff:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error adding staff:', error);
+    }
+}
+</script>
+</body>
+</html>

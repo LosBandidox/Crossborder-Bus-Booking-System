@@ -1,0 +1,734 @@
+/* Reset default styles: Clears browser-added spacing to ensure consistent design across different browsers */
+body, h1, h2, p, ul, li, a {
+    margin: 0; /* Removes default outer spacing around elements to prevent unwanted gaps in the layout */
+    padding: 0; /* Removes default inner spacing inside elements for a clean starting point */
+    box-sizing: border-box; /* Includes padding and borders in the element’s total width and height, preventing overflow issues */
+}
+
+/* Body Styling: Sets up the overall look and feel of the entire page */
+body {
+    font-family: Arial, sans-serif; /* Uses Arial as the main font for text, with a fallback to a generic sans-serif font for consistency */
+    background: linear-gradient(to bottom right, #a1c4fd, #c2a1fd); /* Creates a smooth gradient background from light blue (#a1c4fd) to light purple (#c2a1fd) for a modern look */
+    color: #333; /* Sets text color to dark gray (#333) for good readability against the light background */
+    text-align: center; /* Centers all text and inline content on the page for a balanced appearance */
+    min-height: 100vh; /* Ensures the page is at least as tall as the browser window (100% viewport height) to fill the screen */
+}
+
+/* Header and Navigation Bar: Styles the top section with the logo, menu, and button */
+header {
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the previous design, creating a sleek look */
+    color: #fff; /* Uses white text for clear contrast against the dark background */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space inside the header for neatness */
+    display: flex; /* Uses flexbox to arrange logo, navigation, and button side by side in a flexible layout */
+    justify-content: space-between; /* Spreads the logo, navigation, and button across the header with equal spacing */
+    align-items: center; /* Vertically centers all items in the header for a balanced look */
+    min-height: 40px; /* Sets a minimum height of 40 pixels to fit the logo and menu comfortably */
+    max-height: 60px; /* Caps the header height at 60 pixels to keep it compact */
+}
+
+/* Logo styling: Controls the appearance of the logo area */
+.logo {
+    font-size: 0; /* Hides any text in the logo area (useful for image logos) to avoid unwanted text display */
+    line-height: 0; /* Removes extra height caused by text, keeping the logo area compact */
+    color: #fff; /* Sets a white text color as a fallback in case text is used */
+    text-transform: uppercase; /* Makes any fallback text uppercase for a bold, professional style */
+}
+
+/* Navigation styling: Controls the layout of the menu bar */
+nav {
+    display: flex; /* Uses flexbox to arrange navigation items and buttons side by side */
+    align-items: center; /* Vertically centers navigation items to align with the logo and button */
+}
+
+/* Navigation list styling: Styles the list of menu links */
+nav ul {
+    list-style: none; /* Removes bullet points from the menu for a clean, modern look */
+    display: flex; /* Uses flexbox to place menu items side by side horizontally */
+    margin-right: 20px; /* Adds 20 pixels of space to the right to separate the menu from the button */
+}
+
+/* Navigation Items: Styles each menu item in the navigation list */
+nav ul li {
+    margin: 0 15px; /* Adds 15 pixels of space on the left and right of each menu item for separation */
+    position: relative; /* Makes the list item a reference point for dropdown menus, so they appear in the right spot */
+}
+
+/* Navigation Links: Styles the clickable links in the menu */
+nav ul li a {
+    color: #fff; /* Sets link text to white for contrast against the dark header */
+    text-decoration: none; /* Removes the default underline from links for a cleaner appearance */
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    text-transform: uppercase; /* Makes link text uppercase to match the bold, professional style */
+}
+
+/* Navigation Link Hover: Changes link appearance when the mouse hovers over it */
+nav ul li a:hover {
+    color: #d1b3ff; /* Changes link text to light purple (#d1b3ff) on hover for a subtle, interactive effect */
+}
+
+/* Dropdown Menu Styling: Controls the appearance of dropdown menus that appear below menu items */
+.dropdown {
+    display: none; /* Hides the dropdown menu by default, only showing when triggered */
+    position: absolute; /* Positions the dropdown independently, placing it below its parent menu item */
+    top: 100%; /* Places the dropdown just below the parent link (100% of the parent’s height) */
+    left: 0; /* Aligns the dropdown with the left edge of the parent menu item */
+    background-color: #007bff; /* Sets a blue background (#007bff) to match the previous dropdown style */
+    list-style: none; /* Removes bullet points from the dropdown list for a clean look */
+    min-width: 200px; /* Sets a minimum width of 200 pixels to ensure the dropdown is wide enough */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a small shadow (2px down, 5px blur, 20% dark) to make the dropdown look raised */
+}
+
+/* Dropdown visibility on hover: Shows the dropdown when the parent menu item is hovered */
+nav ul li:hover .dropdown {
+    display: block; /* Makes the dropdown visible when the parent list item is hovered, creating an interactive menu */
+}
+
+/* Dropdown list items: Styles each item in the dropdown menu */
+.dropdown li {
+    margin: 0; /* Removes extra spacing around dropdown items to keep the menu compact */
+}
+
+/* Dropdown links: Styles the clickable links in the dropdown */
+.dropdown li a {
+    display: block; /* Makes each link take up the full width of the dropdown item for easier clicking */
+    padding: 10px; /* Adds 10 pixels of space inside each dropdown link for a comfortable clickable area */
+    color: #fff; /* Sets link text to white for contrast against the blue dropdown background */
+    font-size: 14px; /* Sets the text size to 14 pixels, slightly smaller for a compact dropdown */
+    text-transform: none; /* Removes uppercase styling for dropdown links to improve readability */
+}
+
+/* Dropdown Link Hover: Changes dropdown link appearance when hovered */
+.dropdown li a:hover {
+    background-color: #0056b3; /* Changes the background to a darker blue (#0056b3) on hover for visual feedback */
+    color: #fff; /* Keeps the text white for consistency and readability */
+}
+
+/* Try for Free Button: Styles the “Try for Free” button in the header */
+.try-free-btn {
+    background-color: #ff4d94; /* Sets a pink background (#ff4d94) to match the previous design and draw attention */
+    color: #fff; /* Sets text to white for clear contrast against the pink background */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    border-radius: 20px; /* Rounds the corners by 20 pixels for a pill-shaped, modern look */
+    text-decoration: none; /* Removes the default underline if the button is a link */
+    font-size: 14px; /* Sets the text size to 14 pixels for readability */
+    text-transform: uppercase; /* Makes the button text uppercase to match the bold style */
+}
+
+/* Try for Free Button Hover: Changes button appearance when hovered */
+.try-free-btn:hover {
+    background-color: #e04385; /* Changes to a slightly darker pink (#e04385) on hover for an interactive effect */
+}
+
+/* Dashboard Container - Grid Layout: Styles the main dashboard area using a grid layout */
+.dashboard-container {
+    display: grid; /* Uses a grid layout to organize content in rows and columns */
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal-width columns for dashboard sections */
+    gap: 20px; /* Adds 20 pixels of space between grid items for a clean layout */
+    padding: 20px; /* Adds 20 pixels of space inside the container to keep content neat */
+    max-width: 900px; /* Limits the container width to 900 pixels for a compact, readable design */
+    margin: auto; /* Centers the container horizontally by adding equal space on the left and right */
+}
+
+/* Dashboard Sections: Styles individual sections within the dashboard */
+.dashboard-section {
+    background: white; /* Sets a white background for a clean, professional look */
+    padding: 15px; /* Adds 15 pixels of space inside each section to keep content neat */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a smooth, modern appearance */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Adds a shadow (2px right, 2px down, 10px blur, 10% dark) to make sections look raised */
+}
+
+/* Section Headings: Styles <h2> titles in dashboard sections */
+.dashboard-section h2 {
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading to separate it from content */
+}
+
+/* Buttons: Styles general buttons used in the dashboard */
+.btn {
+    display: inline-block; /* Makes the button sit inline but respect width and padding settings */
+    background: #007bff; /* Sets a blue background (#007bff) to match the system’s color scheme */
+    color: white; /* Sets text to white for contrast against the blue background */
+    padding: 8px 15px; /* Adds 8 pixels of top/bottom space and 15 pixels of left/right space for a compact button */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a modern look */
+    text-decoration: none; /* Removes the default underline if the button is a link */
+    margin-top: 10px; /* Adds 10 pixels of space above the button for separation */
+}
+
+/* Button Hover: Changes button appearance when hovered */
+.btn:hover {
+    background: #0056b3; /* Changes to a darker blue (#0056b3) on hover for visual feedback */
+}
+/* Buttons: Styles general buttons used in the dashboard */
+.back-btn {
+    display: inline-block; /* Makes the button sit inline but respect width and padding settings */
+    background: #6600ff; /* Sets a blue background (#007bff) to match the system’s color scheme */
+    color: white; /* Sets text to white for contrast against the blue background */
+    padding: 8px 15px; /* Adds 8 pixels of top/bottom space and 15 pixels of left/right space for a compact button */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a modern look */
+    text-decoration: none; /* Removes the default underline if the button is a link */
+    margin-top: 10px; /* Adds 10 pixels of space above the button for separation */
+}
+
+/* Button Hover: Changes button appearance when hovered */
+.back-btn:hover {
+    background: #4800b3; /* Changes to a darker blue (#0056b3) on hover for visual feedback */
+}
+
+/* Footer: Styles the bottom section of the page */
+footer {
+    background-color: #333; /* Sets a dark gray background (#333) for a professional look */
+    color: white; /* Sets text to white for contrast against the dark background */
+    text-align: center; /* Centers all text and content in the footer */
+    padding: 10px 0; /* Adds 10 pixels of top/bottom space and no left/right space for a compact footer */
+    bottom: 0; /* Aligns the footer to the bottom of its container (positioning depends on parent) */
+    width: 100%; /* Makes the footer stretch across the full page width */
+}
+
+/* Table Styling: Styles tables used for displaying data, like schedules or reports */
+table {
+    width: 100%; /* Makes the table stretch to the full width of its container */
+    border-collapse: collapse; /* Removes gaps between table cells for a tight, clean look */
+    margin-bottom: 20px; /* Adds 20 pixels of space below the table to separate it from other content */
+}
+
+/* Table Cells: Styles table headers (th) and data cells (td) */
+table th, table td {
+    padding: 10px; /* Adds 10 pixels of space inside cells for readability */
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) border to define cell edges */
+    text-align: left; /* Aligns text to the left inside cells for a standard table layout */
+}
+
+/* Table Headers: Styles the header row of tables */
+table th {
+    background-color: #333; /* Sets a dark gray background (#333) to make headers stand out */
+    color: white; /* Sets text to white for contrast against the dark background */
+}
+
+/* Form Styling: Styles forms used for user input, like search or booking forms */
+form {
+    margin-bottom: 20px; /* Adds 20 pixels of space below the form to separate it from other content */
+    text-align: left; /* Aligns form text and fields to the left for a standard form layout */
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the previous design */
+    padding: 20px; /* Adds 20 pixels of space inside the form to keep content neat */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern, smooth look */
+    max-width: 500px; /* Limits the form width to 500 pixels for a compact design */
+    margin: 20px auto; /* Centers the form horizontally and adds 20 pixels of top/bottom space */
+    color: #fff; /* Sets text to white for contrast against the dark form background */
+    overflow: hidden; /* Prevents content from spilling outside the form’s rounded corners */
+}
+
+/* Form Heading: Styles the <h2> title inside forms */
+form h2 {
+    font-size: 24px; /* Sets the text size to 24 pixels, making the heading clear and prominent */
+    margin-bottom: 20px; /* Adds 20 pixels of space below the heading to separate it from form fields */
+    color: #fff; /* Sets text to white for contrast against the dark form background */
+}
+
+/* Form Row for paired fields: Styles rows that hold two fields side by side */
+.form-row {
+    display: flex; /* Uses flexbox to place fields side by side in a row */
+    gap: 10px; /* Adds 10 pixels of space between fields for separation */
+    margin-bottom: 15px; /* Adds 15 pixels of space below the row to separate it from other rows */
+    flex-wrap: wrap; /* Allows fields to wrap to the next line on smaller screens for responsiveness */
+}
+
+/* Form Field: Styles individual fields in a form row */
+.form-field {
+    flex: 1; /* Makes each field take up equal space in the row, stretching to fill available space */
+    min-width: 0; /* Prevents fields from overflowing by allowing them to shrink below their content size */
+}
+
+/* Form Labels and Inputs: Styles labels and input fields in forms */
+form label {
+    display: block; /* Makes labels take up their own line, placing them above inputs for clarity */
+    margin-bottom: 5px; /* Adds 5 pixels of space below labels to separate them from inputs */
+    font-weight: bold; /* Makes label text bold to stand out and show importance */
+    color: #fff; /* Sets label text to white for contrast against the dark form background */
+}
+
+/* Form Input Fields: Styles text inputs, dropdowns, and textareas */
+form input, form select, form textarea {
+    width: 100%; /* Makes fields stretch to the full width of the form for consistency */
+    padding: 10px; /* Adds 10 pixels of space inside fields for easy reading and typing */
+    margin-bottom: 15px; /* Adds 15 pixels of space below fields to separate them from other fields */
+    border: 1px solid #555; /* Adds a 1-pixel, solid, dark gray (#555) border to define field edges */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a smooth, modern look */
+    background-color: #333; /* Sets a dark gray background (#333) to match the form’s dark theme */
+    color: #fff; /* Sets text to white for contrast against the dark field background */
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    box-sizing: border-box; /* Ensures padding and borders are included in the field’s width to prevent overflow */
+}
+
+/* Placeholder Text: Styles the hint text inside inputs and textareas */
+form input::placeholder, form textarea::placeholder {
+    color: #aaa; /* Sets placeholder text to light gray (#aaa) for a subtle, readable hint */
+}
+
+/* Radio Button Styling: Styles radio buttons for form options */
+form input[type="radio"] {
+    width: auto; /* Removes the 100% width so radio buttons stay small and round */
+    display: inline-block; /* Makes radio buttons sit inline with their labels, not taking a full line */
+    margin-right: 5px; /* Adds 5 pixels of space to the right of the radio button for separation from its label */
+    margin-bottom: 0; /* Removes extra space below radio buttons to keep them aligned with labels */
+}
+
+/* Radio Button Labels: Styles labels for radio buttons */
+form label.radio-label {
+    display: inline-block; /* Makes labels sit inline with radio buttons, not taking a full line */
+    margin-bottom: 0; /* Removes extra space below labels to keep them aligned with radio buttons */
+    font-weight: normal; /* Removes bold styling so radio labels don’t stand out too much */
+    margin-right: 15px; /* Adds 15 pixels of space to the right to separate radio options */
+}
+
+/* Radio Group Wrapper: Styles the container for radio buttons */
+.radio-group {
+    margin-bottom: 15px; /* Adds 15 pixels of space below the group of radio buttons for separation */
+}
+
+/* Form Buttons: Styles buttons inside forms, like “Back” or “Submit” */
+form button {
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    border: 2px solid #fff; /* Adds a 2-pixel, solid, white border for a clear outline */
+    border-radius: 20px; /* Rounds the corners by 20 pixels for a pill-shaped look */
+    background-color: transparent; /* Makes the “Back” button transparent to match the previous design */
+    color: #fff; /* Sets button text to white for contrast */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon when hovering, showing it’s clickable */
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    margin-right: 10px; /* Adds 10 pixels of space to the right to separate buttons */
+}
+
+/* Submit Button: Styles the “Submit” button in forms */
+form button[type="submit"] {
+    background-color: #ff4d94; /* Sets a pink background (#ff4d94) to match the previous design and highlight the main action */
+    border: 2px solid #ff4d94; /* Adds a 2-pixel, solid, pink border to match the background */
+}
+
+/* Form Button Hover: Changes the “Back” button appearance when hovered */
+form button:hover {
+    background-color: #555; /* Changes to a darker gray (#555) on hover for visual feedback */
+}
+
+/* Submit Button Hover: Changes the “Submit” button appearance when hovered */
+form button[type="submit"]:hover {
+    background-color: #e04385; /* Changes to a darker pink (#e04385) on hover for an interactive effect */
+    border-color: #e04385; /* Matches the border color to the darker pink for consistency */
+}
+
+/* Reports Section: Styles the section for displaying reports */
+.report-section {
+    margin-bottom: 30px; /* Adds 30 pixels of space below the report section to separate it from other content */
+}
+
+/* Report Section Heading: Styles the <h3> title in report sections */
+.report-section h3 {
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading to separate it from content */
+    color: #333; /* Sets text to dark gray (#333) for readability against the white background */
+}
+
+/* Report Links: Styles the container for report link buttons */
+.report-links {
+    margin-bottom: 20px; /* Adds 20 pixels of space below the report links to separate them from other content */
+}
+
+/* Report Link Buttons: Styles buttons within the report links section */
+.report-links .btn {
+    margin-right: 10px; /* Adds 10 pixels of space to the right of each button for separation */
+    margin-bottom: 10px; /* Adds 10 pixels of space below each button for separation */
+}
+
+/* Table Styling (Repeated): Styles tables used for displaying data, like schedules or reports */
+table {
+    width: 100%; /* Makes the table stretch to the full width of its container */
+    border-collapse: collapse; /* Removes gaps between table cells for a tight, clean look */
+    margin-bottom: 20px; /* Adds 20 pixels of space below the table to separate it from other content */
+}
+
+/* Table Cells: Styles table headers (th) and data cells (td) */
+table th, table td {
+    padding: 10px; /* Adds 10 pixels of space inside cells for readability */
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) border to define cell edges */
+    text-align: left; /* Aligns text to the left inside cells for a standard table layout */
+}
+
+/* Table Headers: Styles the header row of tables */
+table th {
+    background-color: #333; /* Sets a dark gray background (#333) to make headers stand out */
+    color: white; /* Sets text to white for contrast against the dark background */
+}
+
+/* Filter Section Styling: Styles the section for filtering reports */
+.filter-section {
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the form styling */
+    padding: 15px; /* Adds 15 pixels of space inside the section to keep content neat */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern look */
+    margin: 20px auto; /* Centers the section horizontally and adds 20 pixels of top/bottom space */
+    max-width: 800px; /* Limits the section width to 800 pixels for a readable design */
+    display: flex; /* Uses flexbox to arrange filter elements (labels, inputs, buttons) side by side */
+    flex-wrap: wrap; /* Allows elements to wrap to the next line on smaller screens for responsiveness */
+    gap: 10px; /* Adds 10 pixels of space between filter elements for separation */
+    align-items: center; /* Vertically centers all elements for a balanced look */
+    justify-content: center; /* Horizontally centers all elements within the section */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a small shadow (2px down, 5px blur, 20% dark) to make the section look raised */
+}
+
+/* Filter Section Labels: Styles labels within the filter section */
+.filter-section label {
+    color: #fff; /* Sets text to white for contrast against the dark background */
+    font-weight: bold; /* Makes label text bold to stand out and show importance */
+    margin-right: 10px; /* Adds 10 pixels of space to the right to separate labels from inputs */
+}
+
+/* Filter Section Inputs: Styles dropdowns and text inputs in the filter section */
+.filter-section select,
+.filter-section input[type="text"] {
+    padding: 8px; /* Adds 8 pixels of space inside inputs for easy reading and typing */
+    border: 1px solid #555; /* Adds a 1-pixel, solid, dark gray (#555) border to define input edges */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a smooth, modern look */
+    background-color: #333; /* Sets a dark gray background (#333) to match the section’s theme */
+    color: #fff; /* Sets text to white for contrast against the dark input background */
+    font-size: 14px; /* Sets the text size to 14 pixels for readability */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon, showing the input is interactive */
+}
+
+/* Filter Section Input Focus: Styles inputs when they are selected or typed in */
+.filter-section select:focus,
+.filter-section input[type="text"]:focus {
+    outline: none; /* Removes the default browser outline to create a custom focus style */
+    border-color: #ff4d94; /* Changes the border to pink (#ff4d94) when focused to highlight the active input */
+    box-shadow: 0 0 5px rgba(255, 77, 148, 0.5); /* Adds a pink glow (5px blur, 50% opacity) around the input when focused */
+}
+
+/* Filter Section Button: Styles buttons in the filter section */
+.filter-section button {
+    background-color: #ff4d94; /* Sets a pink background (#ff4d94) to match the submit button style */
+    color: #fff; /* Sets text to white for contrast against the pink background */
+    padding: 8px 20px; /* Adds 8 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    border: none; /* Removes any default border for a smooth appearance */
+    border-radius: 20px; /* Rounds the corners by 20 pixels for a pill-shaped look */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon, showing it’s clickable */
+    font-size: 14px; /* Sets the text size to 14 pixels for readability */
+    text-transform: uppercase; /* Makes button text uppercase for a bold, professional style */
+    transition: background-color 0.3s; /* Makes background color changes happen smoothly over 0.3 seconds when hovering */
+}
+
+/* Filter Section Button Hover: Changes button appearance when hovered */
+.filter-section button:hover {
+    background-color: #e04385; /* Changes to a darker pink (#e04385) on hover for visual feedback */
+}
+
+/* Responsive Filter Section: Adjusts the filter section for small screens (up to 600px) */
+@media (max-width: 600px) {
+    .filter-section {
+        flex-direction: column; /* Stacks filter elements vertically instead of side by side for mobile */
+        align-items: stretch; /* Makes elements stretch to the full width of the section */
+    }
+    .filter-section label,
+    .filter-section select,
+    .filter-section input[type="date"],
+    .filter-section button {
+        margin-bottom: 10px; /* Adds 10 pixels of space below each element for separation */
+        width: 100%; /* Makes each element stretch to the full width for a mobile-friendly layout */
+        margin-right: 0; /* Removes right margin since elements are stacked vertically */
+    }
+}
+
+/* Chart Visualizations: Styles containers for bar chart visualizations */
+.bar-container {
+    margin: 10px 0; /* Adds 10 pixels of space above and below the bar chart container for separation */
+    width: 100%; /* Makes the container stretch to the full width of its parent */
+    max-width: 600px; /* Limits the container width to 600 pixels for a readable chart size */
+}
+
+/* Bar Chart Bars: Styles individual bars in bar charts */
+.bar {
+    height: 20px; /* Sets the height of each bar to 20 pixels for a consistent appearance */
+    margin: 5px 0; /* Adds 5 pixels of space above and below each bar for separation */
+    background-color: #4CAF50; /* Sets a green background (#4CAF50) for bars to make them visually distinct */
+    color: white; /* Sets text (labels) to white for contrast against the green background */
+    padding: 5px; /* Adds 5 pixels of space inside bars for any text or content */
+    box-sizing: border-box; /* Ensures padding is included in the bar’s width to prevent overflow */
+    white-space: nowrap; /* Prevents text inside bars from wrapping to keep labels on one line */
+}
+
+/* Bar Chart Labels: Styles labels for bar chart bars */
+.bar-label {
+    font-size: 14px; /* Sets the text size to 14 pixels for readability */
+    margin-bottom: 2px; /* Adds 2 pixels of space below labels to separate them from bars */
+}
+
+/* Pie Chart Container: Styles containers for pie chart visualizations */
+.pie-container {
+    margin: 20px 0; /* Adds 20 pixels of space above and below the pie chart container for separation */
+    width: 200px; /* Sets the container width to 200 pixels for a compact chart */
+    height: auto; /* Allows the height to adjust based on content, including the legend */
+    position: relative; /* Makes the container a reference point for positioning child elements (like labels) */
+    max-width: 100%; /* Ensures the container doesn’t exceed its parent’s width for responsiveness */
+    padding-bottom: 20px; /* Adds 20 pixels of space below the chart to fit the legend */
+    margin-bottom: 50px; /* Adds 50 pixels of space below the container to separate it from other content */
+}
+
+/* Pie Chart: Styles the pie chart itself */
+.pie-chart {
+    width: 100%; /* Makes the chart stretch to the full width of its container */
+    height: 200px; /* Sets a fixed height of 200 pixels for a consistent chart size */
+    border-radius: 50%; /* Makes the chart circular by rounding the corners fully */
+    background: conic-gradient(#000 0deg); /* Initializes a gradient that radiates from the center (starting with black at 0 degrees) for pie slices */
+}
+
+/* Pie Chart with Colors: Applies custom colors to pie chart slices */
+.pie-chart[style*="--colors"] {
+    background: conic-gradient(var(--colors)); /* Uses a CSS variable (--colors) to define the colors and angles of pie slices */
+}
+
+/* Pie Chart Labels: Styles the legend for pie chart labels */
+.pie-labels {
+    margin-top: 10px; /* Adds 10 pixels of space above the legend to separate it from the chart */
+    font-size: 14px; /* Sets the text size to 14 pixels for readability */
+    width: 100%; /* Makes the legend stretch to the full width of the container */
+    text-align: left; /* Aligns labels to the left for a standard legend layout */
+    max-height: 150px; /* Limits the legend height to 150 pixels to prevent it from growing too large */
+    overflow-y: auto; /* Adds a vertical scrollbar if the labels exceed the maximum height */
+}
+
+/* Individual Pie Chart Label: Styles each label in the pie chart legend */
+.pie-label {
+    display: flex; /* Uses flexbox to arrange the color box and text side by side */
+    align-items: center; /* Vertically centers the color box and text for a neat appearance */
+    margin: 5px 0; /* Adds 5 pixels of space above and below each label for separation */
+}
+
+/* Pie Chart Label Color Box: Styles the color indicator for each pie chart label */
+.pie-label-color {
+    width: 15px; /* Sets the width of the color box to 15 pixels */
+    height: 15px; /* Sets the height of the color box to 15 pixels, keeping it square */
+    margin-right: 5px; /* Adds 5 pixels of space to the right to separate the color box from the text */
+    display: inline-block; /* Makes the color box sit inline with the text */
+}
+
+/* Responsive Styles: Adjusts the layout for different screen sizes to ensure usability on mobile and tablet devices */
+
+/* Mobile Devices (up to 600px): Styles for small screens like phones */
+@media screen and (max-width: 600px) {
+    /* Hamburger menu and navigation: Styles the mobile menu icon and behavior */
+    .hamburger {
+        display: block; /* Shows the hamburger icon (three lines) on mobile screens */
+        font-size: 1.5rem; /* Sets the icon size to 24 pixels (1.5rem) for easy tapping */
+        color: #fff; /* Sets the icon to white to match the navigation text */
+        cursor: pointer; /* Changes the mouse cursor to a hand icon, showing it’s clickable */
+    }
+    nav {
+        justify-content: space-between; /* Spreads the hamburger icon and button across the navigation area */
+    }
+    nav ul {
+        display: none; /* Hides the navigation links by default on mobile */
+        flex-direction: column; /* Stacks links vertically when shown for a mobile-friendly menu */
+        width: 100%; /* Makes the menu stretch across the full screen width */
+        margin-right: 0; /* Removes the right margin since the menu takes the full width */
+    }
+    nav ul.active {
+        display: flex; /* Shows the navigation links when the hamburger icon is clicked */
+    }
+    nav ul li {
+        margin: 10px 0; /* Adds 10 pixels of vertical space between menu items for separation */
+    }
+    nav ul li a {
+        font-size: 1.1rem; /* Sets the link text size to 17.6 pixels (1.1rem) for better readability on mobile */
+    }
+    .dropdown {
+        position: static; /* Removes absolute positioning so the dropdown fits within the mobile menu */
+        max-width: 90%; /* Limits the dropdown width to 90% of the screen for a comfortable fit */
+        box-shadow: none; /* Removes the shadow to simplify the mobile design */
+    }
+    .dropdown li a {
+        padding: 8px; /* Reduces padding to 8 pixels for a compact dropdown on mobile */
+    }
+    .try-free-btn {
+        width: 100%; /* Makes the “Try for Free” button stretch across the full width for easy tapping */
+        margin-top: 10px; /* Adds 10 pixels of space above the button for separation */
+        padding: 8px 15px; /* Reduces padding to 8 pixels top/bottom and 15 pixels left/right for a compact button */
+        font-size: 0.9rem; /* Sets the text size to 14.4 pixels (0.9rem) for better fit on mobile */
+    }
+
+    /* Dashboard container: Adjusts the dashboard layout for mobile */
+    .dashboard-container {
+        grid-template-columns: 1fr; /* Uses a single column to stack sections vertically */
+        padding: 10px; /* Reduces padding to 10 pixels to save space on small screens */
+        max-width: 100%; /* Makes the container stretch to the full screen width */
+        box-sizing: border-box; /* Ensures padding is included in the width to prevent overflow */
+    }
+    .dashboard-section {
+        padding: 10px; /* Reduces padding to 10 pixels from 15 pixels to fit smaller screens */
+        margin-bottom: 15px; /* Adds 15 pixels of space below each section to separate stacked sections */
+    }
+    .dashboard-section h2 {
+        font-size: 1.2rem; /* Sets the heading size to 19.2 pixels (1.2rem) for readability on mobile */
+        margin-bottom: 5px; /* Reduces the bottom margin to 5 pixels to save space */
+    }
+    .dashboard-section p {
+        font-size: 0.9rem; /* Sets the text size to 14.4 pixels (0.9rem) for better fit on mobile */
+    }
+    .dashboard-section .btn {
+        padding: 6px 10px; /* Reduces padding to 6 pixels top/bottom and 10 pixels left/right for a compact button */
+        font-size: 0.9rem; /* Sets the text size to 14.4 pixels (0.9rem) for readability */
+    }
+
+    /* Tables: Adjusts table behavior for mobile */
+    table {
+        width: 100%; /* Makes tables stretch to the full width of the container */
+        overflow-x: auto; /* Allows horizontal scrolling if the table is too wide */
+        display: block; /* Makes the table a block element to enable scrolling */
+    }
+    table th, table td {
+        min-width: 80px; /* Sets a minimum cell width of 80 pixels to ensure content fits */
+        padding: 6px; /* Reduces padding to 6 pixels to save space */
+        font-size: 0.9rem; /* Sets the text size to 14.4 pixels (0.9rem) for readability on mobile */
+        white-space: nowrap; /* Prevents text from wrapping to keep cells compact */
+    }
+
+    /* Forms and filter sections: Adjusts form and filter styling for mobile */
+    form, .filter-section {
+        max-width: 90%; /* Limits the width to 90% of the screen for a comfortable fit */
+        padding: 10px; /* Reduces padding to 10 pixels to save space */
+    }
+    .form-row {
+        flex-direction: column; /* Stacks fields vertically instead of side by side */
+    }
+    form input, form select, form textarea, form button,
+    .filter-section select, .filter-section input[type="text"],
+    .filter-section button {
+        font-size: 1rem; /* Sets the text size to 16 pixels (1rem) for easy reading and tapping */
+        padding: 8px; /* Reduces padding to 8 pixels for a compact, touch-friendly size */
+    }
+
+    /* Charts: Adjusts chart containers for mobile */
+    .bar-container, .pie-container {
+        max-width: 90%; /* Limits the width to 90% of the screen for a comfortable fit */
+        margin: 10px auto; /* Centers the container horizontally and reduces vertical margin to 10 pixels */
+    }
+    .pie-chart {
+        height: 150px; /* Reduces the pie chart height to 150 pixels for mobile screens */
+    }
+    .pie-labels {
+        font-size: 0.9rem; /* Sets the text size to 14.4 pixels (0.9rem) for readability */
+    }
+
+    /* Footer: Adjusts the footer for mobile */
+    footer {
+        position: relative; /* Removes fixed positioning to prevent overlap with content */
+    }
+    body {
+        padding-bottom: 50px; /* Adds 50 pixels of space at the bottom of the page to prevent footer overlap */
+    }
+}
+
+/* Tablet Devices (601px to 1024px): Styles for medium screens like tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Navigation: Adjusts the navigation for tablets */
+    .hamburger {
+        display: none; /* Hides the hamburger icon since the full menu is shown on tablets */
+    }
+    nav ul {
+        display: flex; /* Shows the navigation links side by side as on desktop */
+    }
+    .dropdown {
+        position: absolute; /* Restores absolute positioning for dropdowns to appear below menu items */
+        max-width: 200px; /* Restores the dropdown width to 200 pixels for tablet screens */
+    }
+
+    /* Dashboard container: Adjusts the dashboard layout for tablets */
+    .dashboard-container {
+        grid-template-columns: repeat(2, 1fr); /* Maintains two equal-width columns for tablet screens */
+        padding: 15px; /* Reduces padding to 15 pixels for a slightly more compact layout */
+    }
+
+    /* Tables: Ensures tables are tablet-friendly */
+    table {
+        width: 100%; /* Makes tables stretch to the full width of the container */
+        overflow-x: auto; /* Allows horizontal scrolling if the table is too wide */
+        display: block; /* Makes the table a block element to enable scrolling */
+    }
+
+    /* Forms and filter sections: Adjusts form and filter styling for tablets */
+    form, .filter-section {
+        max-width: 95%; /* Limits the width to 95% of the screen, slightly smaller than desktop */
+    }
+}
+
+/* Section Icon Styles: Styles icons in dashboard sections */
+.section-icon {
+    display: block; /* Makes the icon take its own line for proper centering */
+    font-size: 2rem; /* Sets the icon size to 32 pixels (2rem) for visibility on desktop */
+    color: #4da3ff; /* Sets the icon color to a light blue (#4da3ff) to match buttons */
+    text-align: center; /* Centers the icon horizontally in the section */
+    margin-bottom: 5px; /* Adds 5 pixels of space below the icon for separation */
+}
+
+/* Responsive Adjustments for Section Icons: Adjusts section icons for mobile */
+@media screen and (max-width: 600px) {
+    .section-icon {
+        font-size: 1.5rem; /* Reduces the icon size to 24 pixels (1.5rem) for mobile screens */
+    }
+    .dashboard-section {
+        padding: 10px; /* Reduces padding to 10 pixels to fit content better on small screens */
+    }
+    .dashboard-section h2 {
+        font-size: 1.2rem; /* Sets the heading size to 19.2 pixels (1.2rem) for readability */
+    }
+}
+
+/* Logo Image Styles: Styles the logo image in the header */
+.logo-img {
+    max-width: 120px; /* Limits the logo width to 120 pixels to fit the header */
+    max-height: 40px; /* Limits the logo height to 40 pixels to match the header’s height */
+    height: auto; /* Keeps the logo’s proportions correct by adjusting height based on width */
+    display: block; /* Makes the logo take its own line for proper alignment */
+    /* Removed vertical-align as it’s ineffective with display: block */
+}
+
+/* Responsive Adjustments for Logo and Header: Adjusts the logo and header for mobile */
+@media screen and (max-width: 600px) {
+    .logo-img {
+        max-width: 80px; /* Reduces the logo width to 80 pixels for mobile screens */
+        max-height: 27px; /* Reduces the logo height to 27 pixels, maintaining a 3:1 ratio */
+    }
+    header {
+        padding: 8px 15px; /* Reduces padding to 8 pixels top/bottom and 15 pixels left/right for a compact header */
+        min-height: 35px; /* Reduces the minimum header height to 35 pixels for mobile */
+    }
+}
+
+/* Custom Icon Styles for Dashboard Sections: Styles custom SVG icons used in the dashboard */
+.custom-icon {
+    display: block; /* Makes the icon take its own line for proper centering */
+    width: 2rem; /* Sets the icon width to 32 pixels (2rem) for visibility */
+    height: 2rem; /* Sets the icon height to 32 pixels, keeping it square */
+    object-fit: contain; /* Ensures the SVG icon fits within the 32x32 pixel area without stretching or cropping */
+    margin: 0 auto 5px auto; /* Centers the icon horizontally and adds 5 pixels of space below */
+    text-align: center; /* Reinforces horizontal centering of the icon within its container */
+}
+
+/* Responsive Adjustments for Custom Icons: Adjusts custom icons for mobile */
+@media screen and (max-width: 600px) {
+    .custom-icon {
+        width: 1.5rem; /* Reduces the icon width to 24 pixels (1.5rem) for mobile screens */
+        height: 1.5rem; /* Reduces the icon height to 24 pixels, keeping it square */
+    }
+    .dashboard-section {
+        padding: 10px; /* Reduces padding to 10 pixels to fit content better on small screens */
+    }
+    .dashboard-section h2 {
+        font-size: 1.2rem; /* Sets the heading size to 19.2 pixels (1.2rem) for readability */
+    }
+}
+
+/* A style rule to format search inputs across pages */
+/* - Styles the search input to match the button’s appearance. */
+.search-input {
+    margin: 5px 5px; /* Sets 5 pixels of space around the input for separation */
+    padding: 5px 5px; /* Sets 10 pixels top/bottom, 20 pixels left/right for consistency with buttons */
+    background-color: white; /* Sets a white background for contrast with dark-themed buttons */
+    color: #1a1a1a; /* Sets text to dark for readability on white background */
+    border: 1px solid #1a1a1a; /* Adds a dark border to match the button’s theme */
+    border-radius: 5px; /* Rounds corners by 5 pixels to match buttons */
+    width: 100%; /* Sets full width for small screens */
+    max-width: 150px; /* Limits width to 300 pixels for larger screens */
+}

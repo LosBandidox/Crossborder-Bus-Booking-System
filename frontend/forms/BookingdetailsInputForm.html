@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Details Input Form</title>
+    <link rel="stylesheet" href="/assets/css/Styles.css">
+    <script src="/assets/js/formValidation.js"></script>
+    <script>
+        // Function to extract URL parameters
+        // - A user-defined function to retrieve query string values.
+        // - Takes one parameter: name (the query parameter key).
+        // - Returns the parameter value or an empty string if not found.
+        function getParameterByName(name) {
+            // Local variable, holds URL query parameters
+            // - A constant using the URLSearchParams API.
+            // - Fetched from window.location.search.
+            // - Extracts query string values from the URL.
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Return parameter value
+            // - A method call using urlParams.get().
+            // - Retrieves the value of the specified parameter name.
+            // - Returns the value or an empty string if not found.
+            return urlParams.get(name) || ""; // Return parameter value or empty string if not found
+        }
+
+        // Function to navigate to previous page
+        // - A user-defined function for the Back button.
+        // - Uses window.history.back() to return to the previous page in browser history.
+        // - Why: Allows user to go back to the page that loaded BookingDetailsInputForm.html (e.g., SeatSelection.html or intermediate page).
+        // - Context: Simplest navigation method, preserves URL parameters from previous page.
+        function goBack() {
+            window.history.back();
+        }
+
+        // Event handler for page load
+        // - An event handler assigned to the window.onload event.
+        // - Composed of DOM manipulation and function calls.
+        // - Pre-fills form fields with URL parameter values and today's date in DD-MM-YYYY format.
+        window.onload = function () {
+            // Local variable, holds customer ID from URL
+            // - A variable storing the customerID query parameter.
+            // - Fetched via getParameterByName('customerID').
+            // - Represents the customer ID passed in the URL (e.g., '123').
+            var customerID = getParameterByName('customerID');
+            
+            // Local variable, holds schedule ID from URL
+            // - A variable storing the scheduleID query parameter.
+            // - Fetched via getParameterByName('scheduleID').
+            // - Represents the schedule ID passed in the URL (e.g., '26').
+            var scheduleID = getParameterByName('scheduleID');
+            
+            // Local variable, holds seat number from URL
+            // - A variable storing the seatNumber query parameter.
+            // - Fetched via getParameterByName('seatNumber').
+            // - Represents the seat number passed in the URL (e.g., 'A1').
+            var seatNumber = getParameterByName('seatNumber');
+
+            // Populate customer ID field
+            // - A conditional block checking if customerID exists.
+            // - Uses DOM manipulation to set the input value.
+            // - Fills the customerID input if a value is provided.
+            if (customerID) document.getElementById('customerID').value = customerID;
+            
+            // Populate schedule ID field
+            // - A conditional block checking if scheduleID exists.
+            // - Uses DOM manipulation to set the input value.
+            // - Fills the scheduleID input if a value is provided.
+            if (scheduleID) document.getElementById('scheduleID').value = scheduleID;
+            
+            // Populate seat number field
+            // - A conditional block checking if seatNumber exists.
+            // - Uses DOM manipulation to set the input value.
+            // - Fills the seatNumber input if a value is provided.
+            if (seatNumber) document.getElementById('seatNumber').value = seatNumber;
+
+            // Create Date object for today's date
+            // - A variable storing a new Date instance.
+            // - Represents the current date and time based on the client's system (e.g., May 15, 2025).
+            // - Used to extract year, month, and day for bookingDate.
+            // - Why: Needed to pre-fill bookingDate with today's date as per user requirement.
+            var today = new Date();
+            
+            // Extract day, month, year
+            // Extract day and pad with zero
+            // - A variable storing the day of the month from the Date object.
+            // - Uses getDate() method, which returns 1-31 (e.g., 15 for May 15).
+            // - Concatenates with '0' and uses slice(-2) to ensure two digits (e.g., '15' not '5').
+            // - Why: Third part of YYYY-MM-DD format; padding ensures consistent length.
+            // - Context: Completes the date string for PHP compatibility.
+            var day = ('0' + today.getDate()).slice(-2); // e.g., '28'
+             // Extract month and pad with zero
+            // - A variable storing the month from the Date object.
+            // - Uses getMonth() method, which returns 0-11 (0 = January, 11 = December).
+            // - Adds 1 to convert to 1-12 (e.g., May = 4 + 1 = 5).
+            // - Concatenates with '0' and uses slice(-2) to ensure two digits (e.g., '05' for May).
+            // - Why: Second part of YYYY-MM-DD format; padding ensures consistent length (e.g., '05' not '5').
+            // - Context: Matches placeholder 'YYYY-MM-DD' and PHP expected format.
+            var month = ('0' + (today.getMonth() + 1)).slice(-2); // e.g., '05'
+            // Extract full year
+            // - A variable storing the four-digit year from the Date object.
+            // - Uses getFullYear() method, which returns the year (e.g., 2025).
+            // - Why: First part of YYYY-MM-DD format required by BookingdetailsInputForm.php.
+            // - Context: Ensures year is in four-digit format, avoiding ambiguity.
+            var year = today.getFullYear(); // e.g., 2025
+            
+            // Combine into DD-MM-YYYY format
+            var bookingDate = day + '-' + month + '-' + year; // e.g., '28-05-2025'
+            
+            // Populate bookingDate field
+            // - DOM manipulation to set the bookingDate input value.
+            // - Uses document.getElementById('bookingDate') to target the input element.
+            // - Sets the value property to the formatted bookingDate string (e.g., '2025-05-15').
+            // - Why: Pre-fills the bookingDate field with today's date as required.
+            // - Context: Allows user to edit the field, submits to BookingdetailsInputForm.php.
+            document.getElementById('bookingDate').value = bookingDate;
+        };
+    </script>
+</head>
+<body>
+    <form action="/php/BookingdetailsInputForm.php" method="POST" onsubmit="return validateBookingForm()">
+        <h2>Booking Details</h2>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="customerID">Customer ID:</label>
+                <input type="text" id="customerID" name="customerID">
+            </div>
+            <div class="form-field">
+                <label for="scheduleID">Schedule ID:</label>
+                <input type="text" id="scheduleID" name="scheduleID">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="bookingDate">Booking Date:</label>
+                <input type="text" id="bookingDate" name="bookingDate" class="date-input" placeholder="DD-MM-YYYY">
+            </div>
+            <div class="form-field">
+                <label for="travelDate">Travel Date:</label>
+                <input type="text" id="travelDate" name="travelDate" class="date-input" placeholder="DD-MM-YYYY">
+            </div>
+        </div>
+        <div class="form-field">
+            <label for="seatNumber">Seat Number:</label>
+            <input type="text" id="seatNumber" name="seatNumber">
+        </div>
+        <div class="form-buttons">
+
+            <button  type="button" class="back-btn" onclick="history.back()">Back</button>
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

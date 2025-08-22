@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="/assets/css/InputStyles.css">
+    <style>
+        .hidden { display: none; }        
+    </style>
+</head>
+<body>
+    
+    <form id="paymentForm">
+        <h2>Complete Your Payment</h2>
+        <label for="bookingID">Booking ID:</label>
+        <input type="text" id="bookingID" name="bookingID" readonly><br><br>
+
+        <label for="amountPaid">Amount (KES):</label>
+        <input type="text" id="amountPaid" name="amountPaid" readonly><br><br>
+
+        <label>Payment Mode:</label>
+        <input type="radio" id="mobileMoney" name="paymentMode" value="Mobile Money"> Mobile Money
+        <input type="radio" id="card" name="paymentMode" value="Card"> Card<br><br>
+
+        <div id="mobileFields" class="hidden">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g., 0712345678"><br><br>
+        </div>
+
+        <div id="cardFields" class="hidden">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="e.g., 4111-1111-1111-1111"><br><br>
+            <label for="expiry">Expiry (MM/YY):</label>
+            <input type="text" id="expiry" name="expiry" placeholder="e.g., 12/25"><br><br>
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" placeholder="e.g., 123"><br><br>
+        </div>
+
+        <div class="form-buttons">
+        <button class="back-btn" onclick="goBack()">Back</button>
+        <input type="submit" value="Pay Now">
+        </div>
+    </form>
+    <script src="/assets/js/payment.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

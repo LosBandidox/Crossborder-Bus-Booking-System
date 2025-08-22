@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Schedule</title>
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css"> <!-- Link to CSS -->
+    <script src="../../../assets/js/formValidation.js"></script> <!-- Link to validation script -->
+    <script src="/assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Edit Schedule</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="../../../php/Logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <form id="editScheduleForm" onsubmit="return validateAndSubmitScheduleForm(event)">
+            <h2>Edit Schedule</h2>
+            <input type="hidden" id="editScheduleId" name="scheduleId">
+            
+            <!-- Bus ID -->
+            <div class="form-row">
+                <div class="form-field">
+            <label for="editBusID">Bus ID:</label>
+            <input type="text" id="editBusID" name="busID" required><br><br>
+                </div>
+                <div class="form-field">
+            <!-- Route ID -->
+            <label for="editRouteID">Route ID:</label>
+            <input type="text" id="editRouteID" name="routeID" required><br><br>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+            <!-- Departure Time -->
+            <label for="editDepartureTime">Departure Time:</label>
+            <input type="text" id="editDepartureTime" name="departureTime" placeholder="DD-MM-YYYY HH:MM:SS" required><br><br>
+               </div>
+               <div class="form-field">
+            <!-- Arrival Time -->
+            <label for="editArrivalTime">Arrival Time:</label>
+            <input type="text" id="editArrivalTime" name="arrivalTime" placeholder="DD-MM-YYYY HH:MM:SS" required><br><br>
+               </div>
+            </div>
+               <div class="form-field">
+            <!-- Cost -->
+            <label for="editCost">Cost:</label>
+            <input type="text" id="editCost" name="cost" required><br><br>
+               </div>
+            <div class="form-row">
+                <div class="form-field">
+            <!-- Driver ID -->
+            <label for="editDriverID">Driver ID:</label>
+            <input type="text" id="editDriverID" name="driverID" required><br><br>
+                </div>
+                <div class="form-field">
+            <!-- Co-driver ID -->
+            <label for="editCodriverID">Co-driver ID:</label>
+            <input type="text" id="editCodriverID" name="codriverID" required><br><br>
+                </div>
+            </div>
+            <!-- Buttons -->
+            <button type="submit">Update Schedule</button>
+            <button type="button" onclick="window.location.href='admin_schedules.html'">Cancel</button>
+        </form>
+    </main>
+
+    <script src="../../../assets/js/edit_schedule.js"></script>
+</body>
+</html>

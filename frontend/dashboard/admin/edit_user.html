@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="../../../../assets/css/AdminStyles.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <header>
+        <h1>Edit User</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="../../../php/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form id="editUserForm">
+            <h2>Edit User</h2>
+            <input type="hidden" id="editUserId" name="userId">
+
+            <div class="form-row">
+                <div class="form-field">
+            <label for="editName">Name:</label>
+            <input type="text" id="editName" name="name" required>
+                </div>
+                <div class="form-field">
+            <label for="editEmail">Email:</label>
+            <input type="email" id="editEmail" name="email" required>
+                </div>
+            </div>
+            <label for="editPhone">Phone Number:</label>
+            <input type="text" id="editPhone" name="phone" required>
+
+            <label for="editRole">Role:</label>
+            <select id="editRole" name="role" required>
+                <option value="Admin">Admin</option>
+                <option value="Staff">Staff</option>
+                <option value="Driver">Driver</option>
+                <option value="Customer">Customer</option>
+                <option value="Technician">Technician</option>
+                <option value="Co-Driver">Co-Driver</option>
+            </select>
+
+            <label for="editPassword">New Password:</label>
+            <input type="password" id="editPassword" name="password">
+
+            <button type="submit">Update User</button>
+            <button type="button" onclick="window.location.href='admin_users.html'">Cancel</button>
+        </form>
+    </main>
+
+    <script>
+// Function to get user details
+// - A user-defined async JavaScript function named fetchUserDetails, with no inputs.
+// - Retrieves user data based on a URL ID and fills the edit form fields.
+// - Prepares the edit user form with existing user details for admin updates.
+async function fetchUserDetails() {
+    // Gets URL query parameters
+    // - A user-defined constant named urlParams, holding a built-in URLSearchParams object created from window.location.search.
+    // - Extracts key-value pairs from the URL query string, like ?id=123.
+    // - Prepares to find the user ID.
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Stores the user ID
+    // - A user-defined constant named userId, holding the result of urlParams.get('id'), a built-in method.
+    // - Gets the 'id' parameter from the URL, identifying the user to edit.
+    // - Prepares the ID for the server request.
+    const userId = urlParams.get('id');
+
+    // Checks if user ID exists
+    // - A conditional statement checking if userId is falsy (e.g., null or undefined).
+    // - Shows an error and redirects if no ID is provided.
+    // - Ensures the form loads only with a valid user ID.
+    if (!userId) {
+        // Shows an error message
+        // - Calls alert(), a built-in JavaScript method, with “User ID not provided”.
+        // - Tells the admin the user ID is missing from the URL.
+        // - Prompts them to return to the user list.
+        alert('User ID not provided');
+
+        // Redirects to the users page
+        // - Sets window.location.href, a built-in property, to 'admin_users.html'.
+        // - Sends the admin to the user list page.
+        // - Stops further processing without an ID.
+        window.location.href = 'admin_users.html';
+        return;
+    }
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures or invalid data.
+    // - Attempts to fetch user details and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/getUser.php?id=${userId}'.
+        // - Requests data for the user with the given ID.
+        // - Waits for the server’s reply with user details.
+        const response = await fetch(`../../../php/admin/getUser.php?id=${userId}`);
+
+        // Gets the user data
+        // - A user-defined constant named user, holding the JSON object from response.json().
+        // - Turns the server’s reply into a user object with details like UserID.
+        // - Prepares the data to fill the form.
+        const user = await response.json();
+
+        // Checks if user exists
+        // - A conditional statement checking if user.UserID is falsy.
+        // - Shows an error and redirects if no user is found.
+        // - Ensures the form loads only for a valid user.
+        if (!user.UserID) {
+            // Shows an error message
+            // - Calls alert() with “User not found”.
+            // - Tells the admin the user with the given ID doesn’t exist.
+            // - Prompts them to return to the user list.
+            alert('User not found');
+
+            // Redirects to the users page
+            // - Sets window.location.href to 'admin_users.html'.
+            // - Sends the admin to the user list page.
+            // - Stops further processing for invalid user.
+            window.location.href = 'admin_users.html';
+            return;
+        }
+
+        // Fills the form fields
+        // - Sets the value property of form inputs using document.getElementById(), a built-in method, targeting IDs like 'editUserId'.
+        // - Populates fields with user data like Name and Email.
+        // - Prepares the form for editing by the admin.
+        document.getElementById('editUserId').value = user.UserID;
+        document.getElementById('editName').value = user.Name;
+        document.getElementById('editEmail').value = user.Email;
+        document.getElementById('editPhone').value = user.PhoneNumber;
+        document.getElementById('editRole').value = user.Role;
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error(), a built-in method, to write “Error fetching user details:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error fetching user details:', error);
+    }
+}
+
+// Sets up the form to handle updates
+// - Adds an event listener using document.getElementById('editUserForm').addEventListener(), a built-in method, for the 'submit' event.
+// - Runs an async anonymous function when the admin submits the edit user form.
+// - Processes the updated user data and sends it to the server.
+document.getElementById('editUserForm').addEventListener('submit', async function (event) {
+    // Stops the page from refreshing
+    // - Calls preventDefault(), a built-in method of the event object, to stop the form from reloading the page.
+    // - Keeps the admin on the edit user page after submitting.
+    // - Makes the submission process smooth without reloads.
+    event.preventDefault();
+
+    // Collects form data
+    // - A user-defined constant named formData, holding a built-in FormData object created from this (the form).
+    // - Gathers input values like userId, name, and email.
+    // - Prepares the data for processing.
+    const formData = new FormData(this);
+
+    // Creates a user data object
+    // - A user-defined constant named userData, an object with values from formData.get(), a built-in method.
+    // - Structures data with keys like userId and email.
+    // - Prepares the data for server submission in JSON format.
+    const userData = {
+        userId: formData.get('userId'),
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        role: formData.get('role'),
+        password: formData.get('password')
+    };
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures during submission.
+    // - Attempts to send updated user data and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/updateUser.php'.
+        // - Sends userData as JSON using a POST request.
+        // - Waits for the server’s reply on updating the user.
+        const response = await fetch('../../../php/admin/updateUser.php', {
+            // Sets the request type
+            // - A method property set to 'POST', a built-in fetch option.
+            // - Tells the server to expect new data.
+            method: 'POST',
+
+            // Sets the data format
+            // - Sets headers with 'Content-Type' to 'application/json'.
+            // - Tells the server the data is in JSON format.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            // Sends the user data
+            // - A body property with userData converted using JSON.stringify(), a built-in method.
+            // - Includes all user details for the server.
+            body: JSON.stringify(userData)
+        });
+
+        // Gets the server response
+        // - A user-defined constant named result, holding the JSON object from response.json().
+        // - Turns the server’s reply into an object with status and message.
+        // - Prepares to check if the user was updated successfully.
+        const result = await response.json();
+
+        // Checks for success
+        // - A conditional statement checking if result.status equals 'success'.
+        // - Shows a success message and redirects, or displays an error.
+        // - Handles the server’s response to the update request.
+        if (result.status === 'success') {
+            // Shows a success message
+            // - Calls alert() with “User updated successfully”.
+            // - Tells the admin the user details were updated.
+            // - Confirms the submission worked.
+            alert('User updated successfully');
+
+            // Redirects to the users page
+            // - Sets window.location.href to 'admin_users.html'.
+            // - Sends the admin to the user list page.
+            // - Completes the update process.
+            window.location.href = 'admin_users.html';
+        } else {
+            // Shows an error message
+            // - Calls alert() with “Failed to update user:” plus result.message.
+            // - Tells the admin why the update failed, like “Invalid email”.
+            // - Provides specific error details from the server.
+            alert('Failed to update user: ' + result.message);
+        }
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error() to write “Error updating user:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error updating user:', error);
+    }
+});
+
+// Sets up the page to load user details
+// - Adds an event listener using document.addEventListener(), a built-in method, for the “DOMContentLoaded” event.
+// - Calls the user-defined fetchUserDetails() function when the page’s HTML is fully loaded.
+// - Loads the user details into the edit form when the page opens.
+document.addEventListener('DOMContentLoaded', fetchUserDetails);
+</script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

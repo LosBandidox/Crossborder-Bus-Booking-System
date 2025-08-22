@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - User Management</title>
+    <link rel="stylesheet" href="/assets/css/AdminStyles.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+        </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="add_user.html">Add User</a></li>
+                <li>
+                    <a href="#">Others</a>
+                    <ul class="dropdown">
+                        <li><a href="admin_bookings.html">Bookings</a></li>
+                        <li><a href="admin_payments.html">Payments</a></li>
+                        <li><a href="admin_customers.html">Customer</a></li>
+                        <li><a href="admin_staff.html">Staff</a></li>
+                        <li><a href="admin_reports.html">Reports</a></li>
+                        <li><a href="admin_activity.html">View Logs</a></li>
+                        <li><a href="admin_activity.html">View Logs</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="../../../php/Logout.php" class="try-free-btn">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Search input added to filter user table -->
+        <input type="text" id="userSearch" class="search-input" placeholder="Search users...">
+        <!-- Placeholder added to show if no users match the search -->
+        <p id="noUsers" class="no-results" style="display: none;">No users found.</p>
+        <!-- Link to Add User page -->
+        <a href="add_user.html" class="btn">Add New User</a>
+        <button class="back-btn" onclick="goBack()">Back</button>
+
+        <!-- Table for displaying users -->
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- User data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+// Function to get user data
+// - A user-defined async JavaScript function named fetchUsers, with no inputs.
+// - Sends a web request to retrieve user data and fills a table on the admin users page.
+// - Displays all users for admins to view, edit, or delete.
+async function fetchUsers() {
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures or bad data.
+    // - Attempts to fetch and display user data, catching any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/fetchUsers.php'.
+        // - Requests all user data from the server.
+        // - Waits for the server’s reply with user information.
+        const response = await fetch('../../../php/admin/fetchUsers.php');
+
+        // Gets the user data
+        // - A user-defined constant named users, holding the JSON object from response.json().
+        // - Turns the server’s reply into an array of user objects.
+        // - Prepares the data to fill the table.
+        const users = await response.json();
+
+        // Finds the table body
+        // - A user-defined constant named tableBody, holding the result of document.getElementById(), a built-in JavaScript method, targeting the element with ID 'userTableBody'.
+        // - Targets the table’s <tbody> where user rows will be added.
+        // - Prepares the table for dynamic content.
+        const tableBody = document.getElementById('userTableBody');
+
+        // Clears the table
+        // - Sets tableBody.innerHTML, a built-in property, to an empty string.
+        // - Removes any existing rows in the table.
+        // - Ensures no duplicate rows are shown.
+        tableBody.innerHTML = '';
+
+        // Goes through each user
+        // - Uses forEach(), a built-in JavaScript method, to loop over the users array with a parameter named user (a user object).
+        // - Creates a table row for each user with their details.
+        // - Builds the table dynamically with user data.
+        users.forEach(user => {
+            // Creates a table row
+            // - A user-defined constant named row, holding the result of document.createElement('tr'), a built-in method.
+            // - Makes a new <tr> element for a single user.
+            // - Prepares the row for user details and actions.
+            const row = document.createElement('tr');
+
+            // Fills the row with data
+            // - Sets row.innerHTML, a built-in property, to a template literal with user properties like UserID and Name.
+            // - Adds table cells (<td>) with user details and buttons for editing/deleting.
+            // - Displays user information and action links for admins.
+            row.innerHTML = `
+                <td>${user.UserID}</td>
+                <td>${user.Name}</td>
+                <td>${user.Email}</td>
+                <td>${user.PhoneNumber}</td>
+                <td>${user.Role}</td>
+                <td>
+                    <a href="edit_user.html?id=${user.UserID}" class="btn">Edit</a>
+                    <button onclick="deleteUser(${user.UserID})">Delete</button>
+                </td>
+            `;
+
+            // Adds the row to the table
+            // - Calls tableBody.appendChild(), a built-in method, to add the row to tableBody.
+            // - Places the user row in the table.
+            // - Updates the table display with the user data.
+            tableBody.appendChild(row);
+        });
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error(), a built-in method, to write “Error fetching users:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error fetching users:', error);
+    }
+}
+
+// Sets up the page to load user data and enable searching
+// - Adds an event listener using document.addEventListener(), a built-in method, for the “DOMContentLoaded” event.
+// - Runs an anonymous arrow function when the page’s HTML is fully loaded.
+// - Loads user data and sets up search functionality for the admin users page.
+document.addEventListener('DOMContentLoaded', () => {
+    // Loads user data
+    // - Calls the user-defined fetchUsers() function.
+    // - Fills the user table with data from the server.
+    // - Displays the user list when the page opens.
+    fetchUsers();
+
+    // Sets up the search field
+    // - Adds an event listener using document.getElementById('userSearch').addEventListener(), targeting the input with ID 'userSearch' for the 'input' event.
+    // - Runs an anonymous arrow function when the admin types in the search field.
+    // - Filters the user table based on user input.
+    document.getElementById('userSearch').addEventListener('input', () => {
+        // Filters the table
+        // - Calls the user-defined filterTable() function (from script.js) with arguments 'userTable', 'userSearch', 'noUsers', and [0, 1, 2].
+        // - Searches UserID (column 0), Name (column 1), and Email (column 2).
+        // - Updates the table to show only matching rows.
+        filterTable('userTable', 'userSearch', 'noUsers', [0, 1, 2]);
+    });
+});
+
+// Function to delete a user
+// - A user-defined async JavaScript function named deleteUser, with one input: userId (number or string).
+// - Asks for confirmation, sends a delete request, and refreshes the table.
+// - Allows admins to remove a user from the system.
+async function deleteUser(userId) {
+    // Asks for confirmation
+    // - Uses confirm(), a built-in JavaScript method, with a message including userId.
+    // - Shows a pop-up asking the admin to confirm deletion.
+    // - Proceeds only if the admin clicks “OK”.
+    if (confirm(`Are you sure you want to delete user with ID: ${userId}?`)) {
+        // Handles potential errors
+        // - A try-catch block to manage issues like network failures during deletion.
+        // - Attempts to delete the user and catches any problems.
+        // - Keeps the page from breaking on errors.
+        try {
+            // Sends a web request
+            // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/deleteUser.php?id=${userId}'.
+            // - Requests the server to delete the user with the given ID.
+            // - Waits for the server’s reply on the deletion.
+            const response = await fetch(`../../../php/admin/deleteUser.php?id=${userId}`);
+
+            // Gets the server response
+            // - A user-defined constant named result, holding the JSON object from response.json().
+            // - Turns the server’s reply into an object with status and message.
+            // - Prepares to check if the deletion succeeded.
+            const result = await response.json();
+
+            // Checks for success
+            // - A conditional statement checking if result.status equals 'success'.
+            // - Shows a success message and refreshes the table, or displays an error.
+            // - Handles the server’s response to the delete request.
+            if (result.status === 'success') {
+                // Shows a success message
+                // - Calls alert(), a built-in method, with “User deleted successfully”.
+                // - Tells the admin the user was removed from the system.
+                // - Confirms the deletion worked.
+                alert('User deleted successfully');
+
+                // Refreshes the table
+                // - Calls the user-defined fetchUsers() function.
+                // - Reloads the user data to update the table.
+                // - Removes the deleted user from the display.
+                fetchUsers();
+            } else {
+                // Shows an error message
+                // - Calls alert() with “Failed to delete user”.
+                // - Tells the admin the deletion didn’t work.
+                // - Provides feedback on the failure.
+                alert('Failed to delete user');
+            }
+        } catch (error) {
+            // Logs the error
+            // - Uses console.error() to write “Error deleting user:” and the error to the developer tools.
+            // - Helps developers debug issues like network or server problems.
+            console.error('Error deleting user:', error);
+        }
+    }
+}
+</script>
+    <script src="/assets/js/script.js" defer></script>
+</body>
+</html>

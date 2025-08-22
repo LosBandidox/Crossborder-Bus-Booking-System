@@ -1,0 +1,144 @@
+<!-- This HTML file serves as the main dashboard page for both drivers and co-drivers -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding set to UTF-8 for proper text rendering -->
+    <meta charset="UTF-8">
+    <!-- Meta tag added to ensure the page is responsive on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title set to identify it in the browser -->
+    <title>Driver Dashboard</title>
+    <!-- External CSS file linked for consistent styling -->
+    <link rel="stylesheet" href="../../../assets/css/Styles.css">
+    <!-- External JS file linked to check staff existence and handle schedules/passengers -->
+    <script src="../../../assets/js/driverDashboard.js" defer></script>
+    <!-- External JS file linked for profile management functionality -->
+    <script src="../../../assets/js/profileManagement.js" defer></script>
+    <script src="/assets/js/script.js"></script>
+</head>
+<body>
+     <!-- Header section created for navigation -->
+    <header>
+        <div class="logo">
+            <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+        </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <!-- Unordered list used for navigation links -->
+                <li><a href="DriverDashboard.html">Home</a></li>
+                <li><a href="#" id="profileLink">Profile</a></li>
+                <li><a href="../../../php/Logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content area created -->
+    <main>
+        <!-- Div with a class used for styling the dashboard content -->
+        <div class="dashboard-container">
+            <!-- Heading added to welcome the user -->
+            <h1>Welcome to Your Driver Dashboard</h1>
+
+            <!-- Stats Cards Section: Displays driver statistics -->
+            <section id="statsCards">
+                <h2>Your Stats</h2>
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <h3>Total Trips Assigned</h3>
+                        <img src="/assets/Images/road_5073939.svg" alt="Road Icon" class="custom-icon">
+                        <p class="stats-value" id="totalTrips">0</p>
+                        <p>Number of trips you’ve been assigned.</p>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Total Hours Scheduled</h3>
+                        <img src="/assets/Images/clock-five_7546777.svg" alt="Clock Icon" class="custom-icon">
+                        <p class="stats-value" id="totalHours">0</p>
+                        <p>Total hours of upcoming trips.</p>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Upcoming Trips</h3>
+                        <img src="/assets/Images/calendar-check_7546722.svg" alt="Calendar Icon" class="custom-icon">
+                        <p class="stats-value" id="upcomingTrips">0</p>
+                        <p>Trips scheduled for the future.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Schedule Section: Displays assigned schedules -->
+            <div id="scheduleSection">
+                <!-- Subheading added for the schedule -->
+                <h2>Your Assigned Schedules</h2>
+                <!-- Table created to display schedule data -->
+                <table id="scheduleTable">
+                    <!-- Table head section created to hold headers -->
+                    <thead>
+                        <tr>
+                            <!-- Table headers defined for schedule details -->
+                            <th>Bus Number</th>
+                            <th>Route</th>
+                            <th>Departure Time</th>
+                            <th>Arrival Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <!-- Table body created to hold dynamic rows -->
+                    <tbody></tbody>
+                </table>
+                <!-- Placeholder added to show if no schedules are found -->
+                <p id="noSchedules" style="display: none;">No schedules assigned yet.</p>
+            </div>
+
+            <!-- Section created to display passengers -->
+            <div id="passengerSection" style="display: none;">
+                <h2>Passenger List</h2>
+                <table id="passengerTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                            <th>Seat Number</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <p id="noPassengers" style="display: none;">No passengers booked yet.</p>
+            </div>
+
+            <!-- Hidden section created for profile management -->
+            <div id="profileSection" style="display: none;">
+                <!-- Subheading added for the profile section -->
+                <h2>Manage Your Profile</h2>
+                <button class="back-btn" onclick="goBack()">Back</button>
+                <!-- Div added to display current staff details -->
+                <div id="staffDetails">
+                    <p><strong>Name:</strong> <span id="currentName"></span></p>
+                    <p><strong>Phone Number:</strong> <span id="currentPhone"></span></p>
+                    <p><strong>Email:</strong> <span id="currentEmail"></span></p>
+                    <p><strong>Staff Number:</strong> <span id="currentStaffNumber"></span></p>
+                    <p><strong>Role:</strong> <span id="currentRole"></span></p>
+                </div>
+                <!-- Subheading added for the update form -->
+                <h3>Update Profile</h3>
+                <!-- Form created for updating profile details -->
+                <form id="profileForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" required>
+
+                    <label for="password">New Password:</label>
+                    <input type="password" id="password" name="password">
+                    
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer added for copyright information -->
+    <footer>
+        <p>© 2025 International Bus Booking System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

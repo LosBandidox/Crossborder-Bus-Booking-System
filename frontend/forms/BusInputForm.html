@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Data Entry Form</title>
+    <link rel="stylesheet" href="../../assets/css/InputStyles.css"> <!-- Linking external CSS -->
+    <script src="../../assets/js/formValidation.js"></script>
+</head>
+<body>
+    <h1>Bus Data Entry Form</h1>
+    <form action="BusInputForm.php" method="POST" onsubmit="return validateBusForm()">
+        <label for="busNumber">Bus Number:</label>
+        <input type="text" id="busNumber" name="busNumber"><br><br>
+
+        <label for="yearOfManufacture">Year of Manufacture:</label>
+        <input type="text" id="yearOfManufacture" name="yearOfManufacture"><br><br>
+
+        <label for="capacity">Capacity:</label>
+        <input type="text" id="capacity" name="capacity"><br><br>
+
+        <label for="engineNumber">Engine Number:</label>
+        <input type="text" id="engineNumber" name="engineNumber"><br><br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="">Select Status</option>
+            <option value="Operational">Operational</option>
+            <option value="UnderMaintenance">UnderMaintenance</option>
+        </select><br><br>
+
+        <label for="mileage">Mileage:</label>
+        <input type="text" id="mileage" name="mileage"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

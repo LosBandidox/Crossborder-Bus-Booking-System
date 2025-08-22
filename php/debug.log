@@ -1,0 +1,1587 @@
+POST data: Array
+(
+    [bookingID] => 46
+    [amountPaid] => 15000
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 47
+    [amountPaid] => 1500
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 48
+    [amountPaid] => 1500
+    [paymentMode] => Card
+    [phoneNumber] => 
+    [cardNumber] => 4111-1111-1111-1111
+    [expiry] => 12/25
+    [cvv] => 123
+)
+
+POST data: Array
+(
+    [bookingID] => 49
+    [amountPaid] => 1500
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 50
+    [amountPaid] => 1500
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 52
+    [amountPaid] => 1500
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 53
+    [amountPaid] => 1500
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 54
+    [amountPaid] => 2000
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 07111509938
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 54
+    [amountPaid] => 2000
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 55
+    [amountPaid] => 1500
+    [paymentMode] => Card
+    [phoneNumber] => 
+    [cardNumber] => 12333-1234-1234
+    [expiry] => 1225
+    [cvv] => 123
+)
+
+POST data: Array
+(
+    [bookingID] => 55
+    [amountPaid] => 1500
+    [paymentMode] => Card
+    [phoneNumber] => 
+    [cardNumber] => 1233-1234-1234-12345
+    [expiry] => 1225
+    [cvv] => 123
+)
+
+POST data: Array
+(
+    [bookingID] => 55
+    [amountPaid] => 1500
+    [paymentMode] => Card
+    [phoneNumber] => 
+    [cardNumber] => 1233-1234-1234-1234
+    [expiry] => 1225
+    [cvv] => 123
+)
+
+POST data: Array
+(
+    [bookingID] => 55
+    [amountPaid] => 1500
+    [paymentMode] => Card
+    [phoneNumber] => 
+    [cardNumber] => 1233-1234-1234-1234
+    [expiry] => 12/25
+    [cvv] => 1233
+)
+
+POST data: Array
+(
+    [bookingID] => 55
+    [amountPaid] => 1500
+    [paymentMode] => Card
+    [phoneNumber] => 
+    [cardNumber] => 1233-1234-1234-1234
+    [expiry] => 12/25
+    [cvv] => 123
+)
+
+POST data: Array
+(
+    [bookingID] => 56
+    [amountPaid] => 5000
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 57
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 58
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 59
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 61
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 62
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 63
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 64
+    [amountPaid] => 12000
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 65
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 66
+    [amountPaid] => 150
+    [paymentMode] => Card
+    [phoneNumber] => 
+    [cardNumber] => 2111-2111-2111-2111
+    [expiry] => 12/25
+    [cvv] => 123
+)
+
+POST data: Array
+(
+    [bookingID] => 68
+    [amountPaid] => 3456
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 69
+    [amountPaid] => 3456
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 70
+    [amountPaid] => 3456
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0711150993
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 71
+    [amountPaid] => 1000
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 72
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 73
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 74
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 75
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 76
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 77
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 78
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 79
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 80
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 81
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 82
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 83
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 84
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 85
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 86
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 87
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 88
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 89
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 90
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 91
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 92
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 93
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 94
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 95
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 96
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 97
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 98
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 99
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 100
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 101
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 102
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 103
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 104
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 105
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 106
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 107
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 108
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 109
+    [amountPaid] => 120
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 110
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 115
+    [amountPaid] => 105
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 117
+    [amountPaid] => 105
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 122
+    [amountPaid] => 105
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 128
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 129
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 130
+    [amountPaid] => 300
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 132
+    [amountPaid] => 150
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 133
+    [amountPaid] => 105
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 134
+    [amountPaid] => 105
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 135
+    [amountPaid] => 105
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 136
+    [amountPaid] => 105
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 139
+    [amountPaid] => 300
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 141
+    [amountPaid] => 75
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 143
+    [amountPaid] => 300
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+Missing required fields: bookingID=154, 155, 156, amountPaid=450.00, paymentMode=
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+Raw POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+Raw POST data: Array
+(
+    [bookingID] => 154, 155, 156
+    [amountPaid] => 450.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+Raw POST data: Array
+(
+    [bookingID] => 157
+    [amountPaid] => 150.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+Raw POST data: Array
+(
+    [bookingID] => 158, 159, 160, 161, 162
+    [amountPaid] => 1050.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+Raw POST data: Array
+(
+    [bookingID] => 163
+    [amountPaid] => 210.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+Raw POST data: Array
+(
+    [bookingID] => 164, 165, 166, 167
+    [amountPaid] => 840.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+Raw POST data: Array
+(
+    [bookingID] => 168, 169
+    [amountPaid] => 420.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 170
+    [amountPaid] => 210.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 171
+    [amountPaid] => 420.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 172
+    [amountPaid] => 840.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 173
+    [amountPaid] => 1050.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 174
+    [amountPaid] => 1050.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 177
+    [amountPaid] => 210.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 178
+    [amountPaid] => 840.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 181
+    [amountPaid] => 180.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 182
+    [amountPaid] => 300.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 183
+    [amountPaid] => 300.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 184
+    [amountPaid] => 300.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 185
+    [amountPaid] => 375.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 186
+    [amountPaid] => 375.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 187
+    [amountPaid] => 375.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 188
+    [amountPaid] => 375.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 189
+    [amountPaid] => 375.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 190
+    [amountPaid] => 375.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 191
+    [amountPaid] => 375.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 192
+    [amountPaid] => 210.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 193
+    [amountPaid] => 1050.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 194
+    [amountPaid] => 90.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 195
+    [amountPaid] => 90.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 196
+    [amountPaid] => 180.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 197
+    [amountPaid] => 210.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 198
+    [amountPaid] => 300.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 199
+    [amountPaid] => 75.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 200
+    [amountPaid] => 300.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 201
+    [amountPaid] => 150.00
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 202
+    [amountPaid] => 150.00
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 203
+    [amountPaid] => 150.00
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 203
+    [amountPaid] => 150.00
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 204
+    [amountPaid] => 150.00
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 205
+    [amountPaid] => 150.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 206
+    [amountPaid] => 90.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 207
+    [amountPaid] => 90.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+
+POST data: Array
+(
+    [bookingID] => 208
+    [amountPaid] => 270.00
+    [paymentMode] => Mobile Money
+    [phoneNumber] => 0712345678
+    [cardNumber] => 
+    [expiry] => 
+    [cvv] => 
+)
+

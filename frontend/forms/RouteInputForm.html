@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Data Entry Form</title>
+    <link rel="stylesheet" href="../../assets/css/Styles.css">
+    <script src="../../assets/js/formValidation.js"></script>
+</head>
+<body>
+    
+    <form action="../../php/RouteInputForm.php" method="POST" onsubmit="return validateRouteForm()">
+        <h2>Route Entry Form</h2>
+        <div class="form-row">
+            <div class="form-field">
+        <label for="startLocation">Start Location:</label>
+        <input type="text" id="startLocation" name="startLocation" placeholder="Eg Nairobi"><br><br>
+             </div>
+             <div class="form-field">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" placeholder="Eg Juba"><br><br>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+        <label for="distance">Distance (in km):</label>
+        <input type="text" id="distance" name="distance"><br><br>
+            </div>
+            <div class="form-field">
+        <label for="routeName">Route Name:</label>
+        <input type="text" id="routeName" name="routeName" placeholder="Eg NRB-JBA"><br><br>
+           </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+        <label for="routeType">Route Type:</label>
+        <select id="routeType" name="routeType">
+            <option value="">Select RouteType</option>
+            <option value="Domestic">Domestic</option>
+            <option value="International">International</option>
+        </select><br><br>
+            </div>
+            <div class="form-field">
+        <label for="security">Security:</label>
+        <input type="text" id="security" name="security" placeholder="eg Safe/Passport Required"><br><br>
+            </div>
+        </div>
+        <div class="form-buttons">
+        <button class="back-btn" onclick="goBack()">Back</button>
+        <button type="submit">Submit</button>
+    </div>
+    </form>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

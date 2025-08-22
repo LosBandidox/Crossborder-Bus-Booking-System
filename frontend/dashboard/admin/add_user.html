@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="../../../../assets/css/AdminStyles.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <header>
+        <h1>Add User</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="../../../php/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <form id="addUserForm">
+            <h2>Add New User</h2>
+            <div class="form-row">
+                <div class="form-field">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+                 </div>
+                 <div class="form-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+                 </div>
+            </div>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="Admin">Admin</option>
+                <option value="Staff">Staff</option>
+                <option value="Driver">Driver</option>
+                <option value="Customer">Customer</option>
+                <option value="Technician">Technician</option>
+                <option value="Co-Driver">Co-Driver</option>
+            </select>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <div class="form-buttons">
+            <button class="back-btn" onclick="goBack()">Back</button>
+            <button type="submit">Add User</button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+// Sets up the form to handle submissions
+// - Adds an event listener using document.getElementById(), a built-in JavaScript method, targeting the form with ID 'addUserForm'.
+// - Attaches an async anonymous function to the 'submit' event.
+// - Prepares to process user addition when the admin submits the form.
+document.getElementById('addUserForm').addEventListener('submit', async function (event) {
+    // Stops the page from refreshing
+    // - Calls preventDefault(), a built-in JavaScript method of the event object, to stop the form from reloading the page.
+    // - Keeps the admin on the add user page after submitting.
+    // - Makes the submission process smooth without reloads.
+    event.preventDefault();
+
+    // Collects form data
+    // - A user-defined constant named formData, holding a built-in FormData object created from this (the form).
+    // - Gathers input values like name, email, phone, role, and password.
+    // - Prepares the data for processing.
+    const formData = new FormData(this);
+
+    // Creates a user data object
+    // - A user-defined constant named userData, an object with values from formData.get(), a built-in method.
+    // - Structures data with keys like name, email, and role.
+    // - Prepares the data for server submission in JSON format.
+    const userData = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        role: formData.get('role'),
+        password: formData.get('password')
+    };
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures during submission.
+    // - Attempts to send user data and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/adduser.php'.
+        // - Sends userData as JSON using a POST request.
+        // - Waits for the server’s reply on adding the user.
+        const response = await fetch('../../../php/admin/adduser.php', {
+            // Sets the request type
+            // - A method property set to 'POST', a built-in fetch option.
+            // - Tells the server to expect new data.
+            method: 'POST',
+
+            // Sets the data format
+            // - Sets headers with 'Content-Type' to 'application/json'.
+            // - Tells the server the data is in JSON format.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            // Sends the user data
+            // - A body property with userData converted using JSON.stringify(), a built-in method.
+            // - Includes all user details for the server.
+            body: JSON.stringify(userData)
+        });
+
+        // Gets the server response
+        // - A user-defined constant named result, holding the JSON object from response.json().
+        // - Turns the server’s reply into an object with status and message.
+        // - Prepares to check if the user was added successfully.
+        const result = await response.json();
+
+        // Checks for success
+        // - A conditional statement checking if result.status equals 'success'.
+        // - Shows a success message and redirects, or displays an error.
+        // - Handles the server’s response to the add request.
+        if (result.status === 'success') {
+            // Shows a success message
+            // - Calls alert(), a built-in JavaScript method, with “User added successfully”.
+            // - Tells the admin the user was added to the system.
+            // - Confirms the submission worked.
+            alert('User added successfully');
+
+            // Redirects to the users page
+            // - Sets window.location.href, a built-in property, to 'admin_users.html'.
+            // - Sends the admin to the user list page.
+            // - Completes the add process.
+            window.location.href = 'admin_users.html';
+        } else {
+            // Shows an error message
+            // - Calls alert() with “Failed to add user:” plus result.message.
+            // - Tells the admin why the addition failed, like “Email already exists”.
+            // - Provides specific error details from the server.
+            alert('Failed to add user: ' + result.message);
+        }
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error(), a built-in method, to write “Error adding user:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error adding user:', error);
+    }
+});
+</script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

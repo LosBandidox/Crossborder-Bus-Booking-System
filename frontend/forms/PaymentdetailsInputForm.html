@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Data Entry Form</title>
+    <link rel="stylesheet" href="../../assets/css/Styles.css">
+    <script src="../../assets/js/formValidation.js"></script>
+</head>
+<body>
+    
+    <form action="../../php/PaymentdetailsInputForm.php" method="POST" onsubmit="return validatePaymentForm()">
+        <h1>Payment Data Entry Form</h1>
+        <label for="bookingID">Booking ID:</label>
+        <input type="text" id="bookingID" name="bookingID"><br><br>
+
+        <label for="amountPaid">Amount Paid:</label>
+        <input type="text" id="amountPaid" name="amountPaid"><br><br>
+
+        <label for="paymentMode">Payment Mode:</label>
+        <input type="radio" id="Mobile Money" name="paymentMode" value="Mobile Money"> Mobile Money
+        <input type="radio" id="Card" name="paymentMode" value="Card"> Card<br><br>
+
+        <label for="paymentDate">Payment Date:</label>
+        <input type="text" id="paymentDate" name="paymentDate" placeholder="YYYY-MM-DD HH:MM:SS"><br><br>
+
+        <label for="receiptNumber">Receipt Number:</label>
+        <input type="text" id="receiptNumber" name="receiptNumber"><br><br>
+
+        <label for="transactionID">Transaction ID:</label>
+        <input type="text" id="transactionID" name="transactionID"><br><br>
+
+        <label for="cashierID">Cashier ID:</label>
+        <input type="text" id="cashierID" name="cashierID"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,1166 @@
+/* Reset default margin and padding: Clears default browser styles for consistent design across elements */
+body, h1, h2, p, ul, li, a, input, button, form, label {
+    margin: 0; /* Removes default outer spacing around elements to prevent unwanted gaps */
+    padding: 0; /* Removes default inner spacing inside elements to start with a clean slate */
+    box-sizing: border-box; /* Makes sure padding and borders are included in an element’s total width and height, so the size stays consistent and doesn’t overflow */
+}
+
+/* Basic body styling: Sets up the overall look and layout of the page */
+body {
+    font-family: Arial, sans-serif; /* Uses Arial as the main font for text, with a backup sans-serif font if Arial isn’t available, for a clean and professional look */
+    line-height: 1.6; /* Adds extra space between lines of text (1.6 times the font size) to make reading easier */
+    background: linear-gradient(to bottom right, #a1c4fd, #c2a1fd); /* Creates a smooth gradient background from light blue (#a1c4fd) to light purple (#c2a1fd) for a modern, colorful design */
+    color: #333; /* Sets text color to dark gray (#333) for good contrast and readability against the light background */
+    min-height: 100vh; /* Makes the page at least as tall as the browser window (100% viewport height) so the background covers everything, even if content is short */
+}
+
+/* Header and Navigation Bar: Styles the top section of the page with the logo and menu */
+header {
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the sample design, creating a sleek and professional look */
+    color: #fff; /* Uses white text for clear contrast against the dark background */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space inside the header for a neat appearance */
+    display: flex; /* Uses flexbox to arrange the logo, navigation, and button side by side neatly */
+    justify-content: space-between; /* Spreads the logo, navigation, and button across the header, putting space between them */
+    align-items: center; /* Centers all items vertically in the header for a balanced look */
+    min-height: 40px; /* Ensures the header is at least 40 pixels tall to fit the logo and menu comfortably */
+    max-height: 60px; /* Limits the header height to 60 pixels to keep it compact */
+}
+
+/* Logo styling: Controls the appearance of the logo area */
+.logo {
+    font-size: 0; /* Hides any text in the logo area (useful if the logo is an image) to avoid unwanted text display */
+    line-height: 0; /* Removes any extra height caused by text, keeping the logo area tight */
+    color: #fff; /* Sets a white text color as a backup in case text appears */
+    text-transform: uppercase; /* Makes any fallback text uppercase for a bold, professional style */
+}
+
+/* Navigation styling: Controls the menu bar layout */
+nav {
+    display: flex; /* Uses flexbox to arrange navigation items and buttons side by side */
+    align-items: center; /* Centers navigation items vertically to align with the logo and button */
+}
+
+/* Navigation list styling: Styles the list of menu links */
+nav ul {
+    list-style: none; /* Removes bullet points from the menu list for a clean look */
+    display: flex; /* Uses flexbox to place menu items side by side horizontally */
+    margin-right: 20px; /* Adds 20 pixels of space to the right of the menu to separate it from the button */
+}
+
+/* Navigation list item styling: Controls each menu item */
+nav ul li {
+    margin: 0 15px; /* Adds 15 pixels of space on the left and right of each menu item for separation */
+    position: relative; /* Makes the list item a reference point for dropdown menus, so they appear in the right spot */
+}
+
+/* Navigation link styling: Styles the clickable links in the menu */
+nav ul li a {
+    color: #fff; /* Sets link text to white for contrast against the dark header */
+    text-decoration: none; /* Removes the default underline from links for a cleaner look */
+    font-size: 16px; /* Sets the link text size to 16 pixels for readability */
+    text-transform: uppercase; /* Makes link text uppercase to match the bold, professional style */
+}
+
+/* Navigation link hover effect: Changes link appearance when hovered */
+nav ul li a:hover {
+    color: #d1b3ff; /* Changes link text to light purple (#d1b3ff) on hover for a subtle, interactive effect */
+}
+
+/* Dropdown Menu Styling: Controls the appearance of dropdown menus */
+.dropdown {
+    display: none; /* Hides the dropdown menu by default, only showing when triggered */
+    position: absolute; /* Positions the dropdown independently, placing it below its parent menu item */
+    top: 100%; /* Places the dropdown just below the parent link (100% of the parent’s height) */
+    left: 0; /* Aligns the dropdown with the left edge of the parent menu item */
+    background-color: #007bff; /* Sets a blue background (#007bff) for the dropdown to stand out */
+    list-style: none; /* Removes bullet points from the dropdown list for a clean look */
+    min-width: 200px; /* Sets a minimum width of 200 pixels to ensure the dropdown is wide enough for content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a small shadow (2px down, 5px blur, 20% dark) to make the dropdown look raised */
+}
+
+/* Dropdown visibility on hover: Shows the dropdown when the parent menu item is hovered */
+nav ul li:hover .dropdown {
+    display: block; /* Makes the dropdown visible when the parent list item is hovered, creating an interactive menu */
+}
+
+/* Dropdown list item styling: Controls each item in the dropdown menu */
+.dropdown li {
+    margin: 0; /* Removes extra spacing around dropdown items to keep the menu compact */
+}
+
+/* Dropdown link styling: Styles the clickable links in the dropdown */
+.dropdown li a {
+    display: block; /* Makes each link take up the full width of the dropdown item, making it easier to click */
+    padding: 10px; /* Adds 10 pixels of space inside each dropdown link for a comfortable clickable area */
+    color: #fff; /* Sets link text to white for contrast against the blue dropdown background */
+    font-size: 14px; /* Sets the text size to 14 pixels, slightly smaller for a compact dropdown */
+    text-transform: none; /* Removes uppercase styling for dropdown links to make them easier to read */
+}
+
+/* Dropdown link hover effect: Changes dropdown link appearance when hovered */
+.dropdown li a:hover {
+    background-color: #0056b3; /* Changes the background to a darker blue (#0056b3) on hover for visual feedback */
+    color: #fff; /* Keeps the text white for consistency and readability */
+}
+
+/* Try for Free Button: Styles the “Try for Free” button in the header */
+.try-free-btn {
+    background-color: #ff4d94; /* Sets a pink background (#ff4d94) to match the sample and draw attention */
+    color: #fff; /* Sets text to white for clear contrast against the pink background */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    border-radius: 20px; /* Rounds the corners by 20 pixels for a pill-shaped, modern look */
+    text-decoration: none; /* Removes the default underline if the button is a link */
+    font-size: 14px; /* Sets the text size to 14 pixels for readability */
+    text-transform: uppercase; /* Makes the button text uppercase to match the bold, professional style */
+}
+
+/* Try for Free Button hover effect: Changes button appearance when hovered */
+.try-free-btn:hover {
+    background-color: #e04385; /* Changes to a slightly darker pink (#e04385) on hover for an interactive effect */
+}
+
+/* Main Content: Styles the main section of the page */
+main {
+    padding: 20px; /* Adds 20 pixels of space around the main content to keep it from touching page edges */
+    text-align: center; /* Centers all text and inline content in the main section for a balanced look */
+}
+
+/* Main heading: Styles the <h1> title in the main section */
+main h1 {
+    font-size: 36px; /* Sets the text size to 36 pixels, making the heading bold and prominent */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading to separate it from content below */
+}
+
+/* Main paragraph: Styles paragraphs in the main section */
+main p {
+    font-size: 18px; /* Sets the text size to 18 pixels, smaller than the heading but still readable */
+    color: #666; /* Uses medium gray text (#666) for a subtle, less prominent look */
+}
+
+/* Dashboard Container: Styles the main dashboard area for content like stats or schedules */
+.dashboard-container {
+    max-width: 1200px; /* Limits the width to 1200 pixels so it doesn’t stretch too wide on large screens */
+    margin: 0 auto; /* Centers the container horizontally by adding equal space on the left and right */
+    padding: 20px; /* Adds 20 pixels of space inside the container to keep content neat */
+    background-color: #fff; /* Sets a white background for a clean, professional look */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern, smooth appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the container look slightly raised */
+}
+
+/* Form Styling: Styles forms used for user input, like booking or search forms */
+form {
+    margin-bottom: 20px; /* Adds 20 pixels of space below the form to separate it from other content */
+    text-align: left; /* Aligns form text and fields to the left for a standard form layout */
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the sample’s dark theme */
+    padding: 20px; /* Adds 20 pixels of space inside the form to keep content from touching the edges */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern, smooth look */
+    max-width: 500px; /* Limits the form width to 500 pixels for a compact design */
+    margin: 20px auto; /* Centers the form horizontally and adds 20 pixels of top/bottom space */
+    color: #fff; /* Sets text to white for contrast against the dark form background */
+}
+
+/* Form heading: Styles the <h2> title inside forms */
+form h2 {
+    font-size: 24px; /* Sets the text size to 24 pixels, making the heading clear and prominent */
+    margin-bottom: 20px; /* Adds 20 pixels of space below the heading to separate it from form fields */
+    color: #fff; /* Sets text to white for contrast against the dark form background */
+}
+
+/* Form Row for paired fields: Styles rows that hold two fields side by side */
+.form-row {
+    display: flex; /* Uses flexbox to place fields side by side in a row */
+    gap: 10px; /* Adds 10 pixels of space between fields for separation */
+    margin-bottom: 15px; /* Adds 15 pixels of space below the row to separate it from other rows */
+}
+
+/* Form field: Styles individual fields in a form row */
+.form-field {
+    flex: 1; /* Makes each field take up equal space in the row, stretching to fill the available area */
+}
+
+/* Form Labels and Inputs: Styles labels and input fields in forms */
+form label {
+    display: block; /* Makes labels take up their own line, placing them above inputs for clarity */
+    margin-bottom: 5px; /* Adds 5 pixels of space below labels to separate them from inputs */
+    font-weight: bold; /* Makes label text bold to stand out and show importance */
+    color: #fff; /* Sets label text to white for contrast against the dark form background */
+}
+
+/* Form input fields: Styles text inputs, dropdowns, and textareas */
+form input, form select, form textarea {
+    width: 100%; /* Makes fields stretch to the full width of the form for consistency */
+    padding: 10px; /* Adds 10 pixels of space inside fields to make them easy to read and type in */
+    margin-bottom: 15px; /* Adds 15 pixels of space below fields to separate them from other fields */
+    border: 1px solid #555; /* Adds a 1-pixel, solid, dark gray (#555) border to define field edges */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a smooth, modern look */
+    background-color: #333; /* Sets a dark gray background (#333) to match the form’s dark theme */
+    color: #fff; /* Sets text to white for contrast against the dark field background */
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+}
+
+/* Placeholder text: Styles the hint text inside inputs and textareas */
+form input::placeholder, form textarea::placeholder {
+    color: #aaa; /* Sets placeholder text to light gray (#aaa) so it’s subtle but readable */
+}
+
+/* Radio Button Styling: Styles radio buttons for form options */
+form input[type="radio"] {
+    width: auto; /* Removes the 100% width so radio buttons stay small and round */
+    display: inline-block; /* Makes radio buttons sit inline with their labels, not taking a full line */
+    margin-right: 5px; /* Adds 5 pixels of space to the right of the radio button for separation from its label */
+    margin-bottom: 0; /* Removes extra space below radio buttons to keep them tight with labels */
+}
+
+/* Radio Button Labels: Styles labels for radio buttons */
+form label.radio-label {
+    display: inline-block; /* Makes labels sit inline with radio buttons, not taking a full line */
+    margin-bottom: 0; /* Removes extra space below labels to keep them aligned with radio buttons */
+    font-weight: normal; /* Removes bold styling so radio labels don’t stand out too much */
+    margin-right: 15px; /* Adds 15 pixels of space to the right to separate radio options */
+}
+
+/* Radio Group Wrapper: Styles the container for radio buttons */
+.radio-group {
+    margin-bottom: 15px; /* Adds 15 pixels of space below the group of radio buttons for separation */
+}
+
+/* Form Buttons: Styles buttons inside forms, like “Back” or “Submit” */
+form button {
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    border: 2px solid #fff; /* Adds a 2-pixel, solid, white border for a clear outline */
+    border-radius: 20px; /* Rounds the corners by 20 pixels for a pill-shaped look */
+    background-color: transparent; /* Makes the “Back” button transparent to match the sample’s style */
+    color: #fff; /* Sets button text to white for contrast */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon when hovering, showing it’s clickable */
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    margin-right: 10px; /* Adds 10 pixels of space to the right to separate buttons */
+}
+
+/* Submit Button: Styles the “Submit” button in forms */
+form button[type="submit"] {
+    background-color: #ff4d94; /* Sets a pink background (#ff4d94) to match the sample and show it’s the main action */
+    border: 2px solid #ff4d94; /* Adds a 2-pixel, solid, pink border to match the background */
+}
+
+/* Form Button Hover: Changes the “Back” button appearance when hovered */
+form button:hover {
+    background-color: #555; /* Changes to a darker gray (#555) on hover for visual feedback */
+}
+
+/* Submit Button Hover: Changes the “Submit” button appearance when hovered */
+form button[type="submit"]:hover {
+    background-color: #e04385; /* Changes to a darker pink (#e04385) on hover for an interactive effect */
+    border-color: #e04385; /* Matches the border color to the darker pink for consistency */
+}
+
+/* Table Styling: Styles tables used for displaying data, like schedules */
+table {
+    width: 100%; /* Makes the table stretch to the full width of its container */
+    border-collapse: collapse; /* Removes gaps between table cells for a tight, clean look */
+    margin-bottom: 20px; /* Adds 20 pixels of space below the table to separate it from other content */
+}
+
+/* Table Cells: Styles table headers (th) and data cells (td) */
+table th, table td {
+    padding: 10px; /* Adds 10 pixels of space inside cells for readability */
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) border to define cell edges */
+    text-align: left; /* Aligns text to the left inside cells for a standard table layout */
+}
+
+/* Table Headers: Styles the header row of tables */
+table th {
+    background-color: #333; /* Sets a dark gray background (#333) to make headers stand out */
+    color: white; /* Sets text to white for contrast against the dark background */
+}
+
+/* Footer: Styles the bottom section of the page */
+footer {
+    background-color: #333; /* Sets a dark gray background (#333) for a professional look */
+    color: #fff; /* Sets text to white for contrast against the dark background */
+    text-align: center; /* Centers all text and content in the footer */
+    padding: 10px 0; /* Adds 10 pixels of top/bottom space and no left/right space for a compact footer */
+    width: 100%; /* Makes the footer stretch across the full page width */
+    bottom: 0; /* Aligns the footer to the bottom of its container (positioning depends on parent) */
+}
+
+/* Hero Section: Styles the prominent banner section at the top of the page */
+.hero {
+    background-image: url('../Images/Nairobi\ Night.jpg'); /* Sets a background image of Nairobi at night for a striking visual */
+    background-size: cover; /* Scales the image to cover the entire section, cropping if needed */
+    background-position: center; /* Centers the image so the focal point is in the middle */
+    color: white; /* Sets text to white for contrast against the dark image */
+    padding: 100px 20px; /* Adds 100 pixels of top/bottom space and 20 pixels of left/right space for a large, padded section */
+    text-align: center; /* Centers all text and content for a balanced look */
+}
+
+/* Hero Content: Styles the container for hero section text and buttons */
+.hero-content {
+    max-width: 600px; /* Limits the content width to 600 pixels for readability */
+    margin: 0 auto; /* Centers the content horizontally by adding equal space on the left and right */
+}
+
+/* Hero Heading: Styles the <h2> title in the hero section */
+.hero h2 {
+    font-size: 48px; /* Sets the text size to 48 pixels, making the heading bold and eye-catching */
+    margin-bottom: 20px; /* Adds 20 pixels of space below the heading to separate it from other content */
+}
+
+/* Hero Paragraph: Styles paragraphs in the hero section */
+.hero p {
+    font-size: 24px; /* Sets the text size to 24 pixels, smaller than the heading but still prominent */
+    margin-bottom: 30px; /* Adds 30 pixels of space below the paragraph to separate it from buttons */
+}
+
+/* Call-to-Action Button: Styles the main action button in the hero section */
+.cta-button {
+    background-color: #007bff; /* Sets a blue background (#007bff) to match the system’s color scheme */
+    color: white; /* Sets text to white for contrast against the blue background */
+    padding: 15px 30px; /* Adds 15 pixels of top/bottom space and 30 pixels of left/right space for a large, clickable button */
+    text-decoration: none; /* Removes the default underline if the button is a link */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a modern look */
+    font-size: 18px; /* Sets the text size to 18 pixels for readability */
+}
+
+/* Call-to-Action Button Hover: Changes the button appearance when hovered */
+.cta-button:hover {
+    background-color: #0056b3; /* Changes to a darker blue (#0056b3) on hover for visual feedback */
+}
+
+/* Feature Section: Styles the section showcasing key features of the service */
+.features {
+    padding: 50px 20px; /* Adds 50 pixels of top/bottom space and 20 pixels of left/right space for a spacious section */
+    background-color: #fff; /* Sets a white background for a clean, professional look */
+    text-align: center; /* Centers all text and content for a balanced appearance */
+}
+
+/* Features Heading: Styles the <h2> title in the features section */
+.features h2 {
+    font-size: 36px; /* Sets the text size to 36 pixels, making the heading prominent */
+    margin-bottom: 40px; /* Adds 40 pixels of space below the heading to separate it from feature items */
+}
+
+/* Feature List: Styles the container for feature items */
+.feature-list {
+    display: flex; /* Uses flexbox to arrange feature items side by side */
+    justify-content: space-around; /* Spreads items evenly across the section with equal space between them */
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens for responsiveness */
+}
+
+/* Feature Item: Styles individual feature cards */
+.feature-item {
+    max-width: 300px; /* Limits the width to 300 pixels for a compact card size */
+    margin: 20px; /* Adds 20 pixels of space around each item for separation */
+    padding: 20px; /* Adds 20 pixels of space inside the item to keep content neat */
+    background-color: #f9f9f9; /* Sets a light gray background (#f9f9f9) for a subtle contrast */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the item look raised */
+}
+
+/* Feature Item Heading: Styles the <h3> title in feature cards */
+.feature-item h3 {
+    font-size: 24px; /* Sets the text size to 24 pixels, making the heading clear */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+}
+
+/* Feature Item Paragraph: Styles paragraphs in feature cards */
+.feature-item p {
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    color: #666; /* Uses medium gray text (#666) for a subtle, less prominent look */
+}
+
+/* Destination Section: Styles the section showcasing travel destinations */
+.destinations {
+    padding: 50px 20px; /* Adds 50 pixels of top/bottom space and 20 pixels of left/right space for a spacious section */
+    background-color: #f4f4f4; /* Sets a light gray background (#f4f4f4) for a subtle contrast */
+    text-align: center; /* Centers all text and content for a balanced appearance */
+}
+
+/* Destinations Heading: Styles the <h2> title in the destinations section */
+.destinations h2 {
+    font-size: 36px; /* Sets the text size to 36 pixels, making the heading prominent */
+    margin-bottom: 40px; /* Adds 40 pixels of space below the heading to separate it from destination items */
+}
+
+/* Destination List: Styles the container for destination items */
+.destination-list {
+    display: flex; /* Uses flexbox to arrange destination items side by side */
+    justify-content: space-around; /* Spreads items evenly across the section with equal space between them */
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens for responsiveness */
+}
+
+/* Destination Item: Styles individual destination cards */
+.destination-item {
+    max-width: 300px; /* Limits the width to 300 pixels for a compact card size */
+    margin: 20px; /* Adds 20 pixels of space around each item for separation */
+    background-color: #fff; /* Sets a white background for a clean look */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the item look raised */
+    overflow: hidden; /* Hides any content that spills outside the card’s rounded corners */
+}
+
+/* Destination Item Image: Styles images in destination cards */
+.destination-item img {
+    width: 100%; /* Makes the image stretch to the full width of the card */
+    height: 200px; /* Sets a fixed height of 200 pixels for consistent image sizes */
+    object-fit: cover; /* Scales the image to cover the entire area, cropping if needed to avoid distortion */
+}
+
+/* Destination Item Heading: Styles the <h3> title in destination cards */
+.destination-item h3 {
+    font-size: 24px; /* Sets the text size to 24 pixels, making the heading clear */
+    margin: 20px 0; /* Adds 20 pixels of space above and below the heading for separation */
+}
+
+/* Destination Button: Styles buttons in destination cards */
+.destination-button {
+    display: inline-block; /* Makes the button sit inline but respect width and padding */
+    background-color: #007bff; /* Sets a blue background (#007bff) to match the system’s color scheme */
+    color: white; /* Sets text to white for contrast against the blue background */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    text-decoration: none; /* Removes the default underline if the button is a link */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a modern look */
+    margin-bottom: 20px; /* Adds 20 pixels of space below the button for separation */
+}
+
+/* Destination Button Hover: Changes button appearance when hovered */
+.destination-button:hover {
+    background-color: #0056b3; /* Changes to a darker blue (#0056b3) on hover for visual feedback */
+}
+
+/* Testimonials Section: Styles the section showcasing customer reviews */
+.testimonials {
+    padding: 50px 20px; /* Adds 50 pixels of top/bottom space and 20 pixels of left/right space for a spacious section */
+    background-color: #fff; /* Sets a white background for a clean, professional look */
+    text-align: center; /* Centers all text and content for a balanced appearance */
+}
+
+/* Testimonials Heading: Styles the <h2> title in the testimonials section */
+.testimonials h2 {
+    font-size: 36px; /* Sets the text size to 36 pixels, making the heading prominent */
+    margin-bottom: 40px; /* Adds 40 pixels of space below the heading to separate it from testimonial items */
+}
+
+/* Testimonial List: Styles the container for testimonial items */
+.testimonial-list {
+    display: flex; /* Uses flexbox to arrange testimonial items side by side */
+    justify-content: space-around; /* Spreads items evenly across the section with equal space between them */
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens for responsiveness */
+}
+
+/* Testimonial Item: Styles individual testimonial cards */
+.testimonial-item {
+    max-width: 400px; /* Limits the width to 400 pixels for a slightly wider card size */
+    margin: 20px; /* Adds 20 pixels of space around each item for separation */
+    padding: 20px; /* Adds 20 pixels of space inside the item to keep content neat */
+    background-color: #f9f9f9; /* Sets a light gray background (#f9f9f9) for a subtle contrast */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the item look raised */
+}
+
+/* Testimonial Item Paragraph: Styles the review text in testimonial cards */
+.testimonial-item p {
+    font-size: 18px; /* Sets the text size to 18 pixels for readability */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the text for separation */
+}
+
+/* Testimonial Item Heading: Styles the <h3> name or title in testimonial cards */
+.testimonial-item h3 {
+    font-size: 20px; /* Sets the text size to 20 pixels, smaller than the main heading for hierarchy */
+    color: #007bff; /* Sets text to blue (#007bff) to match the system’s color scheme */
+}
+
+/* About Us Page Styling: Styles the content for the About Us page */
+.about-content {
+    max-width: 800px; /* Limits the width to 800 pixels for a readable content area */
+    margin: 20px auto; /* Centers the content horizontally and adds 20 pixels of top/bottom space */
+    padding: 20px; /* Adds 20 pixels of space inside the content for a neat appearance */
+    background-color: #fff; /* Sets a white background for a clean look */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the content look raised */
+}
+
+/* About Us Heading: Styles the <h2> title on the About Us page */
+.about-content h2 {
+    font-size: 28px; /* Sets the text size to 28 pixels, making the heading clear and prominent */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+    color: #007bff; /* Sets text to blue (#007bff) to match the system’s color scheme */
+}
+
+/* About Us Paragraph: Styles paragraphs on the About Us page */
+.about-content p {
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    line-height: 1.6; /* Adds extra space between lines (1.6 times the font size) for easier reading */
+    margin-bottom: 20px; /* Adds 20 pixels of space below paragraphs for separation */
+}
+
+/* About Us List: Styles lists on the About Us page */
+.about-content ul {
+    list-style: none; /* Removes bullet points from lists for a clean look */
+    margin-left: 20px; /* Adds 20 pixels of left space to indent the list slightly */
+}
+
+/* About Us List Items: Styles individual list items */
+.about-content ul li {
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    margin-bottom: 10px; /* Adds 10 pixels of space below each item for separation */
+}
+
+/* Contact Us Page Styling: Styles the content for the Contact Us page */
+.contact-content {
+    max-width: 800px; /* Limits the width to 800 pixels for a readable content area */
+    margin: 20px auto; /* Centers the content horizontally and adds 20 pixels of top/bottom space */
+    padding: 20px; /* Adds 20 pixels of space inside the content for a neat appearance */
+    background-color: #fff; /* Sets a white background for a clean look */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the content look raised */
+}
+
+/* Contact Us Heading: Styles the <h2> title on the Contact Us page */
+.contact-content h2 {
+    font-size: 28px; /* Sets the text size to 28 pixels, making the heading clear and prominent */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+    color: #007bff; /* Sets text to blue (#007bff) to match the system’s color scheme */
+}
+
+/* Contact Us Paragraph: Styles paragraphs on the Contact Us page */
+.contact-content p {
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    line-height: 1.6; /* Adds extra space between lines (1.6 times the font size) for easier reading */
+    margin-bottom: 20px; /* Adds 20 pixels of space below paragraphs for separation */
+}
+
+/* Contact Info Section: Styles the section with contact details */
+.contact-info {
+    margin-bottom: 30px; /* Adds 30 pixels of space below the contact info section for separation */
+}
+
+/* Contact Info Heading: Styles the <h3> title in the contact info section */
+.contact-info h3 {
+    font-size: 24px; /* Sets the text size to 24 pixels, smaller than the main heading for hierarchy */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+    color: #333; /* Sets text to dark gray (#333) for readability */
+}
+
+/* Contact Info List: Styles lists in the contact info section */
+.contact-info ul {
+    list-style: none; /* Removes bullet points from lists for a clean look */
+}
+
+/* Contact Info List Items: Styles individual list items */
+.contact-info ul li {
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    margin-bottom: 10px; /* Adds 10 pixels of space below each item for separation */
+}
+
+/* Contact Form Labels: Styles labels in the contact form */
+.contact-form label {
+    display: block; /* Makes labels take up their own line, placing them above inputs for clarity */
+    margin-bottom: 5px; /* Adds 5 pixels of space below labels to separate them from inputs */
+    font-weight: bold; /* Makes label text bold to stand out and show importance */
+}
+
+/* Contact Form Inputs: Styles text inputs and textareas in the contact form */
+.contact-form input, .contact-form textarea {
+    width: 100%; /* Makes fields stretch to the full width of the form for consistency */
+    padding: 10px; /* Adds 10 pixels of space inside fields to make them easy to read and type in */
+    margin-bottom: 10px; /* Adds 10 pixels of space below fields to separate them from other fields */
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) border to define field edges */
+    border-radius: 4px; /* Rounds the corners by 4 pixels for a smooth, modern look */
+}
+
+/* Contact Form Button: Styles the submit button in the contact form */
+.contact-form button {
+    background-color: #007bff; /* Sets a blue background (#007bff) to match the system’s color scheme */
+    color: white; /* Sets text to white for contrast against the blue background */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    border: none; /* Removes any default border for a smooth appearance */
+    border-radius: 4px; /* Rounds the corners by 4 pixels for a modern look */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon when hovering, showing it’s clickable */
+}
+
+/* Contact Form Button Hover: Changes button appearance when hovered */
+.contact-form button:hover {
+    background-color: #0056b3; /* Changes to a darker blue (#0056b3) on hover for visual feedback */
+}
+
+/* Social Media Styling: Styles the section with social media links */
+.social-media {
+    margin-top: 20px; /* Adds 20 pixels of space above the social media section for separation */
+    text-align: center; /* Centers all content in the social media section */
+}
+
+/* Social Media Heading: Styles the <h3> title in the social media section */
+.social-media h3 {
+    font-size: 24px; /* Sets the text size to 24 pixels, making the heading clear */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+    color: #333; /* Sets text to dark gray (#333) for readability */
+}
+
+/* Social Media List: Styles the list of social media icons */
+.social-media ul {
+    list-style: none; /* Removes bullet points from the list for a clean look */
+    padding: 0; /* Removes default spacing inside the list to keep it tight */
+    display: flex; /* Uses flexbox to arrange icons side by side horizontally */
+    justify-content: center; /* Centers the icons horizontally in the section */
+    gap: 15px; /* Adds 15 pixels of space between icons for separation */
+}
+
+/* Social Media List Items: Styles individual social media links */
+.social-media ul li {
+    display: inline-block; /* Makes list items sit inline, allowing them to appear side by side */
+}
+
+/* Social Media Links: Styles the clickable social media icons */
+.social-media ul li a {
+    font-size: 24px; /* Sets the icon size to 24 pixels for visibility */
+    text-decoration: none; /* Removes the default underline from links for a clean look */
+    transition: transform 0.3s ease; /* Makes size changes (scaling) happen smoothly over 0.3 seconds when hovering */
+}
+
+/* Social Media Link Hover: Changes icon appearance when hovered */
+.social-media ul li a:hover {
+    transform: scale(1.2); /* Enlarges the icon by 20% (1.2 times its size) on hover for an interactive effect */
+}
+
+/* Branches Page Styling: Styles the content for the Branches page */
+.branches-content {
+    max-width: 800px; /* Limits the width to 800 pixels for a readable content area */
+    margin: 20px auto; /* Centers the content horizontally and adds 20 pixels of top/bottom space */
+    padding: 20px; /* Adds 20 pixels of space inside the content for a neat appearance */
+    background-color: #fff; /* Sets a white background for a clean look */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the content look raised */
+}
+
+/* Branches Heading: Styles the <h2> title on the Branches page */
+.branches-content h2 {
+    font-size: 28px; /* Sets the text size to 28 pixels, making the heading clear and prominent */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+    color: #007bff; /* Sets text to blue (#007bff) to match the system’s color scheme */
+}
+
+/* Branches Paragraph: Styles paragraphs on the Branches page */
+.branches-content p {
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    line-height: 1.6; /* Adds extra space between lines (1.6 times the font size) for easier reading */
+    margin-bottom: 20px; /* Adds 20 pixels of space below paragraphs for separation */
+}
+
+/* Branch List: Styles the container for branch items */
+.branch-list {
+    display: flex; /* Uses flexbox to arrange branch items side by side */
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens for responsiveness */
+    gap: 20px; /* Adds 20 pixels of space between branch items for separation */
+}
+
+/* Branch Item: Styles individual branch cards */
+.branch-item {
+    flex: 1 1 300px; /* Makes each item take at least 300 pixels of width but grow to fill available space */
+    padding: 20px; /* Adds 20 pixels of space inside the item to keep content neat */
+    background-color: #f9f9f9; /* Sets a light gray background (#f9f9f9) for a subtle contrast */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the item look raised */
+}
+
+/* Branch Item Heading: Styles the <h3> title in branch cards */
+.branch-item h3 {
+    font-size: 24px; /* Sets the text size to 24 pixels, making the heading clear */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+    color: #333; /* Sets text to dark gray (#333) for readability */
+}
+
+/* Branch Item Paragraph: Styles paragraphs in branch cards */
+.branch-item p {
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    margin-bottom: 10px; /* Adds 10 pixels of space below paragraphs for separation */
+}
+
+/* File: Styles.css (partial): Styles elements for the CustomerDashboard.html, including Stats Cards, Quick Action Cards, and Bus Schedule Viewer */
+/* Integrates with the existing gradient background (#a1c4fd to #c2a1fd), dark header (#1a1a1a), and updated .dashboard-container (max-width: 1200px) */
+/* Search Form uses existing form styles (dark #1a1a1a, pink button #ff4d94) */
+
+/* Stats Cards Section: Styles the section showing key statistics */
+#statsCards {
+    margin: 20px 0; /* Adds 20 pixels of space above and below the stats section for separation */
+}
+
+/* Stats Grid: Styles the layout for stats cards */
+.stats-grid {
+    display: grid; /* Uses a grid layout to arrange stats cards in a structured way */
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns for stats cards */
+    gap: 20px; /* Adds 20 pixels of space between cards for a clean layout */
+}
+
+/* Stats Card: Styles individual stats cards */
+.stats-card {
+    background-color: #fff; /* Sets a white background to match the dashboard container */
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) border to define card edges */
+    padding: 15px; /* Adds 15 pixels of space inside the card to keep content neat */
+    text-align: center; /* Centers all text and content for a balanced look */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the card look raised */
+}
+
+/* Stats Card Heading: Styles the <h3> title in stats cards */
+.stats-card h3 {
+    font-size: 18px; /* Sets the text size to 18 pixels, smaller than main headings for hierarchy */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+    color: #333; /* Sets text to dark gray (#333) to match the body text */
+}
+
+/* Stats Value: Styles the large number displayed in stats cards */
+.stats-value {
+    font-size: 24px; /* Sets the text size to 24 pixels to make the number stand out */
+    color: #ff4d94; /* Sets text to pink (#ff4d94) to match the try-free button and draw attention */
+    margin: 10px 0; /* Adds 10 pixels of space above and below the number for separation */
+}
+
+/* Stats Card Paragraph: Styles the description text in stats cards */
+.stats-card p {
+    font-size: 14px; /* Sets the text size to 14 pixels, smaller for a subtle description */
+    color: #666; /* Uses medium gray text (#666) to match other paragraph styles */
+}
+
+/* Quick Action Cards Section: Styles the section for quick action buttons */
+#quickActions {
+    margin: 20px 0; /* Adds 20 pixels of space above and below the actions section for separation */
+}
+
+/* Actions Grid: Styles the layout for action cards */
+.actions-grid {
+    display: grid; /* Uses a grid layout to arrange action cards in a structured way */
+    grid-template-columns: repeat(4, 1fr); /* Creates 4 equal-width columns for action cards */
+    gap: 20px; /* Adds 20 pixels of space between cards for a clean layout */
+}
+
+/* Action Card: Styles individual action cards */
+.action-card {
+    background-color: #fff; /* Sets a white background to match stats cards */
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) border to define card edges */
+    padding: 15px; /* Adds 15 pixels of space inside the card to keep content neat */
+    text-align: center; /* Centers all text and content for a balanced look */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the card look raised */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon, showing the card is clickable */
+    text-decoration: none; /* Removes the default underline if the card is a link */
+    color: #333; /* Sets text to dark gray (#333) to match the body text */
+}
+
+/* Action Card Hover: Changes action card appearance when hovered */
+.action-card:hover {
+    background-color: #f4f4f4; /* Changes to a light gray background (#f4f4f4) on hover to match the destinations section */
+}
+
+/* Action Card Heading: Styles the <h3> title in action cards */
+.action-card h3 {
+    font-size: 16px; /* Sets the text size to 16 pixels, slightly smaller than stats card headings */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the heading for separation */
+}
+
+/* Action Card Paragraph: Styles the description text in action cards */
+.action-card p {
+    font-size: 14px; /* Sets the text size to 14 pixels, matching stats card descriptions */
+    color: #666; /* Uses medium gray text (#666) to match other paragraph styles */
+}
+
+/* Bus Schedule Viewer Section: Styles the section showing bus schedules */
+#busSchedule {
+    margin: 20px 0; /* Adds 20 pixels of space above and below the schedule section for separation */
+}
+
+/* Schedule Table: Styles the table displaying bus schedules */
+.schedule-table {
+    width: 100%; /* Makes the table stretch to the full width of its container */
+    border-collapse: collapse; /* Removes gaps between table cells for a tight, clean look */
+    background-color: #fff; /* Sets a white background to match the dashboard container */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a modern appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow (10px blur, 10% dark) to make the table look raised */
+}
+
+/* Schedule Table Cells: Styles table headers (th) and data cells (td) */
+.schedule-table th, .schedule-table td {
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) border to define cell edges */
+    padding: 10px; /* Adds 10 pixels of space inside cells for readability */
+    text-align: left; /* Aligns text to the left inside cells for a standard table layout */
+}
+
+/* Schedule Table Headers: Styles the header row of the schedule table */
+.schedule-table th {
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the header section */
+    color: #fff; /* Sets text to white for contrast against the dark background */
+}
+
+/* Schedule Table Even Rows: Styles alternating rows for better readability */
+.schedule-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Sets a light gray background (#f9f9f9) for even-numbered rows to create a striped effect */
+}
+
+/* Book Button: Styles the “Book Now” button in the schedule table */
+.book-btn {
+    background-color: green; /* Sets a green background to indicate a positive action (booking) */
+    color: #fff; /* Sets text to white for contrast against the green background */
+    padding: 8px 12px; /* Adds 8 pixels of top/bottom space and 12 pixels of left/right space for a compact button */
+    text-decoration: none; /* Removes the default underline if the button is a link */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a modern look */
+}
+
+/* Book Button Hover: Changes the button appearance when hovered */
+.book-btn:hover {
+    background-color: #e04385; /* Changes to a darker pink (#e04385) on hover to match the try-free button’s hover style */
+}
+
+/* Back Button Styling: Styles the back button for navigation */
+.back-btn {
+    display: inline-block; /* Makes the button sit inline but respect width and padding */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    font-size: 16px; /* Sets the text size to 16 pixels for readability */
+    font-weight: 500; /* Uses a medium-bold font weight for a strong but not heavy look */
+    color: #ffffff; /* Sets text to white for contrast */
+    background: linear-gradient(90deg, #2c3e50, #3498db); /* Creates a gradient background from dark blue (#2c3e50) to lighter blue (#3498db) for visual appeal */
+    border: none; /* Removes any default border for a smooth appearance */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a modern look */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon when hovering, showing it’s clickable */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a small shadow (2px down, 5px blur, 20% dark) to make the button look raised */
+    transition: background 0.3s ease, transform 0.2s ease; /* Makes background and movement changes happen smoothly over 0.3 and 0.2 seconds */
+    margin: 5px 0; /* Adds 10 pixels of space above and below the button for separation */
+}
+
+/* Back Button Hover: Changes the button appearance when hovered */
+.back-btn:hover {
+    background: linear-gradient(90deg, #3498db, #2c3e50); /* Reverses the gradient direction on hover for a dynamic effect */
+    transform: translateY(-2px); /* Moves the button up 2 pixels when hovered to create a lifted effect */
+}
+
+/* Back Button Active: Changes the button appearance when clicked */
+.back-btn:active {
+    transform: translateY(0); /* Returns the button to its original position when clicked */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Reduces the shadow (1px down, 3px blur) to show the button is pressed */
+}
+
+/* Light Theme Adjustments: Ensures back button visibility on light backgrounds */
+@media (prefers-color-scheme: light) {
+    .back-btn {
+        color: #ffffff; /* Keeps text white for contrast */
+        background: linear-gradient(90deg, #34495e, #2980b9); /* Uses a slightly darker gradient for better visibility on light backgrounds */
+    }
+}
+
+/* Dark Theme Adjustments: Ensures back button visibility on dark backgrounds */
+@media (prefers-color-scheme: dark) {
+    .back-btn {
+        color: #ffffff; /* Keeps text white for contrast */
+        background: linear-gradient(90deg, #2c3e50, #3498db); /* Maintains the original gradient for dark backgrounds */
+    }
+}
+
+/* Responsive Styles: Adjusts the layout for different screen sizes to ensure usability on mobile and tablet devices */
+
+/* Mobile Devices (up to 600px): Styles for small screens like phones */
+@media screen and (max-width: 600px) {
+    /* Hamburger menu and navigation: Styles the mobile menu icon and behavior */
+    .hamburger {
+        display: block; /* Shows the hamburger icon (three lines) on mobile screens */
+        font-size: 1.5rem; /* Sets the icon size to 24 pixels (1.5rem) for easy tapping */
+        color: #fff; /* Sets the icon to white to match the navigation text */
+        cursor: pointer; /* Changes the mouse cursor to a hand icon, showing it’s clickable */
+    }
+    nav ul {
+        display: none; /* Hides the navigation links by default on mobile */
+        flex-direction: column; /* Stacks links vertically when shown for a mobile-friendly menu */
+        width: 100%; /* Makes the menu stretch across the full screen width */
+    }
+    nav ul.active {
+        display: flex; /* Shows the navigation links when the hamburger icon is clicked */
+    }
+    nav ul li {
+        margin: 10px 0; /* Adds 10 pixels of vertical space between menu items for separation */
+    }
+    nav ul li a {
+        font-size: 1.1rem; /* Sets the link text size to 17.6 pixels (1.1rem) for better readability on mobile */
+    }
+    .dropdown {
+        position: static; /* Removes absolute positioning so the dropdown fits within the mobile menu */
+        max-width: 90%; /* Limits the dropdown width to 90% of the screen for a comfortable fit */
+        box-shadow: none; /* Removes the shadow to simplify the mobile design */
+    }
+    .dropdown li a {
+        padding: 8px; /* Reduces padding to 8 pixels for a compact dropdown on mobile */
+    }
+    .try-free-btn {
+        width: 100%; /* Makes the “Try for Free” button stretch across the full width for easy tapping */
+        margin-top: 10px; /* Adds 10 pixels of space above the button for separation */
+    }
+
+    /* Dashboard container: Adjusts the dashboard layout for mobile */
+    .dashboard-container {
+        width: 100%; /* Makes the container stretch to the full screen width */
+        padding: 10px; /* Reduces padding to 10 pixels to save space on small screens */
+        box-sizing: border-box; /* Ensures padding is included in the width to prevent overflow */
+        overflow-x: hidden; /* Prevents content from spilling out horizontally */
+    }
+
+    /* All tables within dashboard container: Adjusts table behavior for mobile */
+    .dashboard-container table {
+        width: 100%; /* Makes tables stretch to the full width of the container */
+        overflow-x: auto; /* Allows horizontal scrolling if the table is too wide */
+        display: block; /* Makes the table a block element to enable scrolling */
+    }
+
+    /* Table cells: Adjusts cell styling for mobile */
+    .dashboard-container th, .dashboard-container td {
+        min-width: 80px; /* Sets a minimum cell width of 80 pixels to ensure content fits */
+        padding: 6px; /* Reduces padding to 6 pixels to save space */
+        font-size: 0.9rem; /* Sets the text size to 14.4 pixels (0.9rem) for readability on mobile */
+        white-space: nowrap; /* Prevents text from wrapping to keep cells compact */
+    }
+
+    /* Schedule table: Ensures the schedule table is mobile-friendly */
+    .schedule-table {
+        overflow-x: auto; /* Allows horizontal scrolling if the table is too wide */
+    }
+    .book-btn {
+        padding: 8px 12px; /* Keeps the same padding for consistency (8px top/bottom, 12px left/right) */
+        font-size: 0.9rem; /* Sets the text size to 14.4 pixels (0.9rem) for readability */
+    }
+
+    /* Stats cards: Adjusts the stats grid for mobile */
+    .stats-grid {
+        grid-template-columns: repeat(1, 1fr); /* Uses a single column to stack cards vertically */
+    }
+    .stats-card {
+        padding: 15px; /* Keeps 15 pixels of padding for a touch-friendly size */
+    }
+    .stats-value {
+        font-size: 1.2rem; /* Sets the text size to 19.2 pixels (1.2rem) for readability */
+    }
+
+    /* Quick action cards: Adjusts the actions grid for mobile */
+    .actions-grid {
+        grid-template-columns: repeat(1, 1fr); /* Uses a single column to stack cards vertically */
+    }
+    .action-card {
+        padding: 15px; /* Keeps 15 pixels of padding for a touch-friendly size */
+        font-size: 1.1rem; /* Sets the text size to 17.6 pixels (1.1rem) for readability */
+    }
+
+    /* Forms: Adjusts form styling for mobile */
+    form {
+        max-width: 90%; /* Limits the form width to 90% of the screen for a comfortable fit */
+    }
+    .form-row {
+        flex-direction: column; /* Stacks fields vertically instead of side by side */
+    }
+    form input, form select, form button {
+        font-size: 1.1rem; /* Sets the text size to 17.6 pixels (1.1rem) for easy reading and tapping */
+        padding: 10px; /* Keeps 10 pixels of padding for a touch-friendly size */
+    }
+
+    /* Hero section: Adjusts the hero section for mobile */
+    .hero {
+        padding: 50px 10px; /* Reduces padding to 50 pixels top/bottom and 10 pixels left/right to save space */
+    }
+    .hero-content {
+        max-width: 90%; /* Limits the content width to 90% of the screen for a comfortable fit */
+    }
+    .hero h2 {
+        font-size: 1.8rem; /* Sets the text size to 28.8 pixels (1.8rem) for a smaller but readable heading */
+    }
+    .hero p {
+        font-size: 1.2rem; /* Sets the text size to 19.2 pixels (1.2rem) for readability */
+    }
+
+    /* Features, destinations, testimonials: Adjusts card sections for mobile */
+    .feature-item, .destination-item, .testimonial-item {
+        max-width: 90%; /* Limits the width to 90% of the screen for a comfortable fit */
+        margin: 10px; /* Reduces margin to 10 pixels to save space */
+        padding: 15px; /* Reduces padding to 15 pixels for a compact layout */
+    }
+    .feature-list, .destination-list, .testimonial-list {
+        flex-direction: column; /* Stacks items vertically instead of side by side */
+        align-items: center; /* Centers items horizontally for a balanced look */
+    }
+
+    /* Footer: Adjusts the footer for mobile */
+    footer {
+        position: relative; /* Removes fixed positioning to prevent overlap with content */
+    }
+    body {
+        padding-bottom: 50px; /* Adds 50 pixels of space at the bottom of the page to prevent footer overlap */
+    }
+}
+
+/* Tablet Devices (601px to 1024px): Styles for medium screens like tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Navigation: Adjusts the navigation for tablets */
+    .hamburger {
+        display: none; /* Hides the hamburger icon since the full menu is shown on tablets */
+    }
+    nav ul {
+        display: flex; /* Shows the navigation links side by side as on desktop */
+    }
+    .dropdown {
+        max-width: 200px; /* Restores the dropdown width to 200 pixels for tablet screens */
+        position: absolute; /* Restores absolute positioning for dropdowns to appear below menu items */
+    }
+
+    /* Stats cards: Adjusts the stats grid for tablets */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr); /* Uses two columns to arrange cards side by side */
+    }
+
+    /* Quick action cards: Adjusts the actions grid for tablets */
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr); /* Uses two columns to arrange cards side by side */
+    }
+
+    /* Hero section: Adjusts the hero section for tablets */
+    .hero {
+        padding: 70px 20px; /* Uses 70 pixels of top/bottom padding and 20 pixels of left/right padding for a balanced look */
+    }
+    .hero h2 {
+        font-size: 2.5rem; /* Sets the text size to 40 pixels (2.5rem) for a medium-sized heading */
+    }
+    .hero p {
+        font-size: 1.5rem; /* Sets the text size to 24 pixels (1.5rem) for readability */
+    }
+
+    /* Tables: Ensures tables are tablet-friendly */
+    .dashboard-container table {
+        width: 100%; /* Makes tables stretch to the full width of the container */
+        overflow-x: auto; /* Allows horizontal scrolling if the table is too wide */
+        display: block; /* Makes the table a block element to enable scrolling */
+    }
+}
+
+/* Stat Icon Styles: Styles icons in stats cards */
+.stat-icon {
+    display: block; /* Makes the icon take its own line for proper centering */
+    font-size: 2rem; /* Sets the icon size to 32 pixels (2rem) for visibility on desktop */
+    color: #4da3ff; /* Sets the icon color to a light blue (#4da3ff) to match buttons */
+    text-align: center; /* Centers the icon horizontally in the card */
+    margin-bottom: 5px; /* Adds 5 pixels of space below the icon for separation */
+}
+
+/* Responsive Adjustments for Stat Icons: Adjusts stat icons for mobile */
+@media screen and (max-width: 600px) {
+    .stat-icon {
+        font-size: 1.5rem; /* Reduces the icon size to 24 pixels (1.5rem) for mobile screens */
+    }
+    .stats-card {
+        padding: 10px; /* Reduces padding to 10 pixels to fit content better on small screens */
+    }
+    .stats-value {
+        font-size: 1.1rem; /* Sets the text size to 17.6 pixels (1.1rem) for readability */
+    }
+}
+
+/* Action Icon Styles: Styles icons in action cards */
+.action-icon {
+    display: block; /* Makes the icon take its own line for proper centering */
+    font-size: 2rem; /* Sets the icon size to 32 pixels (2rem) for visibility on desktop */
+    color: #4da3ff; /* Sets the icon color to a light blue (#4da3ff) to match buttons */
+    text-align: center; /* Centers the icon horizontally in the card */
+    margin-bottom: 5px; /* Adds 5 pixels of space below the icon for separation */
+}
+
+/* Responsive Adjustments for Action Icons: Adjusts action icons for mobile */
+@media screen and (max-width: 600px) {
+    .action-icon {
+        font-size: 1.5rem; /* Reduces the icon size to 24 pixels (1.5rem) for mobile screens */
+    }
+    .action-card {
+        padding: 10px; /* Reduces padding to 10 pixels to fit content better on small screens */
+    }
+    .action-card h3 {
+        font-size: 1.1rem; /* Sets the text size to 17.6 pixels (1.1rem) for readability */
+    }
+}
+
+/* Logo Image Styles: Styles the logo image in the header */
+.logo-img {
+    max-width: 120px; /* Limits the logo width to 120 pixels to fit the header */
+    max-height: 40px; /* Limits the logo height to 40 pixels to match the header’s height */
+    height: auto; /* Keeps the logo’s proportions correct by adjusting height based on width */
+    display: block; /* Makes the logo take its own line for proper alignment */
+}
+
+/* Responsive Adjustments for Logo and Header: Adjusts the logo and header for mobile */
+@media screen and (max-width: 600px) {
+    .logo-img {
+        max-width: 80px; /* Reduces the logo width to 80 pixels for mobile screens */
+        max-height: 27px; /* Reduces the logo height to 27 pixels, maintaining a 3:1 ratio */
+    }
+    header {
+        padding: 8px 15px; /* Reduces padding to 8 pixels top/bottom and 15 pixels left/right for a compact header */
+        min-height: 35px; /* Reduces the minimum header height to 35 pixels for mobile */
+    }
+}
+
+/* Custom Icon Styles: Styles custom SVG icons used in the dashboard */
+.custom-icon {
+    display: block; /* Makes the icon take its own line for proper centering */
+    width: 2rem; /* Sets the icon width to 32 pixels (2rem) for visibility */
+    height: 2rem; /* Sets the icon height to 32 pixels, keeping it square */
+    object-fit: contain; /* Ensures the SVG icon fits within the 32x32 pixel area without stretching */
+    margin: 0 auto 5px auto; /* Centers the icon horizontally and adds 5 pixels of space below */
+}
+
+/* Responsive Adjustments for Custom Icons: Adjusts custom icons for mobile */
+@media screen and (max-width: 600px) {
+    .custom-icon {
+        width: 1.5rem; /* Reduces the icon width to 24 pixels (1.5rem) for mobile screens */
+        height: 1.5rem; /* Reduces the icon height to 24 pixels, keeping it square */
+    }
+    .stats-card, .action-card {
+        padding: 10px; /* Reduces padding to 10 pixels to fit content better on small screens */
+    }
+    .stats-value, .action-card h3 {
+        font-size: 1.1rem; /* Sets the text size to 17.6 pixels (1.1rem) for readability */
+    }
+}
+
+/* Help Prompt Styling: Styles a prompt or instruction text in the dashboard */
+.help-prompt {
+    color: #333333; /* Sets text to dark gray (#333333) for clear readability on light backgrounds */
+    font-weight: 600; /* Makes the text slightly bold to draw attention */
+    font-size: 1.1rem; /* Sets the text size to 17.6 pixels (1.1rem) for emphasis */
+    margin-bottom: 1rem; /* Adds 16 pixels (1rem) of space below to separate from other content */
+    padding: 0.5rem 1rem; /* Adds 8 pixels (0.5rem) of top/bottom space and 16 pixels (1rem) of left/right space for a clean look */
+    background-color: #f8f9fa; /* Sets a light gray background (#f8f9fa) to highlight the prompt slightly */
+    border-radius: 4px; /* Rounds the corners by 4 pixels for a modern appearance */
+    border: 1px solid #e0e0e0; /* Adds a 1-pixel, solid, light gray (#e0e0e0) border to define the prompt */
+    line-height: 1.5; /* Adds extra space between lines (1.5 times the font size) to make text easier to read */
+}
+
+/* Responsive Adjustments for Help Prompt: Adjusts the help prompt for mobile */
+@media (max-width: 600px) {
+    .help-prompt {
+        font-size: 0.95rem; /* Reduces the text size to 15.2 pixels (0.95rem) for mobile readability */
+        padding: 0.4rem 0.8rem; /* Reduces padding to 6.4 pixels top/bottom and 12.8 pixels left/right for a compact look */
+        margin-bottom: 0.8rem; /* Reduces the bottom margin to 12.8 pixels (0.8rem) to save space */
+    }
+}
+/* Button Styling: Styles buttons used for actions like viewing or downloading tickets */
+.button {
+    margin: 5px 5px; /* Adds 15 pixels of vertical space and 5 pixels of horizontal space for button separation */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the header’s sleek style */
+    color: white; /* Sets text to white for contrast against the dark background */
+    border: none; /* Removes the default border for a smooth, modern look */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a polished appearance */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon, showing the button is clickable */
+}
+
+/* A style rule to format search inputs across pages */
+/* - Styles the search input to match the button’s appearance. */
+.search-input {
+    margin: 5px 5px; /* Sets 5 pixels of space around the input for separation */
+    padding: 5px 5px; /* Sets 10 pixels top/bottom, 20 pixels left/right for consistency with buttons */
+    background-color: white; /* Sets a white background for contrast with dark-themed buttons */
+    color: #1a1a1a; /* Sets text to dark for readability on white background */
+    border: 1px solid #1a1a1a; /* Adds a dark border to match the button’s theme */
+    border-radius: 5px; /* Rounds corners by 5 pixels to match buttons */
+    width: 100%; /* Sets full width for small screens */
+    max-width: 150px; /* Limits width to 300 pixels for larger screens */
+}
+

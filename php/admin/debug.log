@@ -1,0 +1,20 @@
+Starting deleteBus.php
+Bus ID: 185
+Starting transaction
+Payment deletion executed
+Booking deletion executed
+Schedule deletion executed
+Maintenance deletion executed
+Bus deletion executed
+Transaction committed
+Connection closed
+Starting deleteBus.php
+Bus ID: 186
+Starting transaction
+Payment deletion executed
+Booking deletion executed
+Schedule deletion executed
+Maintenance deletion executed
+Bus deletion executed
+Transaction committed
+Connection closed

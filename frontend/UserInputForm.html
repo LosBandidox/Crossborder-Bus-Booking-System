@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Entry Form</title>
+    <link rel="stylesheet" href="../assets/css/InputStyles.css">
+    <script src="../assets/js/formValidation.js"></script>
+</head>
+<body>
+    <h1>User Data Entry Form</h1>
+    <form action="../php/UserInputForm.php" method="POST" onsubmit="return validateUserForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password"><br><br>
+
+        <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="">Select Role</option>
+            <option value="Customer">Customer</option>
+            <option value="Driver">Driver</option>
+            <option value="Co-Driver">Co-Driver</option>
+            <option value="Technician">Technician</option>
+            <option value="Cashier">Cashier</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

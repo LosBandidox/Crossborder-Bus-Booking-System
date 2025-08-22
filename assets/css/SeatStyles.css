@@ -1,0 +1,230 @@
+/* Seat layout styling: Controls the area where the bus seat grid is displayed for the International Bus Booking System */
+#seatLayout {
+    display: flex; /* Uses flexbox, a way to arrange items neatly, to control how seat rows are placed */
+    flex-direction: column; /* Stacks seat rows vertically, one on top of the other, like rows in a bus */
+    gap: 5px; /* Adds 5 pixels of space between each row to keep them slightly apart for clarity */
+    align-items: center; /* Centers the rows horizontally in the seat layout area, making the seat grid look balanced */
+    margin-top: 20px; /* Adds 20 pixels of space above the seat layout to separate it from other content, like a heading or button */
+}
+
+/* Styling for each row of seats: Controls how seats are arranged within a single row */
+.row {
+    display: flex; /* Uses flexbox to place seats side by side in a horizontal line within the row */
+    gap: 5px; /* Adds 5 pixels of space between seats in the row, so they don’t touch and look neat */
+}
+
+/* Styling for individual seats: Defines how each seat looks and behaves */
+.seat {
+    width: 40px; /* Sets the seat’s width to 40 pixels, making it a small, square shape to represent a bus seat */
+    height: 40px; /* Sets the seat’s height to 40 pixels, keeping it square for a uniform look */
+    display: flex; /* Uses flexbox to control the seat number’s position inside the seat */
+    align-items: center; /* Centers the seat number vertically inside the 40-pixel height, so it sits in the middle */
+    justify-content: center; /* Centers the seat number horizontally inside the 40-pixel width, keeping it balanced */
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) line around the seat to show its edges clearly */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon when hovering, showing the seat can be clicked to select it */
+    font-size: 12px; /* Sets the seat number’s text size to 12 pixels, small but readable inside the seat */
+    font-weight: bold; /* Makes the seat number text bold so it stands out clearly */
+    border-radius: 5px; /* Rounds the seat’s corners by 5 pixels for a smooth, modern look instead of sharp edges */
+    transition: background-color 0.3s ease; /* Makes background color changes (like when selecting a seat) happen smoothly over 0.3 seconds for a nice visual effect */
+}
+
+/* Styling for available seats: Applies to seats with the .available class, showing they can be booked */
+.seat.available {
+    background-color: #28a745; /* Sets a green background (#28a745) to show the seat is free for booking */
+    color: white; /* Sets the seat number text to white for clear contrast against the green background */
+    border: 2px solid #1e7e34; /* Adds a 2-pixel, solid, darker green (#1e7e34) border to make the seat stand out more */
+}
+
+/* Styling for booked seats: Applies to seats with the .booked class, showing they are already taken */
+.seat.booked {
+    background-color: #dc3545; /* Sets a red background (#dc3545) to show the seat is booked and unavailable */
+    color: white; /* Sets the seat number text to white for clear contrast against the red background */
+    border: 2px solid #a71d2a; /* Adds a 2-pixel, solid, darker red (#a71d2a) border to emphasize the booked status */
+}
+
+/* Styling for selected seats: Applies to seats with the .selected class, showing they are chosen by the user */
+.seat.selected {
+    background-color: #007bff !important; /* Sets a blue background (#007bff) to show the seat is selected, with !important to make sure this style wins over others */
+    color: white !important; /* Sets the seat number text to white for contrast, with !important to ensure it overrides other styles */
+}
+
+/* Styling for the walkway: Represents empty spaces (aisles) between seats in the bus layout */
+.walkway {
+    width: 40px; /* Sets the width to 40 pixels, matching seats to keep the grid aligned properly */
+    height: 40px; /* Sets the height to 40 pixels, matching seats for consistent grid spacing */
+    visibility: hidden; /* Hides the walkway so it’s invisible but still takes up space in the grid to keep the layout correct */
+}
+
+/* Styling for the body: Controls the overall look and layout of the entire page */
+body {
+    display: flex; /* Uses flexbox to arrange page content (like the seat layout or buttons) neatly */
+    flex-direction: column; /* Stacks all content vertically, from top to bottom, like a list */
+    align-items: center; /* Centers all content horizontally, making the page look balanced */
+    justify-content: center; /* Centers all content vertically, so the seat layout sits in the middle of the page */
+    min-height: 100vh; /* Makes the page at least as tall as the browser window (100% viewport height), so the background covers everything */
+    margin: 0; /* Removes default browser spacing around the page to let content reach the edges */
+    font-family: Arial, sans-serif; /* Sets the text font to Arial, with a backup sans-serif font if Arial isn’t available, for a clean look */
+    background:linear-gradient(to bottom right, #a1c4fd, #c2a1fd); /* Creates a gradient background from light blue (#a1c4fd) to light purple (#c2a1fd) for a modern, colorful look */
+    padding: 20px; /* Adds 20 pixels of space inside the page edges so content doesn’t touch the browser window */
+}
+
+/* Styling for the submit button: Applies to buttons used to submit the seat selection */
+button[type="submit"] {
+    background-color: #007bff; /* Sets a blue background (#007bff) to match the system’s color scheme and show it’s an important action */
+    color: white; /* Sets the button text to white for clear contrast against the blue background */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space inside the button for a bigger, clickable area */
+    border: none; /* Removes any default border so the button looks smooth and clean */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a modern, friendly appearance */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon when hovering, showing the button can be clicked */
+    font-size: 16px; /* Sets the button text size to 16 pixels, making it easy to read */
+    margin-top: 5px; /* Adds 5 pixels of space above the button to separate it from other content */
+    position: relative; /* Allows the button to be positioned relative to its normal spot, useful for adding effects like tooltips later */
+}
+
+/* Styling for the disabled submit button: Applies when the submit button can’t be clicked */
+button[type="submit"]:disabled {
+    background-color: #ccc; /* Sets a gray background (#ccc) to show the button is inactive and can’t be used */
+    cursor: not-allowed; /* Changes the mouse cursor to a “not-allowed” sign (crossed circle) to show the button isn’t clickable */
+}
+
+/* Styling for the seat container: A wrapper div that holds the seat layout */
+#seatContainer {
+    display: flex; /* Uses flexbox to control the placement of the seat layout inside it */
+    flex-direction: column; /* Stacks the seat layout vertically, ensuring it aligns properly */
+    align-items: center; /* Centers the seat layout horizontally inside the container for a balanced look */
+}
+
+/* Styling for the seat key: Shows a legend explaining what available, booked, and selected seats look like */
+#seatKey {
+    position: absolute; /* Places the seat key in a specific spot on the page, separate from other content */
+    left: 20px; /* Positions the seat key 20 pixels from the left edge of the page, putting it on the left side */
+    top: 80px; /* Positions it 80 pixels from the top, lining up with the seat layout and leaving room for a title */
+    display: flex; /* Uses flexbox to arrange the seat key items (like available or booked indicators) */
+    flex-direction: column; /* Stacks the key items vertically, one below the other, for a clear list */
+    gap: 10px; /* Adds 10 pixels of space between key items to keep them separated and easy to read */
+    align-items: flex-start; /* Aligns key items to the left edge of the seat key for a neat, organized look */
+}
+
+/* Styling for each key item: Controls how each legend item (e.g., available seat) looks */
+.key-item {
+    display: flex; /* Uses flexbox to place the seat icon and its text side by side */
+    align-items: center; /* Centers the icon and text vertically so they line up neatly */
+    margin: 10px 0; /* Adds 10 pixels of space above and below each key item for separation */
+}
+
+/* Styling for the seat in the key: Styles the small seat icon shown in the legend */
+.key-item .seat {
+    width: 20px; /* Sets the width to 20 pixels, half the size of regular seats to keep the legend small */
+    height: 20px; /* Sets the height to 20 pixels, keeping it square like regular seats */
+    display: inline-block; /* Makes the icon sit inline with the text, acting like a small block for size control */
+    margin-right: 10px; /* Adds 10 pixels of space to the right of the icon to separate it from the text */
+    border: 1px solid #ccc; /* Adds a 1-pixel, light gray (#ccc) border to match regular seats */
+    border-radius: 3px; /* Rounds the corners by 3 pixels, slightly less than regular seats for a compact look */
+}
+
+/* Styling for the available seat in the key: Shows the green icon for available seats in the legend */
+.key-item .seat.available {
+    background-color: #28a745; /* Sets a green background (#28a745) to match the available seat style */
+}
+
+/* Styling for the booked seat in the key: Shows the red icon for booked seats in the legend */
+.key-item .seat.booked {
+    background-color: #dc3545; /* Sets a red background (#dc3545) to match the booked seat style */
+}
+
+/* Styling for the selected seat in the key: Shows the blue icon for selected seats in the legend */
+.key-item .seat.selected {
+    background-color: #007bff; /* Sets a blue background (#007bff) to match the selected seat style */
+}
+
+/* Styling for the main heading: Applies to the <h1> title of the page */
+h1 {
+    margin-bottom: 5px; /* Adds 5 pixels of space below the heading to separate it from content below, like the seat layout */
+}
+
+/* Styling for the back button: Applies to buttons that let users go back to the previous page */
+button.back-btn {
+    background-color: #6c757d; /* Sets a gray background (#6c757d) to show it’s a secondary action, different from the submit button */
+    color: white; /* Sets the text to white for clear contrast against the gray background */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    border: none; /* Removes any default border for a clean, smooth look */
+    border-radius: 5px; /* Rounds the corners by 5 pixels to match other buttons for consistency */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon when hovering, showing it’s clickable */
+    font-size: 16px; /* Sets the text size to 16 pixels, matching the submit button for a uniform look */
+    margin-bottom: 10px; /* Adds 10 pixels of space below the button to separate it from other content */
+}
+
+/* Styling for the seat key title: Styles the <h2> title saying “Seat Key” in the legend */
+#seatKey h2 {
+    margin: 0; /* Removes default browser spacing around the title to keep the legend tight */
+    font-size: 16px; /* Sets the text size to 16 pixels, smaller than the main heading but bigger than key text for clarity */
+    font-weight: bold; /* Makes the title text bold to match the seat numbers and stand out */
+    color: #333; /* Sets a dark gray text color (#333) for easy reading against the light background */
+}
+
+/* Styling for the help section: Places a help section with instructions on the right side */
+#helpSection {
+    position: absolute; /* Places the help section in a specific spot on the page, separate from other content */
+    right: 20px; /* Positions it 20 pixels from the right edge of the page, keeping it on the right side */
+    top: 80px; /* Positions it 80 pixels from the top to line up with the seat key and seat layout */
+    display: flex; /* Uses flexbox to arrange the help title and text neatly */
+    flex-direction: column; /* Stacks the title and text vertically for a clear layout */
+    gap: 10px; /* Adds 10 pixels of space between the title and text for separation */
+    align-items: flex-start; /* Aligns the title and text to the left side of the help section for a neat look */
+    max-width: 200px; /* Limits the width to 200 pixels so the help section stays small and doesn’t overlap other content */
+}
+
+/* Styling for the help section title: Styles the <h2> title saying “Help” */
+#helpSection h2 {
+    margin: 0; /* Removes default browser spacing around the title to keep the help section compact */
+    font-size: 16px; /* Sets the text size to 16 pixels, matching the seat key title for consistency */
+    font-weight: bold; /* Makes the title text bold to match the seat key title and stand out */
+    color: #333; /* Sets a dark gray text color (#333) for clear reading against the light background */
+}
+
+/* Styling for the help section text: Styles the <p> text with instructions in the help section */
+#helpSection p {
+    margin: 0; /* Removes default browser spacing to keep the text tight and aligned with the title */
+    font-size: 14px; /* Sets the text size to 14 pixels, smaller than the title to show it’s less important */
+    color: #333; /* Sets a dark gray text color (#333) for easy reading against the light background */
+    line-height: 1.4; /* Adds a bit of extra space between lines (1.4 times the text size) to make the instructions easier to read */
+}
+
+/* Styling for the driver seat: Represents the driver’s seat, usually at the front right in Kenyan buses */
+.driver-seat {
+    width: 40px; /* Sets the width to 40 pixels, matching regular seats to keep the grid aligned */
+    height: 40px; /* Sets the height to 40 pixels, matching regular seats for a uniform grid */
+    display: flex; /* Uses flexbox to position the “Driver” text inside the seat */
+    align-items: center; /* Centers the “Driver” text vertically inside the 40-pixel height */
+    justify-content: center; /* Centers the “Driver” text horizontally inside the 40-pixel width */
+    background-color: #6c757d; /* Sets a gray background (#6c757d) to show it’s different from passenger seats */
+    color: white; /* Sets the text to white for clear contrast against the gray background */
+    border: 2px solid #5a6268; /* Adds a 2-pixel, solid, darker gray (#5a6268) border to make it stand out */
+    font-size: 12px; /* Sets the “Driver” text size to 12 pixels, matching seat numbers for consistency */
+    font-weight: bold; /* Makes the text bold to match seat numbers and stand out */
+    border-radius: 5px; /* Rounds the corners by 5 pixels to match regular seats for a uniform look */
+    cursor: default; /* Uses a normal arrow cursor to show the driver seat can’t be clicked */
+}
+
+/* Styling for the door: Represents the bus door, usually at the front left in Kenyan buses */
+.door {
+    width: 40px; /* Sets the width to 40 pixels, matching seats to keep the grid aligned */
+    height: 40px; /* Sets the height to 40 pixels, matching seats for a uniform grid */
+    display: flex; /* Uses flexbox to position the “Door” text inside the element */
+    align-items: center; /* Centers the “Door” text vertically inside the 40-pixel height */
+    justify-content: center; /* Centers the “Door” text horizontally inside the 40-pixel width */
+    background-color: transparent; /* Makes the background see-through to show it’s not a seat */
+    border: 2px dashed #6c757d; /* Adds a 2-pixel, dashed, gray (#6c757d) border to represent the door clearly */
+    color: #6c757d; /* Sets the “Door” text to gray to match the border for consistency */
+    font-size: 12px; /* Sets the text size to 12 pixels, matching seat numbers for uniformity */
+    font-weight: bold; /* Makes the text bold to match seat numbers and stand out */
+    border-radius: 5px; /* Rounds the corners by 5 pixels to match seats for a consistent look */
+    cursor: default; /* Uses a normal arrow cursor to show the door can’t be clicked */
+}
+
+/* Styling for empty space in the first row: Represents blank spaces in the bus layout for alignment */
+.empty-space {
+    width: 40px; /* Sets the width to 40 pixels, matching seats to keep the grid aligned */
+    height: 40px; /* Sets the height to 40 pixels, matching seats for a uniform grid */
+    visibility: hidden; /* Hides the space so it’s invisible but still takes up room in the grid to keep everything aligned */
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+        <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+    </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li>
+                    <a href="#">Others</a>
+                    <ul class="dropdown">
+                        <li><a href="admin_bookings.html">Bookings</a></li>
+                        <li><a href="admin_payments.html">Payments</a></li>
+                        <li><a href="admin_customers.html">Customer</a></li>
+                        <li><a href="admin_staff.html">Staff</a></li>
+                        <li><a href="admin_reports.html">Reports</a></li>
+                        <li><a href="admin_activity.html">View Logs</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="../../../php/Logout.php" class="try-free-btn">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="filter-section">
+            <label for="period">Select Period:</label>
+            <select id="period" onchange="setDateRange()">
+                <option value="custom">Custom Range</option>
+                <option value="last_month">Last Month</option>
+                <option value="last_year">Last Year</option>
+                <option value="q1">1st Quarter</option>
+                <option value="q2">2nd Quarter</option>
+                <option value="q3">3rd Quarter</option>
+                <option value="q4">4th Quarter</option>
+            </select>
+            <label for="startDate">Start Date:</label>
+            <input type="text" id="startDate" name="startDate" placeholder="dd-mm-yyyy" oninput="formatDate(this)">
+            <label for="endDate">End Date:</label>
+            <input type="text" id="endDate" name="endDate" placeholder="dd-mm-yyyy" oninput="formatDate(this)">
+            <button onclick="fetchAllReports()">Filter</button>
+        </div>
+
+        <div class="report-links">
+            <a href="#systemUsageReport" class="btn">System Usage Report</a>
+            <a href="#revenueReports" class="btn">Revenue Reports</a>
+            <a href="#userActivityReport" class="btn">User Activity Report</a>
+            <a href="#bookingSummaryReport" class="btn">Booking Summary Report</a>
+            <a href="#maintenanceReport" class="btn">Maintenance Report</a>
+            <a href="#bookingStatusReport" class="btn">Booking Status Report</a>
+            <a href="#busUtilizationReport" class="btn">Bus Utilization Report</a>
+            <a href="#routePopularityReport" class="btn">Route Popularity Report</a>
+            <a href="#driversActivityReport" class="btn">Staff Activity Report</a>
+            <button class="back-btn" onclick="goBack()">Back</button>
+        </div>
+
+
+        <div id="systemUsageReport" class="report-section">
+            <h3>System Usage Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total Bookings</th>
+                        <th>Active Customers</th>
+                        <th>Active Staff</th>
+                        <th>Active Buses</th>
+                    </tr>
+                </thead>
+                <tbody id="systemUsageTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="revenueReports" class="report-section">
+            <h3>Revenue Reports</h3>
+            <h4>Revenue Summary (Daily)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Total Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="revenueSummaryTableBody"></tbody>
+            </table>
+            <h4>Revenue by Route</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Route Name</th>
+                        <th>Start Location</th>
+                        <th>Destination</th>
+                        <th>Total Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="revenueByRouteTableBody"></tbody>
+            </table>
+            <h4>Revenue by Payment Mode</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Payment Mode</th>
+                        <th>Total Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="revenueByPaymentModeTableBody"></tbody>
+            </table>
+            <h4>Revenue by Nationality</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nationality</th>
+                        <th>Total Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="revenueByNationalityTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="userActivityReport" class="report-section">
+            <h3>User Activity Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity ID</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>User</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody id="userActivityTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="bookingSummaryReport" class="report-section">
+            <h3>Booking Summary Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Customer ID</th>
+                        <th>Schedule ID</th>
+                        <th>Booking Date</th>
+                        <th>Travel Date</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingSummaryTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="maintenanceReport" class="report-section">
+            <h3>Maintenance Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Maintenance ID</th>
+                        <th>Bus ID</th>
+                        <th>Service Done</th>
+                        <th>Service Date</th>
+                        <th>Cost</th>
+                        <th>Last Service Date</th>
+                        <th>Next Service Date</th>
+                        <th>Technician ID</th>
+                    </tr>
+                </thead>
+                <tbody id="maintenanceReportTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="bookingStatusReport" class="report-section">
+            <h3>Booking Status Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingStatusTableBody"></tbody>
+            </table>
+            <div id="bookingStatusChart" class="pie-container"></div>
+        </div>
+
+        <div id="busUtilizationReport" class="report-section">
+            <h3>Bus Utilization Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bus Number</th>
+                        <th>Trips Scheduled</th>
+                        <th>Seats Booked</th>
+                    </tr>
+                </thead>
+                <tbody id="busUtilizationTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="routePopularityReport" class="report-section">
+            <h3>Route Popularity Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Route Name</th>
+                        <th>Start Location</th>
+                        <th>Destination</th>
+                        <th>Bookings</th>
+                    </tr>
+                </thead>
+                <tbody id="routePopularityTableBody"></tbody>
+            </table>
+            <div id="routePopularityChart" class="pie-container"></div>
+        </div>
+
+        <div id="driversActivityReport" class="report-section">
+            <h3>Staff Activity Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Staff Name</th>
+                        <th>Role</th>
+                        <th>Trips Assigned</th>
+                    </tr>
+                </thead>
+                <tbody id="driversActivityTableBody"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../../../assets/js/admin_reports.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

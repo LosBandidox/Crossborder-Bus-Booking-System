@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the page responsive -->
+    <title>Seat Selection</title> <!-- Set the title of the page -->
+    <link rel="stylesheet" href="../../../assets/css/SeatStyles.css"> <!-- Link to the CSS file for styling -->
+</head>
+<body>
+    <!-- Main heading for the seat selection page -->
+    <h1>Select Your Seat</h1>
+    
+    <!-- Seat key section to explain seat colors -->
+    <div id="seatKey">
+        <h2>Seat Key</h2> <!-- Title for the seat key -->
+        <div class="key-item">
+            <div class="seat available"></div> Available <!-- Green seat for available seats -->
+        </div>
+        <div class="key-item">
+            <div class="seat booked"></div> Booked <!-- Red seat for booked seats -->
+        </div>
+        <div class="key-item">
+            <div class="seat selected"></div> Selected <!-- Blue seat for selected seats -->
+        </div>
+    </div>
+    
+    <!-- Container for the seat layout -->
+    <div id="seatContainer">
+        <div id="seatLayout">
+            <!-- Seat layout will be dynamically populated here by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Help section on the right to guide users -->
+    <!-- - Instructs users to select a seat and click 'Proceed to Payment'. -->
+    <!-- - Positioned on the right side, aligned with seat key and layout. -->
+    <div id="helpSection">
+        <h2>Help</h2> <!-- Title for the help section -->
+        <p>Select up to 5 seats and scroll to click 'Proceed to Payment' to complete your booking.</p> <!-- Instruction text -->
+    <button class="back-btn" onclick="history.back()">Back</button>
+    </div>
+    
+    <!-- Form to submit the selected seat and scheduleID -->
+    <!-- Updated action to point to processSeatSelection.php instead of CheckCustomer.php -->
+    <form id="seatForm" action="../../../php/processSeatSelection.php" method="GET">
+        <!-- Hidden field to store the scheduleID -->
+        <input type="hidden" id="scheduleID" name="scheduleID" value="<?php echo htmlspecialchars($_GET['scheduleID']); ?>">
+        <!-- Hidden field to store the selected seat numbers -->
+        <input type="hidden" id="seatNumbers" name="seatNumbers">
+        <!-- Added default seat count to button text -->
+        <!-- Submit button (disabled by default until seats are selected) -->
+        <button type="submit" disabled>Proceed to Payment (0 seats)</button>
+    </form>
+
+    <!-- Load the JavaScript file last to ensure the DOM is fully loaded -->
+    <script src="../../../assets/js/fetchBookedSeats.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Defines character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes page responsive -->
+    <title>Admin Dashboard</title> <!-- Sets the page title -->
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css"> <!-- Links CSS file -->  
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo">
+            <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+        </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li> <!-- Dashboard Home -->
+                <li><a href="ProfileManagement.html">Profile</a></li> <!-- Moved Profile Management to header -->
+            </ul>
+            <a href="../../../php/Logout.php" class="try-free-btn">Log out</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!--<h1>Admin Dashboard</h1> <!-- Main heading -->
+
+        <!-- Dashboard Container (Grid Layout) -->
+        <div class="dashboard-container">
+            <!-- User Management Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/users-alt_5069169.svg" alt="Users Icon" class="custom-icon">
+                <h2>User Management</h2>
+                <p>Manage customers, staff, and drivers.</p>
+                <a href="admin_users.html" class="btn">Manage Users</a>
+            </div>
+
+            <!-- Bus Management Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/bus-alt_6955518.svg" alt="Bus Icon" class="custom-icon">
+                <h2>Bus Management</h2>
+                <p>View, add, or modify bus details.</p>
+                <a href="admin_buses.html" class="btn">Manage Buses</a>
+            </div>
+
+            <!-- Route Management Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/road_5073939.svg" alt="Road Icon" class="custom-icon">
+                <h2>Route Management</h2>
+                <p>Define and update travel routes.</p>
+                <a href="admin_routes.html" class="btn">Manage Routes</a>
+            </div>
+
+            <!-- Schedule Management Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/calendar-check_7546722.svg" alt="Calendar Icon" class="custom-icon">
+                <h2>Schedule Management</h2>
+                <p>Manage bus schedules.</p>
+                <a href="admin_schedules.html" class="btn">Manage Schedules</a>
+            </div>
+
+            <!-- Booking Management Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/ticket-alt_9239352.svg" alt="Ticket Icon" class="custom-icon">
+                <h2>Booking Management</h2>
+                <p>Manage Bookings.</p>
+                <a href="admin_bookings.html" class="btn">Manage Bookings</a>
+            </div>
+
+            <!-- Payment Management Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/money_3914922.svg" alt="Money Bill Icon" class="custom-icon">
+                <h2>Payment Management</h2>
+                <p>Manage Payments.</p>
+                <a href="admin_payments.html" class="btn">Manage Payments</a>
+            </div>
+
+            <!-- Customer Management Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/user_3917711.svg" alt="User Icon" class="custom-icon">
+                <h2>Customer Management</h2>
+                <p>Manage Customers.</p>
+                <a href="admin_customers.html" class="btn">Manage Customers</a>
+            </div>
+
+            <!-- Staff Management Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/users-gear_19004942.svg" alt="Users Cog Icon" class="custom-icon">
+                <h2>Staff Management</h2>
+                <p>Manage Staff.</p>
+                <a href="admin_staff.html" class="btn">Manage Staff</a>
+            </div>
+
+            <!-- Reports Section -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/stats_10513377.svg" alt="Chart Bar Icon" class="custom-icon">
+                <h2>Reports</h2>
+                <p>Generate reports on bookings and revenue.</p>
+                <a href="admin_reports.html" class="btn">View Reports</a>
+            </div>
+
+            <!-- Audit Logs Section (For Super Admins) -->
+            <div class="dashboard-section">
+                <img src="/assets/Images/time-past_3917309.svg" alt="History Icon" class="custom-icon">
+                <h2>Audit Logs</h2>
+                <p>View system activity logs.</p>
+                <a href="admin_activity.html" class="btn">View Logs</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 International Bus Booking System. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

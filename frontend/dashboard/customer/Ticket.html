@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tag: Specifies character encoding -->
+    <!-- Attributes: Set to UTF-8 for universal character support -->
+    <meta charset="UTF-8">
+    <!-- Meta tag: Configures viewport for responsive design -->
+    <!-- Attributes: Ensures proper scaling on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Details</title>
+    <link rel="stylesheet" href="../../../assets/css/Styles.css">
+    <link rel="stylesheet" href="../../../assets/css/ExportStyles.css">
+    <script src="/assets/js/formValidation.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+        </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="CustomerDashboard.html">Home</a></li>
+                <li><a href="/frontend/dashboard/customer/BookingHistory.html">Booking History</a></li>
+                <li><a href="PaymentHistory.html">Payment History</a></li>
+                <li><a href="Ticket.html">Tickets</a></li>
+                <li><a href="ProfileManagement.html">Profile</a></li>
+            </ul>
+            <a href="../../../php/Logout.php" class="try-free-btn">Log out</a>
+        </nav>
+    </header>
+    <main>
+        <div class="dashboard-container">
+            <h1>View Ticket</h1>
+            <button class="back-btn" onclick="goBack()">Back</button>
+            <!-- View Ticket Section -->
+            <div id="viewTicket">
+
+                <p>Enter your Booking ID to view your ticket details.</p>
+                
+                <!-- View Ticket Form -->
+                <form id="viewTicketForm" action="javascript:void(0)" onsubmit="return validateAndViewTicket(event)">
+                    <label for="bookingID">Booking ID:</label>
+                    <input type="text" id="bookingID" name="bookingID" placeholder="Enter Booking ID" required>
+                    <button type="submit">View Ticket</button>
+                </form>
+            </div>
+            
+            <!-- Ticket Details Section -->
+            <div id="ticketDetails">
+                <div class="ticket-buttons">
+                    <button id="downloadButton" onclick="downloadTicket()">Download Ticket</button>
+                    <button id="printButton" onclick="printTicket()">Print Ticket</button>
+                </div>
+                
+                <div id="ticketContent">
+                    <div class="ticket-header">
+                        <div class="ticket-logo">
+                            <!-- Img: Displays InterBus logo -->
+                            <!-- Attributes: src points to logo, alt for accessibility -->
+                            <img src="/assets/Images/Logo.png" alt="InterBus Logo">
+                        </div>
+                        <h2>InterBus E-Ticket</h2>
+                        <!-- Small: Subtitle for branding -->
+                        <small>International Bus Booking System</small>
+                    </div>
+                    <!-- Horizontal rule: Separates header from content -->
+                    <hr>
+                    <p><strong>Booking ID:</strong> <span id="bookingIDValue"></span></p>
+                    <p><strong>Customer Name:</strong> <span id="customerName"></span></p>
+                    <p><strong>Start Location:</strong> <span id="startLocation"></span></p>
+                    <p><strong>Destination:</strong> <span id="destination"></span></p>
+                    <p><strong>Departure Time:</strong> <span id="departureTime"></span></p>
+                    <p><strong>Arrival Time:</strong> <span id="arrivalTime"></span></p>
+                    <p><strong>Seat Number:</strong> <span id="seatNumber"></span></p>
+                    <p><strong>Amount Paid:</strong> USD <span id="amountPaid"></span></p>
+                    <p><strong>Payment Mode:</strong> <span id="paymentMode"></span></p>
+                    <!-- Horizontal rule: Separates content from footer -->
+                    <hr>
+                    <p class="ticket-footer">
+                        Please arrive at least 30 minutes before departure. <br>
+                        This is your official travel ticket — keep it safe.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script Section: Contains inline JavaScript for ticket functionality -->
+    <script>
+// Function to check and show ticket details
+// - A user-defined JavaScript function named validateAndViewTicket, with one input: event (form submission event).
+// - Validates the Booking ID input and fetches ticket details to display.
+// - Allows customers to view their ticket information by entering a Booking ID.
+function validateAndViewTicket(event) {
+    // Stops the page from refreshing
+    // - Calls preventDefault(), a built-in JavaScript method of the event object, to stop the form from reloading the page.
+    // - Keeps the customer on the view ticket page after submitting.
+    // - Makes the submission process smooth without reloads.
+    event.preventDefault();
+
+    // Gets the Booking ID
+    // - A user-defined constant named bookingID, holding the value of the input with ID 'bookingID' via document.getElementById(), a built-in method.
+    // - Captures the Booking ID entered by the customer.
+    // - Prepares the ID for validation and server request.
+    const bookingID = document.getElementById('bookingID').value;
+
+    // Checks if Booking ID is empty
+    // - A conditional statement calling isEmpty(), a user-defined function (assumed in formValidation.js).
+    // - Stops if the Booking ID is empty, showing an error message.
+    // - Ensures a valid ID is provided before fetching data.
+    if (isEmpty(bookingID)) {
+        // Shows an error message
+        // - Calls alert(), a built-in method, with “Please enter a Booking ID”.
+        // - Tells the customer to enter a Booking ID.
+        // - Prompts them to fill the input field.
+        alert('Please enter a Booking ID');
+
+        // Stops further processing
+        // - Returns false to halt the function.
+        // - Prevents invalid requests to the server.
+        // - Keeps the form ready for correction.
+        return false;
+    }
+
+    // Collects form data
+    // - A user-defined constant named formData, holding a built-in FormData object.
+    // - Adds the bookingID using formData.append(), a built-in method.
+    // - Prepares the Booking ID for the server request.
+    const formData = new FormData();
+    formData.append('bookingID', bookingID);
+
+    // Sends a web request
+    // - Uses fetch(), a built-in method, to send a POST request to '../../../php/ViewTicket.php?action=json'.
+    // - Sends formData to retrieve ticket details in JSON format.
+    // - Waits for the server’s reply with ticket information.
+    fetch('../../../php/ViewTicket.php?action=json', {
+        // Sets the request type
+        // - A method property set to 'POST', a built-in fetch option.
+        // - Tells the server to expect new data.
+        method: 'POST',
+
+        // Sends the form data
+        // - A body property with the formData object.
+        // - Includes the Booking ID for the server.
+        body: formData
+    })
+        // Converts the response
+        // - Uses then(), a built-in promise method, with a parameter: response (the server’s reply).
+        // - Calls response.json(), a built-in method, to parse the response.
+        // - Prepares the ticket data for display.
+        .then(response => response.json())
+        // Uses the ticket data
+        // - Uses then() with a parameter: data (the parsed JSON object).
+        // - Displays ticket details or shows an error based on the response.
+        // - Updates the page with ticket information.
+        .then(data => {
+            // Finds the ticket details section
+            // - A user-defined constant named ticketDetails, holding the result of document.getElementById() for the element with ID 'ticketDetails'.
+            // - Targets the div where ticket details will be shown.
+            // - Prepares to show or hide the section.
+            const ticketDetails = document.getElementById('ticketDetails');
+
+            // Checks if the request was successful
+            // - A conditional statement checking if data.status equals 'success'.
+            // - Shows ticket details if successful, or an error if not.
+            // - Handles the server’s response to the ticket request.
+            if (data.status === 'success') {
+                // Stores the ticket data
+                // - A user-defined constant named ticket, holding data.ticket (the ticket object).
+                // - Contains details like BookingID and CustomerName.
+                // - Prepares the data for display.
+                const ticket = data.ticket;
+
+                // Fills the ticket fields
+                // - Sets textContent, a built-in property, of elements with IDs like 'bookingIDValue' using document.getElementById().
+                // - Populates fields with ticket data like StartLocation and AmountPaid.
+                // - Displays the ticket details to the customer.
+                document.getElementById('bookingIDValue').textContent = ticket.BookingID;
+                document.getElementById('customerName').textContent = ticket.CustomerName;
+                document.getElementById('startLocation').textContent = ticket.StartLocation;
+                document.getElementById('destination').textContent = ticket.Destination;
+                document.getElementById('departureTime').textContent = ticket.DepartureTime;
+                document.getElementById('arrivalTime').textContent = ticket.ArrivalTime;
+                document.getElementById('seatNumber').textContent = ticket.SeatNumber;
+                document.getElementById('amountPaid').textContent = ticket.AmountPaid;
+                document.getElementById('paymentMode').textContent = ticket.PaymentMode;
+
+                // Shows the ticket details
+                // - Sets ticketDetails.style.display, a built-in property, to 'block'.
+                // - Makes the ticket details section visible.
+                // - Allows the customer to see the ticket information.
+                ticketDetails.style.display = 'block';
+
+                // Updates the download button
+                // - Calls setAttribute(), a built-in method, on the element with ID 'downloadButton' to set its onclick attribute.
+                // - Sets the onclick to call downloadTicket() with ticket.BookingID.
+                // - Prepares the button to download the ticket as a PDF.
+                document.getElementById('downloadButton').setAttribute('onclick', `downloadTicket(${ticket.BookingID})`);
+            } else {
+                // Hides the ticket details
+                // - Sets ticketDetails.style.display to 'none'.
+                // - Hides the ticket details section on error.
+                // - Keeps the section hidden if no ticket is found.
+                ticketDetails.style.display = 'none';
+
+                // Shows an error message
+                // - Calls alert() with data.message.
+                // - Tells the customer why the ticket couldn’t be shown, like “Invalid Booking ID”.
+                // - Provides specific error details from the server.
+                alert(data.message);
+            }
+        })
+        // Handles errors
+        // - Uses catch(), a built-in promise method, with a parameter: error (the error object).
+        // - Shows an error message and hides ticket details.
+        // - Manages issues like network or server problems.
+        .catch(error => {
+            // Shows an error message
+            // - Calls alert() with “Failed to fetch ticket:” and error.message.
+            // - Tells the customer the ticket couldn’t be retrieved.
+            // - Informs them of network or server issues.
+            alert('Failed to fetch ticket: ' + error.message);
+
+            // Hides the ticket details
+            // - Sets document.getElementById('ticketDetails').style.display to 'none'.
+            // - Ensures the ticket details section stays hidden on error.
+            // - Keeps the page clean if the request fails.
+            document.getElementById('ticketDetails').style.display = 'none';
+        });
+
+    // Indicates the form was processed
+    // - Returns true to show the function completed.
+    // - Confirms the form submission was handled.
+    // - Allows further interaction with the page.
+    return true;
+}
+
+// Function to download the ticket as a PDF
+// - A user-defined JavaScript function named downloadTicket, with one input: bookingID (the ticket’s Booking ID).
+// - Generates a PDF of the ticket content using html2pdf.js.
+// - Allows customers to save their ticket as a PDF file.
+function downloadTicket(bookingID) {
+    // Finds the ticket content
+    // - A user-defined constant named element, holding the result of document.getElementById() for the element with ID 'ticketContent'.
+    // - Targets the div containing the ticket details for PDF generation.
+    // - Prepares the content for conversion to PDF.
+    const element = document.getElementById('ticketContent');
+
+    // Creates the PDF
+    // - Calls html2pdf(), a user-defined method from the html2pdf.js library, to generate a PDF from element.
+    // - Uses save(), a library method, to download the PDF with the filename 'Ticket_BookingID_' + bookingID + '.pdf'.
+    // - Saves the ticket as a PDF file for the customer.
+    html2pdf().from(element).save('Ticket_BookingID_' + bookingID + '.pdf');
+
+    // Shows a success message
+    // - Calls alert() with “Ticket downloaded successfully”.
+    // - Tells the customer the PDF was downloaded.
+    // - Confirms the download action worked.
+    alert('Ticket downloaded successfully');
+}
+
+// Function to print the ticket
+// - A user-defined JavaScript function named printTicket, with no inputs.
+// - Opens the browser’s print dialog to print the ticket.
+// - Allows customers to print their ticket with styles from ExportStyles.css.
+function printTicket() {
+    // Opens the print dialog
+    // - Calls window.print(), a built-in method, to trigger the browser’s print dialog.
+    // - Prints the ticket content as styled on the page.
+    // - Lets the customer print their ticket easily.
+    window.print();
+}
+</script>
+    <script src="/assets/js/script.js"></script>
+    <!-- Script tag: Loads html2pdf.js for PDF download -->
+    <!-- Attributes: Uses CDN to convert ticket content to PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>

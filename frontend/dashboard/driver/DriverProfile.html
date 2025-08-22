@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="../../../assets/css/Styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="DriverDashboard.html">Dashboard</a></li>
+                <li><a href="DriverSchedule.html">My Schedule</a></li>
+                <li><a href="DriverProfile.html">Profile</a></li>
+                <li><a href="../../../php/Logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            <h1>My Profile</h1>
+            
+            <section id="profile-info">
+                <h2>Personal Information</h2>
+                <div id="profile-loading">Loading profile...</div>
+                
+                <form id="profile-form" style="display: none;">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    
+                    <label for="staff-number">Staff Number:</label>
+                    <input type="text" id="staff-number" name="staff-number" readonly>
+                    
+                    <button type="submit">Update Profile</button>
+                </form>
+            </section>
+            
+            <section id="change-password">
+                <h2>Change Password</h2>
+                <form id="password-form">
+                    <label for="current-password">Current Password:</label>
+                    <input type="password" id="current-password" name="current-password" required>
+                    
+                    <label for="new-password">New Password:</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                    
+                    <label for="confirm-password">Confirm New Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    
+                    <button type="submit">Change Password</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 International Bus Booking System. All rights reserved.</p>
+    </footer>
+
+    <script src="../../../assets/js/driverProfile.js"></script>
+</body>
+</html>

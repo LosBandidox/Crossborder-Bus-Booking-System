@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Route Management</title>
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+        </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li>
+                    <a href="#">Others</a>
+                    <ul class="dropdown">
+                        <li><a href="admin_bookings.html">Bookings</a></li>
+                        <li><a href="admin_payments.html">Payments</a></li>
+                        <li><a href="admin_customers.html">Customer</a></li>
+                        <li><a href="admin_staff.html">Staff</a></li>
+                        <li><a href="admin_reports.html">Reports</a></li>
+                        <li><a href="admin_activity.html">View Logs</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="../../../php/Logout.php" class="try-free-btn">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+        <button class="back-btn" onclick="goBack()">Back</button>
+        <!-- Search input added to filter route table -->
+        <input type="text" id="routeSearch" class="search-input" placeholder="Search routes...">
+        <!-- Placeholder added to show if no routes match the search -->
+        <p id="noRoutes" class="no-results" style="display: none;">No routes found.</p>
+        <!-- Link to Add Route page -->
+        <a href="../../forms/RouteInputForm.html" class="btn">Add New Route</a>
+
+        <!-- Table for displaying routes -->
+        <table id="routeTable">
+            <thead>
+                <tr>
+                    <th>Route ID</th>
+                    <th>Start Location</th>
+                    <th>Destination</th>
+                    <th>Distance (km)</th>
+                    <th>Route Name</th>
+                    <th>Route Type</th>
+                    <th>Security</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="routeTableBody">
+                <!-- Route data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+// Function to get route data
+// - A user-defined async JavaScript function named fetchRoutes, with no inputs.
+// - Sends a web request to retrieve route data and fills a table on the admin routes page.
+// - Displays all routes for admins to view, edit, or delete.
+async function fetchRoutes() {
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures or bad data.
+    // - Attempts to fetch and display route data, catching any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/fetchRoutes.php'.
+        // - Requests all route data from the server.
+        // - Waits for the server’s reply with route information.
+        const response = await fetch('../../../php/admin/fetchRoutes.php');
+
+        // Gets the route data
+        // - A user-defined constant named routes, holding the JSON object from response.json().
+        // - Turns the server’s reply into an array of route objects.
+        // - Prepares the data to fill the table.
+        const routes = await response.json();
+
+        // Finds the table body
+        // - A user-defined constant named tableBody, holding the result of document.getElementById(), a built-in JavaScript method, targeting the element with ID 'routeTableBody'.
+        // - Targets the table’s <tbody> where route rows will be added.
+        // - Prepares the table for dynamic content.
+        const tableBody = document.getElementById('routeTableBody');
+
+        // Clears the table
+        // - Sets tableBody.innerHTML, a built-in property, to an empty string.
+        // - Removes any existing rows in the table.
+        // - Ensures no duplicate rows are shown.
+        tableBody.innerHTML = '';
+
+        // Goes through each route
+        // - Uses forEach(), a built-in JavaScript method, to loop over the routes array with a parameter named route (a route object).
+        // - Creates a table row for each route with its details.
+        // - Builds the table dynamically with route data.
+        routes.forEach(route => {
+            // Creates a table row
+            // - A user-defined constant named row, holding the result of document.createElement('tr'), a built-in method.
+            // - Makes a new <tr> element for a single route.
+            // - Prepares the row for route details and actions.
+            const row = document.createElement('tr');
+
+            // Fills the row with data
+            // - Sets row.innerHTML, a built-in property, to a template literal with route properties like RouteID and StartLocation.
+            // - Adds table cells (<td>) with route details and buttons for editing/deleting.
+            // - Displays route information and action links for admins.
+            row.innerHTML = `
+                <td>${route.RouteID}</td>
+                <td>${route.StartLocation}</td>
+                <td>${route.Destination}</td>
+                <td>${route.Distance}</td>
+                <td>${route.RouteName}</td>
+                <td>${route.RouteType}</td>
+                <td>${route.Security}</td>
+                <td>
+                    <a href="edit_route.html?id=${route.RouteID}" class="btn">Edit</a>
+                    <button onclick="deleteRoute(${route.RouteID})">Delete</button>
+                </td>
+            `;
+
+            // Adds the row to the table
+            // - Calls tableBody.appendChild(), a built-in method, to add the row to tableBody.
+            // - Places the route row in the table.
+            // - Updates the table display with the route data.
+            tableBody.appendChild(row);
+        });
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error(), a built-in method, to write “Error fetching routes:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error fetching routes:', error);
+    }
+}
+
+// Sets up the page to load route data and enable searching
+// - Adds an event listener using document.addEventListener(), a built-in method, for the “DOMContentLoaded” event.
+// - Runs an anonymous arrow function when the page’s HTML is fully loaded.
+// - Loads route data and sets up search functionality for the admin routes page.
+document.addEventListener('DOMContentLoaded', () => {
+    // Loads route data
+    // - Calls the user-defined fetchRoutes() function.
+    // - Fills the route table with data from the server.
+    // - Displays the route list when the page opens.
+    fetchRoutes();
+
+    // Sets up the search field
+    // - Adds an event listener using document.getElementById('routeSearch').addEventListener(), targeting the input with ID 'routeSearch' for the 'input' event.
+    // - Runs an anonymous arrow function when the admin types in the search field.
+    // - Filters the route table based on user input.
+    document.getElementById('routeSearch').addEventListener('input', () => {
+        // Filters the table
+        // - Calls the user-defined filterTable() function (from script.js) with arguments 'routeTable', 'routeSearch', 'noRoutes', and [0, 1, 2, 4].
+        // - Searches RouteID (column 0), StartLocation (column 1), Destination (column 2), and RouteName (column 4).
+        // - Updates the table to show only matching rows.
+        filterTable('routeTable', 'routeSearch', 'noRoutes', [0, 1, 2, 4]);
+    });
+});
+
+// Function to delete a route
+// - A user-defined async JavaScript function named deleteRoute, with one input: routeId (number or string).
+// - Asks for confirmation, sends a delete request, and refreshes the table.
+// - Allows admins to remove a route from the system.
+async function deleteRoute(routeId) {
+    // Asks for confirmation
+    // - Uses confirm(), a built-in JavaScript method, with a message including routeId.
+    // - Shows a pop-up asking the admin to confirm deletion.
+    // - Proceeds only if the admin clicks “OK”.
+    if (confirm(`Are you sure you want to delete route with ID: ${routeId}?`)) {
+        // Handles potential errors
+        // - A try-catch block to manage issues like network failures during deletion.
+        // - Attempts to delete the route and catches any problems.
+        // - Keeps the page from breaking on errors.
+        try {
+            // Sends a web request
+            // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/deleteRoute.php?id=${routeId}'.
+            // - Requests the server to delete the route with the given ID.
+            // - Waits for the server’s reply on the deletion.
+            const response = await fetch(`../../../php/admin/deleteRoute.php?id=${routeId}`);
+
+            // Gets the server response
+            // - A user-defined constant named result, holding the JSON object from response.json().
+            // - Turns the server’s reply into an object with status and message.
+            // - Prepares to check if the deletion succeeded.
+            const result = await response.json();
+
+            // Checks for success
+            // - A conditional statement checking if result.status equals 'success'.
+            // - Shows a success message and refreshes the table, or displays an error.
+            // - Handles the server’s response to the delete request.
+            if (result.status === 'success') {
+                // Shows a success message
+                // - Calls alert(), a built-in method, with “Route deleted successfully”.
+                // - Tells the admin the route was removed from the system.
+                // - Confirms the deletion worked.
+                alert('Route deleted successfully');
+
+                // Refreshes the table
+                // - Calls the user-defined fetchRoutes() function.
+                // - Reloads the route data to update the table.
+                // - Removes the deleted route from the display.
+                fetchRoutes();
+            } else {
+                // Shows an error message
+                // - Calls alert() with “Failed to delete route”.
+                // - Tells the admin the deletion didn’t work.
+                // - Provides feedback on the failure.
+                alert('Failed to delete route');
+            }
+        } catch (error) {
+            // Logs the error
+            // - Uses console.error() to write “Error deleting route:” and the error to the developer tools.
+            // - Helps developers debug issues like network or server problems.
+            console.error('Error deleting route:', error);
+        }
+    }
+}
+</script>
+    <script src="/assets/js/script.js" defer></script>
+</body>
+</html>

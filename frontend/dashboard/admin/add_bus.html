@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bus</title>
+    <link rel="stylesheet" href="../../../../assets/css/AdminStyles.css"> <!-- Link to CSS -->
+    <script src="../../../assets/js/formValidation.js"></script> <!-- Link to validation script -->
+</head>
+<body>
+    <header>
+        <h1>Add Bus</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="../../../php/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form id="addBusForm" onsubmit="return validateAndSubmitBusForm(event)">
+            <h2>Add New Bus</h2>
+            <div class="form-row">
+                <div class="form-field">
+            <label for="busNumber">Bus Number:</label>
+            <input type="text" id="busNumber" name="busNumber" required>
+                </div>
+                <div class="form-field">
+            <label for="yearOfManufacture">Year of Manufacture:</label>
+            <select id="yearOfManufacture" name="yearOfManufacture" required>
+                <option value="">Select Year</option>
+                <!-- Dynamically generate year options -->
+                <script>
+// Script to fill the year dropdown with options
+// - An inline user-defined JavaScript block running when the page loads.
+// - Uses DOM manipulation and a loop to add year options.
+// - Creates a list of years for the yearOfManufacture dropdown on the add bus form.
+
+    // Stores the current year
+    // - A user-defined constant named currentYear, holding the result of new Date().getFullYear(), a built-in JavaScript method.
+    // - Gets the current year, like 2025, using the Date object.
+    // - Sets the upper limit for the year dropdown.
+    const currentYear = new Date().getFullYear();
+
+    // Stores the earliest year
+    // - A user-defined constant named startYear, set to 1900.
+    // - Defines the oldest year allowed in the dropdown.
+    // - Limits the range of years admins can select for a bus.
+    const startYear = 1900; // Adjust the start year as needed
+
+    // Finds the year dropdown
+    // - A user-defined constant named yearSelect, holding the result of document.getElementById(), a built-in JavaScript method, targeting the select element with ID 'yearOfManufacture'.
+    // - Targets the dropdown where year options will be added.
+    // - Prepares the dropdown for dynamic year options.
+    const yearSelect = document.getElementById('yearOfManufacture');
+
+    // Adds year options to the dropdown
+    // - A for loop, using a user-defined let variable year, counting down from currentYear to startYear.
+    // - Creates and adds option elements for each year.
+    // - Builds the dropdown list from newest to oldest year.
+    for (let year = currentYear; year >= startYear; year--) {
+        // Creates an option element
+        // - A user-defined let variable named option, holding the result of document.createElement('option'), a built-in JavaScript method.
+        // - Makes a new <option> element for a single year.
+        // - Prepares the option for the dropdown.
+        const option = document.createElement('option');
+
+        // Sets the option’s value
+        // - Sets option.value, a built-in property, to the year.
+        // - Defines the data sent when the year is selected.
+        // - Matches the year for form submission.
+        option.value = year;
+
+        // Sets the option’s text
+        // - Sets option.textContent, a built-in property, to the year.
+        // - Defines the visible text shown in the dropdown.
+        // - Displays the year to the admin.
+        option.textContent = year;
+
+        // Adds the option to the dropdown
+        // - Calls yearSelect.appendChild(), a built-in JavaScript method, to add the option to yearSelect.
+        // - Places the year option in the dropdown list.
+        // - Builds the dropdown dynamically.
+        yearSelect.appendChild(option);
+    }
+</script>
+<select id="yearOfManufacture" name="yearOfManufacture" required>
+    <!-- Options populated by the above script -->
+</select>
+</div>
+</div>
+<div class="form-row">
+    <div class="form-field">
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" required>
+    </div>
+    <div class="form-field">
+        <label for="engineNumber">Engine Number:</label>
+        <input type="text" id="engineNumber" name="engineNumber" required>
+    </div>
+</div>
+<label for="status">Status:</label>
+<select id="status" name="status" required>
+    <option value="">Select Status</option>
+    <option value="Operational">Operational</option>
+    <option value="Under Maintenance">Under Maintenance</option>
+</select>
+
+<label for="mileage">Mileage:</label>
+<input type="number" id="mileage" name="mileage" step="0.1" required>
+
+<div class="form-buttons">
+<button class="back-btn" onclick="goBack()">Back</button>
+<button type="submit">Add Bus</button>
+</div>
+</form>
+</main>
+
+<script>
+// Function to handle adding a bus
+// - A user-defined async JavaScript function named validateAndSubmitBusForm, with one input: event (form submission event).
+// - Validates form inputs, sends bus data to the server, and redirects or shows errors.
+// - Processes the admin’s request to add a new bus to the system.
+async function validateAndSubmitBusForm(event) {
+    // Stops the page from refreshing
+    // - Calls preventDefault(), a built-in JavaScript method of the event object, to stop the form from reloading the page.
+    // - Keeps the admin on the add bus page after submitting.
+    // - Makes the submission process smooth without reloads.
+    event.preventDefault();
+
+    // Checks if the validation function exists
+    // - A conditional statement using typeof, a built-in JavaScript operator, to check if validateBusFormV2 is defined.
+    // - Shows an error if the validation function is missing.
+    // - Ensures the form can’t be submitted without validation.
+    if (typeof validateBusFormV2 === "undefined") {
+        // Shows an error message
+        // - Calls alert(), a built-in JavaScript method, with “Validation script not loaded. Please try again.”.
+        // - Tells the admin the validation code didn’t load.
+        // - Prompts them to reload or check the page.
+        alert("Validation script not loaded. Please try again.");
+        return;
+    }
+
+    // Validates the form
+    // - A conditional statement calling validateBusFormV2(), a user-defined function (assumed in formValidation.js).
+    // - Stops the function if validation fails.
+    // - Ensures only valid bus data is sent to the server.
+    if (!validateBusFormV2()) {
+        return;
+    }
+
+    // Collects form data
+    // - A user-defined constant named formData, holding a built-in FormData object created from event.target (the form).
+    // - Gathers input values like busNumber, capacity, and mileage.
+    // - Prepares the data for processing.
+    const formData = new FormData(event.target);
+
+    // Creates a bus data object
+    // - A user-defined constant named busData, an object with values from formData.get(), a built-in method.
+    // - Structures data with keys like busNumber and yearOfManufacture.
+    // - Prepares the data for server submission in JSON format.
+    const busData = {
+        busNumber: formData.get('busNumber'),
+        yearOfManufacture: formData.get('yearOfManufacture'),
+        capacity: formData.get('capacity'),
+        engineNumber: formData.get('engineNumber'),
+        status: formData.get('status'),
+        mileage: formData.get('mileage')
+    };
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures during submission.
+    // - Attempts to send bus data and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/addBus.php'.
+        // - Sends busData as JSON using a POST request.
+        // - Waits for the server’s reply on adding the bus.
+        const response = await fetch('../../../php/admin/addBus.php', {
+            // Sets the request type
+            // - A method property set to 'POST', a built-in fetch option.
+            // - Tells the server to expect new data.
+            method: 'POST',
+
+            // Sets the data format
+            // - Sets headers with 'Content-Type' to 'application/json'.
+            // - Tells the server the data is in JSON format.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            // Sends the bus data
+            // - A body property with busData converted using JSON.stringify(), a built-in method.
+            // - Includes all bus details for the server.
+            body: JSON.stringify(busData)
+        });
+
+        // Gets the server response
+        // - A user-defined constant named result, holding the JSON object from response.json().
+        // - Turns the server’s reply into an object with status and message.
+        // - Prepares to check if the bus was added successfully.
+        const result = await response.json();
+
+        // Checks for success
+        // - A conditional statement checking if result.status equals 'success'.
+        // - Shows a success message and redirects, or displays an error.
+        // - Handles the server’s response to the add request.
+        if (result.status === 'success') {
+            // Shows a success message
+            // - Calls alert() with “Bus added successfully”.
+            // - Tells the admin the bus was added to the system.
+            // - Confirms the submission worked.
+            alert('Bus added successfully');
+
+            // Redirects to the buses page
+            // - Sets window.location.href, a built-in property, to 'admin_buses.html'.
+            // - Sends the admin to the bus list page.
+            // - Completes the add process.
+            window.location.href = 'admin_buses.html';
+        } else {
+            // Shows an error message
+            // - Calls alert() with “Failed to add bus:” plus result.message.
+            // - Tells the admin why the addition failed, like “Duplicate bus number”.
+            // - Provides specific error details from the server.
+            alert('Failed to add bus: ' + result.message);
+        }
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error(), a built-in method, to write “Error adding bus:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error adding bus:', error);
+    }
+}
+</script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Bus</title>
+    <link rel="stylesheet" href="../../../../assets/css/AdminStyles.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <header>
+        <h1>Edit Bus</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="../../../php/Logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <form id="editBusForm">
+            <h2>Edit Bus</h2>
+            <input type="hidden" id="editBusId" name="busId">
+            <div class="form-row">
+                <div class="form-field">
+            <label for="editBusNumber">Bus Number:</label>
+            <input type="text" id="editBusNumber" name="busNumber" required>
+                </div>
+                <div class="form-field">
+            <label for="editYearOfManufacture">Year of Manufacture:</label>
+            <select id="editYearOfManufacture" name="yearOfManufacture" required>
+                <option value="">Select Year</option>
+                <!-- Dynamically generate year options -->
+                <script>
+// Script to fill the year dropdown with options
+// - An inline user-defined JavaScript block running when the page loads.
+// - Uses DOM manipulation and a loop to add year options.
+// - Creates a list of years for the editYearOfManufacture dropdown on the edit bus form.
+    // Stores the current year
+    // - A user-defined constant named currentYear, holding the result of new Date().getFullYear(), a built-in JavaScript method.
+    // - Gets the current year, like 2025, using the Date object.
+    // - Sets the upper limit for the year dropdown.
+    const currentYear = new Date().getFullYear();
+
+    // Stores the earliest year
+    // - A user-defined constant named startYear, set to 2000.
+    // Defines the oldest year allowed in the dropdown.
+    // Limits the range of years admins can select for a bus.
+    const startYear = 2000; // Adjust the start year as needed
+
+    // Finds the year dropdown
+    // - A user-defined constant named yearSelect, holding the result of document.getElementById(), a built-in method, targeting the select element with ID 'editYearOfManufacture'.
+    // - Targets the dropdown where year options will be added.
+    // - Prepares the dropdown for dynamic year options.
+    const yearSelect = document.getElementById('editYearOfManufacture');
+
+    // Adds year options to the dropdown
+    // - A for loop, using a user-defined let variable year, counting down from currentYear to startYear.
+    // - Creates and adds option elements for each year.
+    // - Builds the dropdown list from newest to oldest year.
+    for (let year = currentYear; year >= startYear; year--) {
+        // Creates an option element
+        // - A user-defined constant named option, holding the result of document.createElement('option'), a built-in method.
+        // - Makes a new <option> element for a single year.
+        // - Prepares the option for the dropdown.
+        const option = document.createElement('option');
+
+        // Sets the option’s value
+        // - Sets option.value, a built-in property, to the year.
+        // - Defines the data sent when the year is selected.
+        // - Matches the year for form submission.
+        option.value = year;
+
+        // Sets the option’s text
+        // - Sets option.textContent, a built-in property, to the year.
+        // - Defines the visible text shown in the dropdown.
+        // - Displays the year to the admin.
+        option.textContent = year;
+
+        // Adds the option to the dropdown
+        // - Calls yearSelect.appendChild(), a built-in method, to add the option to yearSelect.
+        // - Places the year option in the dropdown list.
+        // - Builds the dropdown dynamically.
+        yearSelect.appendChild(option);
+    }
+</script>
+<select id="editYearOfManufacture" name="yearOfManufacture" required>
+    <!-- Options populated by the above script -->
+</select>
+</div>
+</div>
+<div class="form-row">
+    <div class="form-field">
+        <label for="editCapacity">Capacity:</label>
+        <input type="number" id="editCapacity" name="capacity" required>
+    </div>
+    <div class="form-field">
+        <label for="editEngineNumber">Engine Number:</label>
+        <input type="text" id="editEngineNumber" name="engineNumber" required>
+    </div>
+</div>
+<label for="editStatus">Status:</label>
+<select id="editStatus" name="status" required>
+    <option value="Operational">Operational</option>
+    <option value="Under Maintenance">Under Maintenance</option>
+</select>
+
+<label for="editMileage">Mileage:</label>
+<input type="number" id="editMileage" name="mileage" step="0.1" required>
+
+<button type="submit">Update Bus</button>
+<button type="button" onclick="window.location.href='admin_buses.html'">Cancel</button>
+</form>
+</main>
+
+<script>
+// Function to get bus details
+// - A user-defined async JavaScript function named fetchBusDetails, with no inputs.
+// - Retrieves bus data based on a URL ID and fills the edit form fields.
+// - Prepares the edit bus form with existing bus details for admin updates.
+async function fetchBusDetails() {
+    // Gets URL query parameters
+    // - A user-defined constant named urlParams, holding a built-in URLSearchParams object created from window.location.search.
+    // - Extracts key-value pairs from the URL query string, like ?id=123.
+    // - Prepares to find the bus ID.
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Stores the bus ID
+    // - A user-defined constant named busId, holding the result of urlParams.get('id'), a built-in method.
+    // - Gets the 'id' parameter from the URL, identifying the bus to edit.
+    // - Prepares the ID for the server request.
+    const busId = urlParams.get('id');
+
+    // Checks if bus ID exists
+    // - A conditional statement checking if busId is falsy (e.g., null or undefined).
+    // - Shows an error and redirects if no ID is provided.
+    // - Ensures the form loads only with a valid bus ID.
+    if (!busId) {
+        // Shows an error message
+        // - Calls alert(), a built-in JavaScript method, with “Bus ID not provided”.
+        // - Tells the admin the bus ID is missing from the URL.
+        // - Prompts them to return to the bus list.
+        alert('Bus ID not provided');
+
+        // Redirects to the buses page
+        // - Sets window.location.href, a built-in property, to 'admin_buses.html'.
+        // - Sends the admin to the bus list page.
+        // - Stops further processing without an ID.
+        window.location.href = 'admin_buses.html';
+        return;
+    }
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures or invalid data.
+    // - Attempts to fetch bus details and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/getBus.php?id=${busId}'.
+        // - Requests data for the bus with the given ID.
+        // - Waits for the server’s reply with bus details.
+        const response = await fetch(`../../../php/admin/getBus.php?id=${busId}`);
+
+        // Gets the bus data
+        // - A user-defined constant named bus, holding the JSON object from response.json().
+        // - Turns the server’s reply into a bus object with details like BusID.
+        // - Prepares the data to fill the form.
+        const bus = await response.json();
+
+        // Checks if bus exists
+        // - A conditional statement checking if bus.BusID is falsy.
+        // - Shows an error and redirects if no bus is found.
+        // - Ensures the form loads only for a valid bus.
+        if (!bus.BusID) {
+            // Shows an error message
+            // - Calls alert() with “Bus not found”.
+            // - Tells the admin the bus with the given ID doesn’t exist.
+            // - Prompts them to return to the bus list.
+            alert('Bus not found');
+
+            // Redirects to the buses page
+            // - Sets window.location.href to 'admin_buses.html'.
+            // - Sends the admin to the bus list page.
+            // - Stops further processing for invalid bus.
+            window.location.href = 'admin_buses.html';
+            return;
+        }
+
+        // Fills the form fields
+        // - Sets the value property of form inputs using document.getElementById(), a built-in method, targeting IDs like 'editBusId'.
+        // - Populates fields with bus data like BusNumber and Capacity.
+        // - Prepares the form for editing by the admin.
+        document.getElementById('editBusId').value = bus.BusID;
+        document.getElementById('editBusNumber').value = bus.BusNumber;
+        document.getElementById('editYearOfManufacture').value = bus.YearOfManufacture;
+        document.getElementById('editCapacity').value = bus.Capacity;
+        document.getElementById('editEngineNumber').value = bus.EngineNumber;
+        document.getElementById('editStatus').value = bus.Status;
+        document.getElementById('editMileage').value = bus.Mileage;
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error(), a built-in method, to write “Error fetching bus details:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error fetching bus details:', error);
+    }
+}
+
+// Sets up the form to handle updates
+// - Adds an event listener using document.getElementById('editBusForm').addEventListener(), a built-in method, for the 'submit' event.
+// - Runs an async anonymous function when the admin submits the edit bus form.
+// - Processes the updated bus data and sends it to the server.
+document.getElementById('editBusForm').addEventListener('submit', async function (event) {
+    // Stops the page from refreshing
+    // - Calls preventDefault(), a built-in method of the event object, to stop the form from reloading the page.
+    // - Keeps the admin on the edit bus page after submitting.
+    // - Makes the submission process smooth without reloads.
+    event.preventDefault();
+
+    // Collects form data
+    // - A user-defined constant named formData, holding a built-in FormData object created from this (the form).
+    // - Gathers input values like busId, busNumber, and capacity.
+    // - Prepares the data for processing.
+    const formData = new FormData(this);
+
+    // Creates a bus data object
+    // - A user-defined constant named busData, an object with values from formData.get(), a built-in method.
+    // - Structures data with keys like busId and yearOfManufacture.
+    // - Prepares the data for server submission in JSON format.
+    const busData = {
+        busId: formData.get('busId'),
+        busNumber: formData.get('busNumber'),
+        yearOfManufacture: formData.get('yearOfManufacture'),
+        capacity: formData.get('capacity'),
+        engineNumber: formData.get('engineNumber'),
+        status: formData.get('status'),
+        mileage: formData.get('mileage')
+    };
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures during submission.
+    // - Attempts to send updated bus data and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/updateBus.php'.
+        // - Sends busData as JSON using a POST request.
+        // - Waits for the server’s reply on updating the bus.
+        const response = await fetch('../../../php/admin/updateBus.php', {
+            // Sets the request type
+            // - A method property set to 'POST', a built-in fetch option.
+            // - Tells the server to expect new data.
+            method: 'POST',
+
+            // Sets the data format
+            // - Sets headers with 'Content-Type' to 'application/json'.
+            // - Tells the server the data is in JSON format.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            // Sends the bus data
+            // - A body property with busData converted using JSON.stringify(), a built-in method.
+            // - Includes all bus details for the server.
+            body: JSON.stringify(busData)
+        });
+
+        // Gets the server response
+        // - A user-defined constant named result, holding the JSON object from response.json().
+        // - Turns the server’s reply into an object with status and message.
+        // - Prepares to check if the bus was updated successfully.
+        const result = await response.json();
+
+        // Checks for success
+        // - A conditional statement checking if result.status equals 'success'.
+        // - Shows a success message and redirects, or displays an error.
+        // - Handles the server’s response to the update request.
+        if (result.status === 'success') {
+            // Shows a success message
+            // - Calls alert() with “Bus updated successfully”.
+            // - Tells the admin the bus details were updated.
+            // - Confirms the submission worked.
+            alert('Bus updated successfully');
+
+            // Redirects to the buses page
+            // - Sets window.location.href to 'admin_buses.html'.
+            // - Sends the admin to the bus list page.
+            // - Completes the update process.
+            window.location.href = 'admin_buses.html';
+        } else {
+            // Shows an error message
+            // - Calls alert() with “Failed to update bus:” plus result.message.
+            // - Tells the admin why the update failed, like “Invalid bus number”.
+            // - Provides specific error details from the server.
+            alert('Failed to update bus: ' + result.message);
+        }
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error() to write “Error updating bus:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error updating bus:', error);
+    }
+});
+
+// Sets up the page to load bus details
+// - Adds an event listener using document.addEventListener(), a built-in method, for the “DOMContentLoaded” event.
+// - Calls the user-defined fetchBusDetails() function when the page’s HTML is fully loaded.
+// - Loads the bus details into the edit form when the page opens.
+document.addEventListener('DOMContentLoaded', fetchBusDetails);
+</script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

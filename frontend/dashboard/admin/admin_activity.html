@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Reports</title>
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+        <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+    </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li>
+                    <a href="#">Others</a>
+                    <ul class="dropdown">
+                        <li><a href="admin_bookings.html">Bookings</a></li>
+                        <li><a href="admin_payments.html">Payments</a></li>
+                        <li><a href="admin_customers.html">Customer</a></li>
+                        <li><a href="admin_staff.html">Staff</a></li>
+                        <li><a href="admin_reports.html">Reports</a></li>
+                        <li><a href="admin_activity.html">View Logs</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="../../../php/Logout.php" class="try-free-btn">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Filter section for report data -->
+        <div class="filter-section">
+            <label for="period">Select Period:</label>
+            <select id="period" onchange="setDateRange()">
+                <option value="custom">Custom Range</option>
+                <option value="last_month">Last Month</option>
+                <option value="last_year">Last Year</option>
+                <option value="q1">1st Quarter</option>
+                <option value="q2">2nd Quarter</option>
+                <option value="q3">3rd Quarter</option>
+                <option value="q4">4th Quarter</option>
+            </select>
+            <label for="startDate">Start Date:</label>
+            <input type="text" id="startDate" name="startDate" placeholder="dd-mm-yyyy" oninput="formatDate(this)">
+            <label for="endDate">End Date:</label>
+            <input type="text" id="endDate" name="endDate" placeholder="dd-mm-yyyy" oninput="formatDate(this)">
+            <button onclick="fetchAllReports()">Filter</button>
+        </div>
+        <div class="report-links">
+            <a href="#systemUsageReport" class="btn">System Usage Report</a>
+            <a href="#userActivityReport" class="btn">User Activity Report</a>
+            <button class="back-btn" onclick="goBack()">Back</button>
+        </div>
+
+        <!-- System Usage Report (unchanged) -->
+        <div id="systemUsageReport" class="report-section">
+            <h3>System Usage Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total Bookings</th>
+                        <th>Active Customers</th>
+                        <th>Active Staff</th>
+                        <th>Active Buses</th>
+                    </tr>
+                </thead>
+                <tbody id="systemUsageTableBody"></tbody>
+            </table>
+        </div>
+
+
+        <div id="userActivityReport" class="report-section">
+            <h3>User Activity Report</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity ID</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>User</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody id="userActivityTableBody"></tbody>
+            </table>
+        </div>
+
+        <script src="../../../assets/js/admin_reports.js"></script>
+        <script src="/assets/js/script.js"></script>
+    </main>
+</body>
+</html>

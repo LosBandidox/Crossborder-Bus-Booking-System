@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Route</title>
+    <link rel="stylesheet" href="../../../../assets/css/AdminStyles.css"> <!-- Link to CSS -->
+    <script src="../../../assets/js/formValidation.js"></script> <!-- Link to validation script -->
+    <script src="/assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Edit Route</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="admin_schedules.html">Schedules</a></li>
+                <li><a href="../../../php/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <form id="editRouteForm" onsubmit="return validateAndSubmitRouteForm(event)">
+            <h2>Edit Route</h2>
+            <!-- Hidden input to store the Route ID -->
+            <input type="hidden" id="editRouteId" name="routeId">
+            
+            <div class="form-row">
+                <div class="form-field">
+            <!-- Start Location -->
+            <label for="editStartLocation">Start Location:</label>
+            <select id="editStartLocation" name="startLocation" required>
+                <option value="">Select Start Location</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Mombasa">Mombasa</option>
+                <option value="Kisumu">Kisumu</option>
+                <option value="Arusha">Arusha</option>
+                <option value="Kampala">Kampala</option>
+                <option value="Juba">Juba</option>
+                <option value="Kigali">Kigali</option>
+            </select><br><br>
+            </div>
+            <div class="form-field">
+            <!-- Destination -->
+            <label for="editDestination">Destination:</label>
+            <select id="editDestination" name="destination" required>
+                <option value="">Select Destination</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Mombasa">Mombasa</option>
+                <option value="Kisumu">Kisumu</option>
+                <option value="Arusha">Arusha</option>
+                <option value="Kampala">Kampala</option>
+                <option value="Juba">Juba</option>
+                <option value="Kigali">Kigali</option>
+                <option value="Kitale">Kitale</option>
+            </select><br><br>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+            <!-- Distance -->
+            <label for="editDistance">Distance (in km):</label>
+            <input type="text" id="editDistance" name="distance" required><br><br>
+            </div>
+            <div class="form-field">
+            <!-- Route Name -->
+            <label for="editRouteName">Route Name:</label>
+            <select id="editRouteName" name="routeName" required>
+                <option value="">Select Route Name</option>
+                <option value="NRB-MSA">NRB-MSA</option>
+                <option value="NRB-KSM">NRB-KSM</option>
+                <option value="NRB-JBA">NRB-JBA</option>
+                <option value="MSA-NRB">MSA-NRB</option>
+                <option value="NRB-KTL">NRB-KTL</option>
+                <option value="NRB-KGL">NRB-KGL</option>
+                <option value="KGL-NRB">KGL-NRB</option>
+            </select><br><br>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+            <!-- Route Type -->
+            <label for="editRouteType">Route Type:</label>
+            <select id="editRouteType" name="routeType" required>
+                <option value="">Select Route Type</option>
+                <option value="Domestic">Domestic</option>
+                <option value="International">International</option>
+            </select><br><br>
+            </div>
+            <div class="form-field">
+            <!-- Security -->
+            <label for="editSecurity">Security:</label>
+            <input type="text" id="editSecurity" name="security" required><br><br>
+            </div>
+        </div>
+            <!-- Buttons -->
+            <button type="submit">Update Route</button>
+            <button type="button" onclick="window.location.href='admin_routes.html'">Cancel</button>
+        </form>
+    </main>
+
+    <script>
+// Function to rename form field IDs for validation
+// - A user-defined JavaScript function named mapIdsForValidation, with no inputs.
+// - Temporarily changes edit form IDs to match add form IDs expected by validation.
+// - Allows the edit route form to use the same validation logic as the add route form.
+function mapIdsForValidation() {
+    // Stores ID mappings
+    // - A user-defined constant named idMappings, an object with key-value pairs.
+    // - Maps edit form IDs (e.g., editStartLocation) to add form IDs (e.g., startLocation).
+    // - Prepares fields for validation compatibility.
+    const idMappings = {
+        editStartLocation: 'startLocation',
+        editDestination: 'destination',
+        editDistance: 'distance',
+        editRouteName: 'routeName',
+        editRouteType: 'routeType',
+        editSecurity: 'security'
+    };
+
+    // Goes through each mapping
+    // - A for...of loop, using Object.entries(), a built-in method, to iterate over idMappings.
+    // - Destructures each entry into editId and addId.
+    // - Renames form field IDs temporarily.
+    for (const [editId, addId] of Object.entries(idMappings)) {
+        // Finds the form element
+        // - A user-defined constant named element, holding the result of document.getElementById(), a built-in method, targeting editId.
+        // - Targets a form field like <input id="editStartLocation">.
+        // - Prepares to change its ID.
+        const element = document.getElementById(editId);
+
+        // Checks if the element exists
+        // - A conditional statement ensuring element is not null.
+        // - Proceeds only if the field is found.
+        // - Prevents errors from missing elements.
+        if (element) {
+            // Changes the element’s ID
+            // - Sets element.id, a built-in property, to addId.
+            // - Temporarily renames the field, e.g., from editStartLocation to startLocation.
+            // - Aligns the ID with validation expectations.
+            element.id = addId;
+        }
+    }
+}
+
+// Function to revert form field IDs
+// - A user-defined JavaScript function named restoreOriginalIds, with no inputs.
+// - Restores original edit form IDs after validation.
+// - Ensures the form retains its correct IDs for submission.
+function restoreOriginalIds() {
+    // Stores ID mappings
+    // - A user-defined constant named idMappings, an object with key-value pairs.
+    // - Maps edit form IDs to add form IDs for reverting changes.
+    // - Prepares fields for ID restoration.
+    const idMappings = {
+        editStartLocation: 'startLocation',
+        editDestination: 'destination',
+        editDistance: 'distance',
+        editRouteName: 'routeName',
+        editRouteType: 'routeType',
+        editSecurity: 'security'
+    };
+
+    // Goes through each mapping
+    // - A for...of loop, using Object.entries(), to iterate over idMappings.
+    // - Destructures each entry into editId and addId.
+    // - Restores original form field IDs.
+    for (const [editId, addId] of Object.entries(idMappings)) {
+        // Finds the form element
+        // - A user-defined constant named element, holding the result of document.getElementById(), targeting addId.
+        // - Targets a form field with the temporary ID (e.g., startLocation).
+        // - Prepares to revert its ID.
+        const element = document.getElementById(addId);
+
+        // Checks if the element exists
+        // - A conditional statement ensuring element is not null.
+        // - Proceeds only if the field is found.
+        // - Prevents errors from missing elements.
+        if (element) {
+            // Restores the element’s ID
+            // - Sets element.id to editId.
+            // - Reverts the field’s ID, e.g., from startLocation to editStartLocation.
+            // - Restores the original ID for form submission.
+            element.id = editId;
+        }
+    }
+}
+
+// Function to check and submit the route form
+// - A user-defined async JavaScript function named validateAndSubmitRouteForm, with one input: event (form submission event).
+// - Validates the edit route form, sends data to the server, and handles the response.
+// - Updates an existing route in the admin system.
+async function validateAndSubmitRouteForm(event) {
+    // Stops the page from refreshing
+    // - Calls preventDefault(), a built-in JavaScript method of the event object, to stop the form from reloading the page.
+    // - Keeps the admin on the edit route page after submitting.
+    // - Makes the submission process smooth without reloads.
+    event.preventDefault();
+
+    // Renames IDs for validation
+    // - Calls the user-defined mapIdsForValidation() function.
+    // - Temporarily changes edit form IDs to match add form IDs.
+    // - Prepares the form for validation using shared logic.
+    mapIdsForValidation();
+
+    // Checks if the form is valid
+    // - A conditional statement calling validateRouteForm(), a user-defined function (assumed in formValidation.js).
+    // - Stops if validation fails, restoring IDs; proceeds if valid.
+    // - Ensures only valid route data is sent to the server.
+    if (!validateRouteForm()) {
+        // Reverts IDs on failure
+        // - Calls the user-defined restoreOriginalIds() function.
+        // - Restores original edit form IDs.
+        // - Keeps the form consistent after failed validation.
+        restoreOriginalIds();
+
+        // Stops submission
+        // - Returns to halt further processing.
+        // - Prevents invalid data from being sent.
+        // - Allows the admin to fix errors.
+        return;
+    }
+
+    // Reverts IDs after validation
+    // - Calls restoreOriginalIds().
+    // - Restores original edit form IDs before submission.
+    // - Prepares the form for correct data submission.
+    restoreOriginalIds();
+
+    // Collects form data
+    // - A user-defined constant named formData, holding a built-in FormData object created from event.target (the form).
+    // - Gathers input values like routeId and startLocation.
+    // - Prepares the data for processing.
+    const formData = new FormData(event.target);
+
+    // Creates a route data object
+    // - A user-defined constant named routeData, an object with values from formData.get(), a built-in method.
+    // - Structures data with keys like routeId and destination.
+    // - Prepares the data for server submission in JSON format.
+    const routeData = {
+        routeId: formData.get('routeId'),
+        startLocation: formData.get('startLocation'),
+        destination: formData.get('destination'),
+        distance: formData.get('distance'),
+        routeName: formData.get('routeName'),
+        routeType: formData.get('routeType'),
+        security: formData.get('security')
+    };
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures during submission.
+    // - Attempts to send updated route data and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/updateRoute.php'.
+        // - Sends routeData as JSON using a POST request.
+        // - Waits for the server’s reply on updating the route.
+        const response = await fetch('../../../php/admin/updateRoute.php', {
+            // Sets the request type
+            // - A method property set to 'POST', a built-in fetch option.
+            // - Tells the server to expect new data.
+            method: 'POST',
+
+            // Sets the data format
+            // - Sets headers with 'Content-Type' to 'application/json'.
+            // - Tells the server the data is in JSON format.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            // Sends the route data
+            // - A body property with routeData converted using JSON.stringify(), a built-in method.
+            // - Includes all route details for the server.
+            body: JSON.stringify(routeData)
+        });
+
+        // Gets the server response
+        // - A user-defined constant named result, holding the JSON object from response.json().
+        // - Turns the server’s reply into an object with status and message.
+        // - Prepares to check if the route was updated successfully.
+        const result = await response.json();
+
+        // Checks for success
+        // - A conditional statement checking if result.status equals 'success'.
+        // - Shows a success message and redirects, or displays an error.
+        // - Handles the server’s response to the update request.
+        if (result.status === 'success') {
+            // Shows a success message
+            // - Calls alert(), a built-in JavaScript method, with “Route updated successfully”.
+            // - Tells the admin the route was updated.
+            // - Confirms the submission worked.
+            alert('Route updated successfully');
+
+            // Redirects to the routes page
+            // - Sets window.location.href, a built-in property, to 'admin_routes.html'.
+            // - Sends the admin to the route list page.
+            // - Completes the update process.
+            window.location.href = 'admin_routes.html';
+        } else {
+            // Shows an error message
+            // - Calls alert() with “Failed to update route:” plus result.message.
+            // - Tells the admin why the update failed, like “Invalid distance”.
+            // - Provides specific error details from the server.
+            alert('Failed to update route: ' + result.message);
+        }
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error(), a built-in method, to write “Error updating route:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error updating route:', error);
+    }
+}
+
+// Function to get route details
+// - A user-defined async JavaScript function named fetchRouteDetails, with no inputs.
+// - Retrieves route data based on a URL ID and fills the edit form fields.
+// - Prepares the edit route form with existing route details for admin updates.
+async function fetchRouteDetails() {
+    // Gets URL query parameters
+    // - A user-defined constant named urlParams, holding a built-in URLSearchParams object created from window.location.search.
+    // - Extracts key-value pairs from the URL query string, like ?id=123.
+    // - Prepares to find the route ID.
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Stores the route ID
+    // - A user-defined constant named routeId, holding the result of urlParams.get('id'), a built-in method.
+    // - Gets the 'id' parameter from the URL, identifying the route to edit.
+    // - Prepares the ID for the server request.
+    const routeId = urlParams.get('id');
+
+    // Logs the route ID for debugging
+    // - Uses console.log(), a built-in method, to output “Route ID:” and routeId.
+    // - Displays the extracted ID in the developer tools.
+    // - Helps verify the correct ID is processed.
+    console.log("Route ID:", routeId);
+
+    // Checks if route ID exists
+    // - A conditional statement checking if routeId is falsy (e.g., null or undefined).
+    // - Shows an error and redirects if no ID is provided.
+    // - Ensures the form loads only with a valid route ID.
+    if (!routeId) {
+        // Shows an error message
+        // - Calls alert() with “Route ID not provided”.
+        // - Tells the admin the route ID is missing from the URL.
+        // - Prompts them to return to the route list.
+        alert('Route ID not provided');
+
+        // Redirects to the routes page
+        // - Sets window.location.href to 'admin_routes.html'.
+        // - Sends the admin to the route list page.
+        // - Stops further processing without an ID.
+        window.location.href = 'admin_routes.html';
+        return;
+    }
+
+    // Handles potential errors
+    // - A try-catch block to manage issues like network failures or invalid data.
+    // - Attempts to fetch route details and catches any problems.
+    // - Keeps the page from breaking on errors.
+    try {
+        // Sends a web request
+        // - A user-defined constant named response, holding the result of an await fetch() call to '../../../php/admin/getRoute.php?id=${routeId}'.
+        // - Requests data for the route with the given ID.
+        // - Waits for the server’s reply with route details.
+        const response = await fetch(`../../../php/admin/getRoute.php?id=${routeId}`);
+
+        // Gets the route data
+        // - A user-defined constant named route, holding the JSON object from response.json().
+        // - Turns the server’s reply into a route object with details like RouteID.
+        // - Prepares the data to fill the form.
+        const route = await response.json();
+
+        // Checks if route exists
+        // - A conditional statement checking if route.RouteID is falsy.
+        // - Shows an error and redirects if no route is found.
+        // - Ensures the form loads only for a valid route.
+        if (!route.RouteID) {
+            // Shows an error message
+            // - Calls alert() with “Route not found”.
+            // - Tells the admin the route with the given ID doesn’t exist.
+            // - Prompts them to return to the route list.
+            alert('Route not found');
+
+            // Redirects to the routes page
+            // - Sets window.location.href to 'admin_routes.html'.
+            // - Sends the admin to the route list page.
+            // - Stops further processing for invalid route.
+            window.location.href = 'admin_routes.html';
+            return;
+        }
+
+        // Fills the form fields
+        // - Sets the value properties of form inputs using document.getElementById(), targeting IDs like 'editRouteId'.
+        // - Populates fields with route data like StartLocation and Distance.
+        // - Prepares the form for editing by the admin.
+        document.getElementById('editRouteId').value = route.RouteID;
+        document.getElementById('editStartLocation').value = route.StartLocation;
+        document.getElementById('editDestination').value = route.Destination;
+        document.getElementById('editDistance').value = route.Distance;
+        document.getElementById('editRouteName').value = route.RouteName;
+        document.getElementById('editRouteType').value = route.RouteType;
+        document.getElementById('editSecurity').value = route.Security;
+    } catch (error) {
+        // Logs the error
+        // - Uses console.error() to write “Error fetching route details:” and the error to the developer tools.
+        // - Helps developers debug issues like network or server problems.
+        console.error('Error fetching route details:', error);
+    }
+}
+
+// Sets up the page to load route details
+// - Adds an event listener using document.addEventListener(), a built-in method, for the “DOMContentLoaded” event.
+// - Calls the user-defined fetchRouteDetails() function when the page’s HTML is fully loaded.
+// - Loads the route details into the edit form fields when the page opens.
+document.addEventListener('DOMContentLoaded', fetchRouteDetails);
+</script>
+</body>
+</html>

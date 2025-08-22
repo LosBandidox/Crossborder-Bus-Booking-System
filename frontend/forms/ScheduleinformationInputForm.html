@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags: Define character encoding and responsive viewport -->
+    <!-- Purpose: Ensures proper text encoding and mobile responsiveness -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Information Input Form</title>
+    <link rel="stylesheet" href="../../assets/css/Styles.css">
+    <script src="../../assets/js/formValidation.js"></script>
+</head>
+<body>
+
+    <form action="../../php/ScheduleinformationInputForm.php" method="POST" onsubmit="return validateScheduleForm()">
+        <h2>ScheduleInformation Input Form</h2>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="busID">Bus ID:</label>
+                <input type="text" id="busID" name="busID">
+            </div>
+            <div class="form-field">
+                <label for="routeID">Route ID:</label>
+                <input type="text" id="routeID" name="routeID">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="departureTime">Departure Time:</label>
+                <input type="text" id="departureTime" name="departureTime" class="datetime-input" placeholder="DD-MM-YYYY HH:MM:SS">
+            </div>
+            
+            <div class="form-field">
+                <label for="arrivalTime">Arrival Time:</label>
+                <input type="text" id="arrivalTime" name="arrivalTime" class="datetime-input" placeholder="DD-MM-YYYY HH:MM:SS">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <label for="cost">Cost:</label>
+                <input type="text" id="cost" name="cost">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="driverID">Driver ID:</label>
+                <input type="text" id="driverID" name="driverID">
+            </div>
+            <div class="form-field">
+                <label for="codriverID">Co-driver ID:</label>
+                <input type="text" id="codriverID" name="codriverID">
+            </div>
+        </div>
+        <div class="form-buttons">
+            <button type="button" class="back-btn" onclick="history.back()">Back</button>
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

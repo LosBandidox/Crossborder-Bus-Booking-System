@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile Management</title>
+    <link rel="stylesheet" href="../../../assets/css/Styles.css">
+    <script src="../../../assets/js/adminManagement.js" defer></script>
+    <script src="/assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">BusBooking</div> <!-- Logo placeholder -->
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="#" id="profileLink">Profile</a></li>
+                
+            </ul>
+            <a href="../../../php/Logout.php" class="try-free-btn">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            <h1>Admin Profile Management</h1>
+
+            <div id="profileSection">
+                <h2>Manage Your Profile</h2>
+                <div id="staffDetails">
+                    <p><strong>Name:</strong> <span id="currentName"></span></p>
+                    <p><strong>Phone Number:</strong> <span id="currentPhone"></span></p>
+                    <p><strong>Email:</strong> <span id="currentEmail"></span></p>
+                    <p><strong>Role:</strong> <span id="currentRole"></span></p>
+                </div>
+                <h3>Update Profile</h3>
+                <form id="profileForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" required>
+
+                    <label for="password">New Password (optional):</label>
+                    <input type="password" id="password" name="password">
+
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 International Bus Booking System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

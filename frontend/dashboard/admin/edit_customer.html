@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="../../../assets/css/AdminStyles.css">
+    <script src="../../../assets/js/formValidation.js"></script>
+    <script src="/assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Edit Customer</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="admin_users.html">Users</a></li>
+                <li><a href="admin_buses.html">Buses</a></li>
+                <li><a href="admin_routes.html">Routes</a></li>
+                <li><a href="#">Others</a>
+                    <ul class="dropdown">
+                        <li><a href="../dashboard/admin/admin_schedules.html">Schedules</a></li>
+                        <li><a href="admin_bookings.html">Bookings</a></li>
+                        <li><a href="admin_payments.html">Payments</a></li>
+                        <li><a href="admin_customers.html">Customer</a></li>
+                        <li><a href="admin_staff.html">Staff</a></li>
+                        <li><a href="admin_reports.html">Reports</a></li>
+                        <li><a href="admin_activity.html">View Logs</a></li>
+                        <li><a href="../../../php/Logout.php">Logout</a></li>
+                    </ul></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <form id="editCustomerForm" onsubmit="return validateAndSubmitCustomerForm(event)">
+            <h2>Edit Customer</h2>
+            <input type="hidden" id="editCustomerId" name="customerId">
+            <div class="form-row">
+                <div class="form-field">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+                </div>
+                <div class="form-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required><br><br>
+                </div>
+                    <div class="form-field">
+
+            <div class="radio-group">
+                <label for="gender">Gender:</label>
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male" class="radio-label">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female" class="radio-label">Female</label>
+            </div><br>
+                  </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+            <label for="passportNumber">Passport Number:</label>
+            <input type="text" id="passportNumber" name="passportNumber" required><br><br>
+                </div>
+                <div class="form-field">
+            <label for="nationality">Nationality:</label>
+            <select id="nationality" name="nationality" required>
+                <option value="">Select Nationality</option>
+                <option value="Kenyan">Kenyan</option>
+                <option value="Ugandan">Ugandan</option>
+                <option value="Tanzanian">Tanzanian</option>
+            </select><br><br>
+                </div>
+            </div>
+            <button type="submit">Update Customer</button>
+            <button type="button" onclick="window.location.href='admin_customers.html'">Cancel</button>
+        </form>
+    </main>
+
+    <script src="../../../assets/js/edit_customer.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Data Entry Form</title>
+    <link rel="stylesheet" href="../../assets/css/Styles.css">
+    <script src="../../assets/js/formValidation.js"></script>
+</head>
+<body>
+    
+    <form action="../../php/StaffInputForm.php" method="POST" onsubmit="return validateStaffForm()">
+        <h2>Staff Details</h2>
+        <div class="form-row">
+            <div class="form-field">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+            </div>
+            <div class="form-field">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+            </div>
+            <div class="form-field">
+        <label for="staffNumber">Staff Number:</label>
+        <input type="text" id="staffNumber" name="staffNumber"><br><br>
+            </div>
+        </div>
+        <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="">Select Role</option>
+            <option value="Driver">Driver</option>
+            <option value="Co-Driver">Co-Driver</option>
+            <option value="Technician">Technician</option>
+            <option value="Cashier">Cashier</option>
+        </select><br><br>
+
+        <div class="submit-container">
+        <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>

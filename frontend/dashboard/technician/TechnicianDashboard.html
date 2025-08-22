@@ -1,0 +1,163 @@
+<!-- This HTML file serves as the main dashboard page for technicians -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding set to UTF-8 for proper text rendering -->
+    <meta charset="UTF-8">
+    <!-- Meta tag added to ensure the page is responsive on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title set to identify it in the browser -->
+    <title>Technician Dashboard</title>
+    <!-- External CSS file linked for consistent styling -->
+    <link rel="stylesheet" href="../../../assets/css/Styles.css">
+    <!-- External JS file linked to check technician existence and load data -->
+    <script src="../../../assets/js/checkTechnician.js" defer></script>
+    <!-- External JS file linked for profile management -->
+    <script src="../../../assets/js/technicianManagement.js" defer></script>
+    <script src="/assets/js/script.js" defer></script>
+</head>
+<body>
+    <!-- Header section created for navigation -->
+    <header>
+        <div class="logo">
+        <img src="/assets/Images/Logo.png" alt="InterBus Logo" class="logo-img">
+    </div>
+        <nav>
+            <div class="hamburger">☰</div>
+            <!-- Unordered list used for navigation links -->
+            <ul id="nav-menu">
+                <li><a href="TechnicianDashboard.html">Home</a></li>
+                <li><a href="#" id="profileLink">Profile</a></li>
+                <li><a href="../../../php/Logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content area created -->
+    <main>
+        <!-- Div with a class used for styling the dashboard content -->
+        <div class="dashboard-container">
+            <!-- Heading added to welcome the user -->
+            <h1>Welcome to Your Technician Dashboard</h1>
+
+            <!-- Stats Cards Section: Added for technician statistics -->
+            <section id="statsCards">
+                <h2>Technician Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <h3>Total Maintenance Tasks</h3>
+                        <img src="/assets/Images/tools_11270128.svg" alt="Tools Icon" class="custom-icon">
+                        <p class="stats-value" id="totalTasks">0</p>
+                        <p>Number of maintenance tasks performed.</p>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Total Maintenance Cost</h3>
+                        <img src="/assets/Images/dollar_16774124.svg" alt="Dollar Sign Icon" class="custom-icon">
+                        <p class="stats-value" id="totalCost">0</p>
+                        <p>Total cost of maintenance tasks.</p>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Buses Serviced</h3>
+                        <img src="/assets/Images/bus-alt_6955518.svg" alt="Bus Icon" class="custom-icon">
+                        <p class="stats-value" id="busesServiced">0</p>
+                        <p>Unique buses you’ve serviced.</p>
+                    </div>
+                    <!-- Uncomment for four stats -->
+                    <!--
+                    <div class="stats-card">
+                        <h3>Recent Services</h3>
+                        <img src="/assets/Images/wrench.svg" alt="Wrench Icon" class="custom-icon">
+                        <p class="stats-value" id="recentServices">0</p>
+                        <p>Maintenance tasks in the last 30 days.</p>
+                    </div>
+                    -->
+                </div>
+            </section>
+
+           <!-- Maintenance Schedule Section -->
+            <div id="maintenanceSection">
+                <!-- Subheading added for maintenance tasks -->
+                <h2>Maintenance Tasks</h2>
+                <!-- Button added to link to MaintenanceInputForm.html -->
+                <button class="button" onclick="window.location.href='../../forms/MaintenanceInputForm.html'">Add New Maintenance Log</button>
+                <!-- Table created to display maintenance data -->
+                <table id="maintenanceTable">
+                    <!-- Table head section created to hold headers -->
+                    <thead>
+                        <tr>
+                            <th>Bus Number</th>
+                            <th>Service Done</th>
+                            <th>Service Date</th>
+                            <th>Next Service Date</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <!-- Table body created to hold dynamic rows -->
+                    <tbody></tbody>
+                </table>
+                <!-- Placeholder added to show if no maintenance tasks are found -->
+                <p id="noMaintenance" style="display: none;">No maintenance tasks recorded.</p>
+            </div>
+
+            <!-- Bus Assignment Status Section -->
+            <div id="busStatusSection">
+                <!-- Subheading added for bus status -->
+                <h2>Bus Assignment Status</h2>
+                <!-- Search input added to filter bus status table -->
+                <input type="text" id="busSearch" class="search-input" placeholder="Search buses...">
+                <!-- Table created to display bus assignment data -->
+                <table id="busStatusTable">
+                    <!-- Table head section created to hold headers -->
+                    <thead>
+                        <tr>
+                            <th>Bus Number</th>
+                            <th>Route</th>
+                            <th>Departure Time</th>
+                            <th>Maintenance Status</th>
+                        </tr>
+                    </thead>
+                    <!-- Table body created to hold dynamic rows -->
+                    <tbody></tbody>
+                </table>
+                <!-- Placeholder added to show if no buses match the search -->
+                <p id="noBuses" class="no-results" style="display: none;">No buses found.</p>
+            </div>
+
+            <!-- Hidden section created for profile management -->
+            <div id="profileSection" style="display: none;">
+                <!-- Subheading added for the profile section -->
+                <h2>Manage Your Profile</h2>
+                <button class="back-btn" onclick="goBack()">Back</button>
+                <!-- Div added to display current staff details -->
+                <div id="staffDetails">
+                    <p><strong>Name:</strong> <span id="currentName"></span></p>
+                    <p><strong>Phone Number:</strong> <span id="currentPhone"></span></p>
+                    <p><strong>Email:</strong> <span id="currentEmail"></span></p>
+                    <p><strong>Staff Number:</strong> <span id="currentStaffNumber"></span></p>
+                    <p><strong>Role:</strong> <span id="currentRole"></span></p>
+                </div>
+                <!-- Subheading added for the update form -->
+                <h3>Update Profile</h3>
+                <!-- Form created for updating profile details -->
+                <form id="profileForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" required>
+
+                    <label for="password">New Password:</label>
+                    <input type="password" id="password" name="password">
+
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer added for copyright information -->
+    <footer>
+        <p>© 2025 International Bus Booking System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

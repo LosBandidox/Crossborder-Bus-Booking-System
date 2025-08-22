@@ -1,0 +1,224 @@
+/* Body Styling: Sets up the overall look and feel of the page for the bus booking system */
+body {
+    font-family: 'Segoe UI', sans-serif; /* Uses Segoe UI as the main font for a clean, modern look, with a fallback to sans-serif */
+    background-color: #f8f8f8; /* Sets a light gray background (#f8f8f8) for a soft, professional appearance */
+    color: #333; /* Sets text to dark gray (#333) for clear readability against the light background */
+    margin: 0; /* Removes default outer spacing to prevent unwanted gaps in the layout */
+    padding: 0; /* Removes default inner spacing for a clean starting point */
+    min-height: 100vh; /* Ensures the page is at least as tall as the browser window (100% viewport height) to fill the screen */
+    padding-bottom: 0; /* Removes extra bottom spacing since the footer is not fixed, ensuring content fits neatly */
+}
+
+/* Header Styling: Styles the top section with the logo and navigation for the booking system */
+header {
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the system’s sleek header design */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a neat layout */
+    color: white; /* Sets text to white for clear contrast against the dark background */
+    display: flex; /* Uses flexbox to arrange the logo and navigation side by side */
+    justify-content: space-between; /* Spreads the logo and navigation across the header with equal spacing */
+    align-items: center; /* Vertically centers the logo and navigation for a balanced look */
+}
+
+/* Logo Image Styling: Styles the logo image in the header */
+.logo-img {
+    height: 50px; /* Sets the logo height to 50 pixels to fit neatly in the header while maintaining visibility */
+}
+
+/* Navigation List Styling: Styles the list of navigation links */
+nav ul {
+    list-style-type: none; /* Removes bullet points from the menu for a clean, modern look */
+    margin: 0; /* Removes default outer spacing to keep the menu tight */
+    padding: 0; /* Removes default inner spacing for a compact menu */
+    gap: 15px; /* Adds 15 pixels of space between menu items for clear separation */
+}
+
+/* Navigation Links Styling: Styles the clickable links in the navigation menu */
+nav ul li a {
+    color: white; /* Sets link text to white for contrast against the dark header background */
+    text-decoration: none; /* Removes the default underline for a cleaner, professional appearance */
+}
+
+/* Main Content Styling: Styles the main content area of the page */
+main {
+    padding: 20px; /* Adds 20 pixels of space around the content to keep it neat and separated from edges */
+}
+
+/* Dashboard Container Styling: Styles the container for the booking dashboard or ticket display */
+.dashboard-container {
+    max-width: 700px; /* Limits the container width to 700 pixels for a compact, readable layout */
+    margin: auto; /* Centers the container horizontally by adding equal space on the left and right */
+    background: white; /* Sets a white background for a clean, professional look */
+    padding: 30px; /* Adds 30 pixels of space inside the container to keep content neat */
+    border-radius: 10px; /* Rounds the corners by 10 pixels for a smooth, modern appearance */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow (10px blur, 10% dark) to make the container look raised */
+}
+
+/* Main Heading Styling: Styles the main <h1> title on the page */
+h1 {
+    text-align: center; /* Centers the heading text for a balanced, prominent look */
+    margin-bottom: 30px; /* Adds 30 pixels of space below the heading to separate it from content */
+    color: #1a1a1a; /* Sets text to dark gray (#1a1a1a) to match the header’s theme and ensure readability */
+}
+
+/* Button Styling: Styles buttons used for actions like viewing or downloading tickets */
+button {
+    margin: 15px 5px; /* Adds 15 pixels of vertical space and 5 pixels of horizontal space for button separation */
+    padding: 10px 20px; /* Adds 10 pixels of top/bottom space and 20 pixels of left/right space for a clickable size */
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the header’s sleek style */
+    color: white; /* Sets text to white for contrast against the dark background */
+    border: none; /* Removes the default border for a smooth, modern look */
+    border-radius: 5px; /* Rounds the corners by 5 pixels for a polished appearance */
+    cursor: pointer; /* Changes the mouse cursor to a hand icon, showing the button is clickable */
+}
+
+/* Button Hover Styling: Changes button appearance when hovered */
+button:hover {
+    background-color: #333; /* Changes to a slightly lighter gray (#333) on hover for visual feedback */
+}
+
+/* Footer Styling: Styles the bottom section of the page */
+footer {
+    text-align: center; /* Centers all text and content in the footer for a balanced look */
+    padding: 10px 0; /* Adds 10 pixels of top/bottom space and no left/right space for a compact footer */
+    background-color: #333; /* Sets a dark gray background (#333) for a professional appearance */
+}
+
+/* Ticket Details Section Styling: Styles the section for displaying ticket details */
+#ticketDetails {
+    display: none; /* Hides the ticket details section by default until data is loaded dynamically */
+}
+
+/* Ticket Buttons Container Styling: Styles the container for buttons related to ticket actions */
+.ticket-buttons {
+    text-align: center; /* Centers the buttons horizontally for a neat, balanced layout */
+    margin-bottom: 20px; /* Adds 20 pixels of space below the buttons to separate them from other content */
+}
+
+/* Ticket Content Container Styling: Styles the container for displaying ticket information */
+#ticketContent {
+    border: 1px solid #ccc; /* Adds a 1-pixel, solid, light gray (#ccc) border to define the ticket’s edges */
+    padding: 25px; /* Adds 25 pixels of space inside the container for a comfortable layout */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a smooth, modern look */
+    background-color: #fafafa; /* Sets a very light gray background (#fafafa) for a clean ticket appearance */
+    font-family: Arial, sans-serif; /* Uses Arial as the font for ticket text, with a sans-serif fallback for consistency */
+    max-width: 500px; /* Limits the ticket width to 500 pixels for a compact, readable design */
+    margin: auto; /* Centers the ticket horizontally by adding equal space on the left and right */
+    border: 2px dashed #555; /* Overrides the earlier border with a 2-pixel, dashed, dark gray (#555) border for a ticket-like effect */
+    background-color: #ffffff; /* Overrides the earlier background with pure white (#ffffff) for a clean, printable ticket */
+    border-radius: 10px; /* Overrides the earlier border-radius with 10 pixels for consistency with the dashed border */
+    box-shadow: 0 0 5px rgba(0,0,0,0.2); /* Adds a subtle shadow (5px blur, 20% dark) to make the ticket look raised */
+    text-align: left; /* Aligns text to the left for a standard ticket layout */
+}
+
+/* Ticket Content Paragraphs Styling: Styles paragraphs inside the ticket content */
+#ticketContent p {
+    font-size: 16px; /* Sets the text size to 16 pixels for clear readability */
+    margin: 8px 0; /* Adds 8 pixels of vertical space between paragraphs for separation */
+}
+
+/* Ticket Content Strong Tags Styling: Styles emphasized text (e.g., labels) in the ticket */
+#ticketContent strong {
+    color: #555; /* Sets text to medium gray (#555) to highlight labels while maintaining readability */
+}
+
+/* Ticket Header Styling: Styles the header section of the ticket */
+.ticket-header {
+    text-align: center; /* Centers the header content for a prominent, balanced look */
+    margin-bottom: 15px; /* Adds 15 pixels of space below the header to separate it from ticket details */
+}
+
+/* Ticket Logo Container Styling: Styles the container for the ticket’s logo */
+.ticket-logo {
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to match the header’s style */
+    display: inline-block; /* Makes the container fit the logo’s size while allowing padding */
+    padding: 8px 12px; /* Adds 8 pixels of top/bottom space and 12 pixels of left/right space for a neat logo frame */
+    border-radius: 8px; /* Rounds the corners by 8 pixels for a smooth, modern look */
+}
+
+/* Ticket Logo Image Styling: Styles the logo image inside the ticket */
+.ticket-logo img {
+    height: 50px; /* Sets the logo height to 50 pixels to match the header logo and keep it visible */
+    background-color: #1a1a1a; /* Sets a dark background (#1a1a1a) to blend with the container */
+}
+
+/* Ticket Header Heading Styling: Styles the <h2> title in the ticket header */
+.ticket-header h2 {
+    margin: 10px 0 5px; /* Adds 10 pixels of space above and 5 pixels below the heading for separation */
+}
+
+/* Ticket Header Subtitle Styling: Styles the subtitle (small text) in the ticket header */
+.ticket-header small {
+    color: #888; /* Sets text to light gray (#888) for a subtle, secondary appearance */
+}
+
+/* Ticket Content Horizontal Rule Styling: Styles dividers in the ticket */
+#ticketContent hr {
+    margin: 15px 0; /* Adds 15 pixels of vertical space around the divider for separation */
+}
+
+/* Ticket Footer Styling: Styles the footer text of the ticket */
+.ticket-footer {
+    text-align: center; /* Centers the footer text for a balanced look */
+    font-size: 12px; /* Sets the text size to 12 pixels for a small, subtle appearance */
+    color: #777; /* Sets text to medium gray (#777) for a low-key, secondary style */
+}
+
+/* Print Media Styling: Adjusts the layout for printing tickets */
+@media print {
+    /* Header Print Styling: Hides the header when printing */
+    header {
+        display: none !important; /* Hides the header completely during printing to focus on the ticket */
+    }
+    /* Footer Print Styling: Hides the footer when printing */
+    footer {
+        display: none !important; /* Hides the footer completely during printing to keep the ticket clean */
+    }
+    /* Button Print Styling: Hides buttons when printing */
+    button {
+        display: none !important; /* Hides all buttons during printing since they’re not needed on paper */
+    }
+    /* View Ticket Form Print Styling: Hides the ticket form when printing */
+    #viewTicket {
+        display: none !important; /* Hides the ticket viewing form during printing to focus on the ticket content */
+    }
+    /* Dashboard Container Print Styling: Adjusts the dashboard container for printing */
+    .dashboard-container {
+        box-shadow: none !important; /* Removes the shadow to avoid unwanted print artifacts */
+        border: none !important; /* Removes any border to keep the printed ticket clean */
+        padding: 0 !important; /* Removes padding to maximize space for the ticket content */
+    }
+    /* Ticket Content Print Styling: Adjusts the ticket content for printing */
+    #ticketContent {
+        border: none !important; /* Removes the border to create a clean, professional printed ticket */
+        background: white !important; /* Ensures a white background for clear printing */
+    }
+}
+
+/* Responsive Styles for Mobile Devices (up to 600px): Adjusts the layout for small screens like phones */
+@media screen and (max-width: 600px) {
+    /* Hamburger Menu Styling: Styles the mobile menu icon */
+    .hamburger {
+        display: block; /* Shows the hamburger icon (three lines) on mobile for navigation */
+        font-size: 1.5rem; /* Sets the icon size to 24 pixels (1.5rem) for easy tapping */
+        color: #fff; /* Sets the icon to white to match the navigation text */
+        cursor: pointer; /* Changes the mouse cursor to a hand icon, showing it’s clickable */
+    }
+    /* Navigation List Styling: Adjusts the navigation menu for mobile */
+    nav ul {
+        display: none; /* Hides the navigation links by default until the hamburger icon is clicked */
+        flex-direction: column; /* Stacks links vertically for a mobile-friendly menu */
+        width: 100%; /* Makes the menu stretch across the full screen width */
+    }
+    /* Active Navigation List Styling: Shows the menu when activated */
+    nav ul.active {
+        display: flex; /* Shows the navigation links when the hamburger icon is clicked */
+    }
+    /* Navigation List Items Styling: Adjusts spacing for mobile menu items */
+    nav ul li {
+        margin: 10px 0; /* Adds 10 pixels of vertical space between menu items for separation */
+    }
+    /* Navigation Links Styling: Adjusts link text for mobile */
+    nav ul li a {
+        font-size: 1.1rem; /* Sets the text size to 17.6 pixels (1.1rem) for better readability on mobile */
+    }
+}

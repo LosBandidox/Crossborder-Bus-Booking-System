@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><!-- Specifies the character encoding for the document (UTF-8) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Ensures the page is responsive on different devices -->
+    <title>Customer Data Entry Form</title>
+    <link rel="stylesheet" href="../../assets/css/Styles.css">
+    <script src="../../assets/js/formValidation.js"></script>
+    <script>
+        // Function to extract URL parameters
+        // - A user-defined function to retrieve query string values.
+        // - Takes one parameter: name (the query parameter key).
+        // - Returns the parameter value or an empty string if not found.
+        function getParameterByName(name) {
+            // Local variable, holds URL query parameters
+            // - A constant using the URLSearchParams API.
+            // - Fetched from window.location.search.
+            // - Extracts query string values from the URL.
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Return parameter value
+            // - A method call using urlParams.get().
+            // - Retrieves the value of the specified parameter name.
+            // - Returns the value or an empty string if not found.
+            return urlParams.get(name) || ""; // Return parameter value or empty string if not found
+        }
+
+        // Event handler for page load
+        // - An event handler assigned to the window.onload event.
+        // - Composed of DOM manipulation and function calls.
+        // - Sets hidden input field values with URL parameters when the page loads.
+        window.onload = function() {
+            // Populate schedule ID field
+            // - DOM manipulation to set an input value.
+            // - Targets the element with ID 'scheduleID'.
+            // - Assigns the scheduleID query parameter value.
+            document.getElementById("scheduleID").value = getParameterByName("scheduleID");
+            
+            // Populate seat number field
+            // - DOM manipulation to set an input value.
+            // - Targets the element with ID 'seatNumber'.
+            // - Assigns the seatNumber query parameter value.
+            document.getElementById("seatNumber").value = getParameterByName("seatNumber");
+        };
+    </script>
+</head>
+<body>
+    <form action="../../php/CustomerInputForm.php" method="POST" onsubmit="return validateCustomerForm()"><!-- Sets the form to send data using POST and calls the validation function before submission -->
+        <h2>Please input your details</h2>
+        <!-- Hidden fields for scheduleID and seatNumber -->
+        <input type="hidden" id="scheduleID" name="scheduleID">
+        <input type="hidden" id="seatNumber" name="seatNumber">
+
+        <div class="form-row">
+            <div class="form-field">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+            </div>
+            <div class="form-field">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+            </div>
+            <div class="form-field">
+        <label for="passportNumber">Passport Number:</label>
+        <input type="text" id="passportNumber" name="passportNumber"><br><br>
+            </div>
+        </div>
+        <!-- Radio Button Group for Gender -->
+        <div class="form-row">
+            <div class="form-field">
+        <div class="radio-group">
+            <label for="gender">Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male" class="radio-label">Male</label>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female" class="radio-label">Female</label><br><br>
+        </div>
+            </div>
+            <div class="form-field">
+        <label for="nationality">Nationality:</label>
+        <select id="nationality" name="nationality">
+            <option value="">Select Nationality</option>
+            <option value="Kenyan">Kenyan</option>
+            <option value="Ugandan">Ugandan</option>
+            <option value="Tanzanian">Tanzanian</option>
+        </select><br><br>
+            </div>
+       </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
